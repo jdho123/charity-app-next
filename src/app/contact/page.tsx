@@ -14,7 +14,7 @@ export default function ContactPage() {
         {/* Background World Illustration */}
         <div className="absolute inset-0 overflow-hidden">
           <Image 
-            src="/storage/bigWorld.png" 
+            src="/images/bigWorld.png" 
             alt=""
             fill
             className="object-cover object-left"

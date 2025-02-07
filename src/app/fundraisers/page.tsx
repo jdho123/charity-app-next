@@ -1,4 +1,5 @@
 import type { Metadata } from 'next'
+import { use } from 'react'
 import GuestLayout from '@/components/layout/GuestLayout'
 import GeneralFund from '@/components/fundraisers/GeneralFund'
 import ActiveCampaigns from '@/components/fundraisers/ActiveCampaigns'
@@ -17,50 +18,53 @@ const navLinks = [
   { id: 'completed-campaigns', text: 'Completed Campaigns' }
 ]
 
-// Sample data - In a real app, this would come from your API or database
-const activeCampaigns = [
-  {
-    id: 1,
-    title: 'Books',
-    goal: 500,
-    raised: 375,
-    imageUrl: '/storage/books.png',
-    description: 'Access to educational materials is essential for nurturing young minds and fostering creativity. This fundraiser will help provide books for children in remote areas, creating opportunities for growth and learning.',
-    status: 'active' as const
-  },
-  {
-    id: 2,
-    title: 'Books 2',
-    goal: 500,
-    raised: 375,
-    imageUrl: '/storage/books.png',
-    description: 'Access to educational materials is essential for nurturing young minds and fostering creativity. This fundraiser will help provide books for children in remote areas, creating opportunities for growth and learning.',
-    status: 'active' as const
-  },
-  {
-    id: 3,
-    title: 'Books 3',
-    goal: 500,
-    raised: 375,
-    imageUrl: '/storage/books.png',
-    description: 'Access to educational materials is essential for nurturing young minds and fostering creativity. This fundraiser will help provide books for children in remote areas, creating opportunities for growth and learning.',
-    status: 'active' as const
-  }
-]
+// Type definitions for our campaign data
+interface BaseCampaign {
+  id: number
+  title: string
+  goal: number
+  raised: number
+  imageUrl: string
+  description: string
+  status: 'active' | 'completed'
+}
 
-const completedCampaigns = [
-  {
-    id: 1,
-    title: 'Books for Bright Minds',
-    goal: 500,
-    raised: 500,
-    imageUrl: '/storage/booksForBright.png',
-    description: 'Thanks to your incredible support, we successfully provided a new collection of books to Impact Schools, inspiring a love for reading among children.',
-    status: 'completed' as const
+interface ActiveCampaign extends BaseCampaign {
+  status: 'active'
+}
+
+interface CompletedCampaign extends BaseCampaign {
+  status: 'completed'
+}
+
+type CampaignData = {
+  active: ActiveCampaign[]
+  completed: CompletedCampaign[]
+}
+
+// Function to fetch campaign data
+async function getCampaigns(): Promise<CampaignData> {
+  const response = await fetch('/api/campaigns', { next: { revalidate: 3600 } }) // Cache for 1 hour
+  if (!response.ok) {
+    throw new Error('Failed to fetch campaigns')
   }
-]
+  
+  const data = await response.json()
+  
+  // Ensure type safety by filtering campaigns based on status
+  return {
+    active: data.active.filter((campaign: BaseCampaign): campaign is ActiveCampaign => 
+      campaign.status === 'active'
+    ),
+    completed: data.completed.filter((campaign: BaseCampaign): campaign is CompletedCampaign => 
+      campaign.status === 'completed'
+    )
+  }
+}
 
 export default function FundraisersPage() {
+  const { active, completed } = use(getCampaigns())
+
   return (
     <GuestLayout>
       <div className="min-h-screen bg-white">
@@ -68,10 +72,10 @@ export default function FundraisersPage() {
         <GeneralFund />
 
         {/* Active Campaigns Section */}
-        <ActiveCampaigns campaigns={activeCampaigns} />
+        <ActiveCampaigns campaigns={active} />
 
         {/* Completed Campaigns Section */}
-        <CompletedCampaigns campaigns={completedCampaigns} />
+        <CompletedCampaigns campaigns={completed} />
       </div>
     </GuestLayout>
   )

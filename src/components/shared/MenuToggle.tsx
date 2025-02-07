@@ -21,7 +21,7 @@ interface MenuToggleProps {
           {[0, 1, 2].map((index) => (
             <Image
               key={index}
-              src="/storage/menu-line.png"
+              src="/images/menu-line.png"
               style={{
                 top: `${45 + (index * 14)}px`
               }}

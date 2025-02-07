@@ -23,7 +23,7 @@ export default function OurPhilosophy() {
             
             <div className="relative">
               <Image 
-                src="/storage/ourPhilo.jpeg" 
+                src="/images/ourPhilo.jpeg" 
                 alt="Our Philosophy" 
                 width={800}
                 height={500}
@@ -32,10 +32,10 @@ export default function OurPhilosophy() {
               
               {/* Decorative Elements */}
               <div className="absolute -top-12 right-12">
-                <Image src="/storage/stars1_2.png" alt="" width={48} height={48} className="object-contain" />
+                <Image src="/images/stars1_2.png" alt="" width={48} height={48} className="object-contain" />
               </div>
               <div className="absolute bottom-12 left-12">
-                <Image src="/storage/stars1_2.png" alt="" width={48} height={48} className="object-contain" />
+                <Image src="/images/stars1_2.png" alt="" width={48} height={48} className="object-contain" />
               </div>
             </div>
           </div>

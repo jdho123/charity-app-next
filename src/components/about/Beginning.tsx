@@ -20,7 +20,7 @@ export default function Beginning() {
               </p>
       
               <Image 
-                src="/storage/beginning.png" 
+                src="/images/beginning.png" 
                 alt="Our beginning" 
                 className="rounded-[50px] w-full h-[362px] object-cover"
                 width={362}
@@ -31,7 +31,7 @@ export default function Beginning() {
             {/* Right Column */}
             <div className="relative">
               <Image 
-                src="/storage/journeySoFar.png" 
+                src="/images/journeySoFar.png" 
                 alt="Nepal" 
                 className="w-full h-[578px] object-cover"
                 layout="responsive"

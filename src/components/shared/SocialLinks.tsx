@@ -10,22 +10,22 @@ const socialLinks: SocialLink[] = [
   {
     name: 'LinkedIn',
     href: '#',
-    icon: '/storage/linkedin.png'
+    icon: '/images/linkedin.png'
   },
   {
     name: 'WhatsApp',
     href: '#',
-    icon: '/storage/whatsapp.png'
+    icon: '/images/whatsapp.png'
   },
   {
     name: 'Instagram',
     href: '#',
-    icon: '/storage/instagram.png'
+    icon: '/images/instagram.png'
   },
   {
     name: 'YouTube',
     href: '#',
-    icon: '/storage/youtube.png'
+    icon: '/images/youtube.png'
   }
 ]
 

@@ -28,7 +28,7 @@ export default function WhatWeDo({ onWatchVideo }: WhatWeDoProps) {
             
             <div className="relative">
               <Image 
-                src="/storage/whatWeDoVideo.png" 
+                src="/images/whatWeDoVideo.png" 
                 alt="What We Do" 
                 width={800}
                 height={600}

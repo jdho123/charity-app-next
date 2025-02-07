@@ -4,14 +4,14 @@ export default function Quote({ children }: { children: React.ReactNode }) {
     return (
         <blockquote className="relative">
             <Image 
-                src="/storage/quote-left.png" 
+                src="/images/quote-left.png" 
                 alt="Quote mark" 
                 layout="fill"
                 objectFit="contain"
                 className="absolute -top-8 -left-8 w-[175px] h-[149px] opacity-50"
             />
             <Image 
-                src="/storage/quote-right.png" 
+                src="/images/quote-right.png" 
                 alt="Quote mark" 
                 layout="fill"
                 objectFit="contain"

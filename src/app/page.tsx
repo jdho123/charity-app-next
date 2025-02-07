@@ -1,6 +1,5 @@
 'use client'
 import { useState } from 'react'
-import type { Metadata } from 'next'
 import GuestLayout from '@/components/layout/GuestLayout'
 import Hero from '@/components/sections/Hero'
 import WhatWeDo from '@/components/sections/WhatWeDo'
@@ -9,23 +8,14 @@ import NewsletterSection from '@/components/sections/NewsletterSection'
 import Modal from '@/components/shared/Modal'
 import ScrollToTop from '@/components/shared/ScrollToTop'
 
-interface HomeProps {
-  assets: {
-    ropax1: string;
-  }
-}
 
-export const metadata: Metadata = {
-  title: 'Home - LEDU',
-}
-
-export default function HomePage({ assets }: HomeProps) {
+export default function HomePage() {
   const [showVideo, setShowVideo] = useState(false)
 
   return (
     <GuestLayout>
       {/* Hero Section */}
-      <Hero backgroundImage={assets.ropax1} />
+      <Hero backgroundImage='/images/ropax1.png' />
       
       {/* What We Do Section */}
       <WhatWeDo onWatchVideo={() => setShowVideo(true)} />
@@ -40,7 +30,7 @@ export default function HomePage({ assets }: HomeProps) {
       <Modal show={showVideo} onClose={() => setShowVideo(false)}>
         <div className="bg-black p-4 rounded-lg">
           <video 
-            src="/storage/our-mission.mp4" 
+            src="/images/our-mission.mp4" 
             controls 
             className="w-full max-w-4xl mx-auto"
           />

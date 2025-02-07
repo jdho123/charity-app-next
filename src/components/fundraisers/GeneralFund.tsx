@@ -40,7 +40,7 @@ export default function GeneralFund() {
             title="General Fund"
             goal={5000}
             raised={3000}
-            imageUrl="/storage/generalFund.png"
+            imageUrl="/images/generalFund.png"
             description="The General Fund supports all aspects of our mission. Your contributions help us provide critical resources such as Wi-Fi access for online lessons, new books to foster a love of learning, and classroom supplies like stationery and teaching tools."
             descriptionTitle="Why It Matters"
             type="general"

@@ -30,7 +30,7 @@ const AuthenticatedLayout: React.FC<AuthenticatedLayoutProps> = ({ user, header,
                 <Link href="/">
                   <div className="relative w-12 h-12">
                     <Image 
-                      src="/storage/worldMini2.png" 
+                      src="/images/worldMini2.png" 
                       alt="LEDU Logo"
                       layout="fill"
                       objectFit="cover"

@@ -1,0 +1,26 @@
+// public/storage/world-illustration.svg
+<svg width="800" height="600" viewBox="0 0 800 600" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <!-- Background gradient -->
+  <defs>
+    <linearGradient id="paint0_linear" x1="400" y1="0" x2="400" y2="600" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#E3F2FD"/>
+      <stop offset="1" stop-color="#BBDEFB"/>
+    </linearGradient>
+  </defs>
+  
+  <!-- World outline - simplified for example -->
+  <path 
+    d="M200 300 C200 200, 400 100, 600 300 S800 500, 400 500 S0 400, 200 300Z"
+    stroke="#1135F3"
+    stroke-width="4"
+    fill="url(#paint0_linear)"
+    filter="drop-shadow(0px 4px 6px rgba(0, 0, 0, 0.1))"
+  />
+  
+  <!-- Land masses - simplified for example -->
+  <path 
+    d="M300 250 Q400 200 500 300 T600 350 T400 400 T300 250"
+    fill="#81C784"
+    opacity="0.8"
+  />
+</svg>

@@ -15,14 +15,14 @@ const articles = [
     title: 'Solar Panels Installed at Impact Schools',
     category: 'Latest News',
     date: '09/01/2025',
-    image: '/storage/solarPanel.png',
+    image: '/images/solarPanel.png',
     excerpt: 'Our latest initiative brings sustainable energy solutions to our partner schools...'
   },
   {
     title: 'Teaching Through Technology',
     category: 'Success Stories',
     date: '08/28/2025',
-    image: '/storage/teaching-tech.jpg',
+    image: '/images/teaching-tech.jpg',
     excerpt: 'How digital tools are transforming education in remote areas...'
   },
 ]

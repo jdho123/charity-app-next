@@ -23,14 +23,14 @@ export default function WhoWeAre() {
             </div>
   
               <Image 
-                src="/storage/flower1.png" 
+                src="/images/flower1.png" 
                 alt="Decorative flowers" 
                 layout="fill"
                 objectFit="cover"
                 className="absolute -top-14 right-0 w-[372px] h-[418px]"
               />
               <Image 
-                src="/storage/flower2.png" 
+                src="/images/flower2.png" 
                 alt="Decorative flowers" 
                 layout="fill"
                 objectFit="cover"
@@ -38,21 +38,21 @@ export default function WhoWeAre() {
               />
 
               <Image 
-                src="/storage/quote-left.png" 
+                src="/images/quote-left.png" 
                 alt="Quote mark" 
                 layout="fill"
                 objectFit="contain"
                 className="absolute -top-8 -left-8 w-[175px] h-[149px] opacity-80"
               />
               <Image 
-                src="/storage/quote-right.png" 
+                src="/images/quote-right.png" 
                 alt="Quote mark" 
                 layout="fill"
                 objectFit="contain"
                 className="absolute -bottom-8 -right-8 w-[159px] h-[133px] opacity-80"
               />
               <Image 
-                src="/storage/quote-right.png" 
+                src="/images/quote-right.png" 
                 alt="Quote mark" 
                 layout="fill"
                 objectFit="contain"

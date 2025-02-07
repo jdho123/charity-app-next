@@ -35,7 +35,7 @@ export default function AboutPage() {
       {/* Hero Section */}
       <>
         <Image 
-          src="/storage/about-us-hero.jpeg" 
+          src="/images/about-us-hero.jpeg" 
           alt="About Us Hero"
           layout="fill"
           objectFit="cover"

@@ -61,7 +61,7 @@ export default function SlideMenu() {
           <Link href="/" onClick={() => setIsOpen(false)}>
             <div className="relative w-full h-full">
               <Image 
-                src="/storage/worldMini2.png"
+                src="/images/worldMini2.png"
                 alt="LEDU Logo"
                 fill
                 className="object-cover"

@@ -38,7 +38,7 @@ export default function Prakash() {
             {/* Right Column */}
             <div className="space-y-8">
               <Image 
-                src="/storage/prakash.png" 
+                src="/images/prakash.png" 
                 alt="Prakash Bista" 
                 className="rounded-[50px] w-full h-[316px] object-cover"
                 width={500}
@@ -48,14 +48,14 @@ export default function Prakash() {
               {/* Quote Box */}
               <div className="bg-[#E7F8FF] rounded-[50px] p-8 relative">
                 <Image 
-                  src="/storage/quote-left.png" 
+                  src="/images/quote-left.png" 
                   alt="Quote mark" 
                   className="absolute -top-16 -left-16 w-[175px] h-[149px] object-contain opacity-50"
                   width={175}
                   height={149}
                 />
                 <Image 
-                  src="/storage/quote-right.png" 
+                  src="/images/quote-right.png" 
                   alt="Quote mark" 
                   className="absolute -bottom-16 -right-16 w-[159px] h-[133px] object-contain opacity-50"
                   width={159}
