@@ -1,55 +1,53 @@
-import Image from "next/image"
+import { SocialIcon } from '@/components/socials/SocialIcon';
 
-interface SocialLink {
-  name: string
-  href: string
-  icon: string
+interface SocialLinksProps {
+  className?: string;
+  iconSize?: number;
+  iconClassName?: string;
 }
 
-const socialLinks: SocialLink[] = [
+const socialLinks = [
   {
-    name: 'LinkedIn',
+    name: 'facebook',
     href: '#',
-    icon: '/images/linkedin.png'
   },
   {
-    name: 'WhatsApp',
+    name: 'instagram',
     href: '#',
-    icon: '/images/whatsapp.png'
   },
   {
-    name: 'Instagram',
+    name: 'linkedin',
     href: '#',
-    icon: '/images/instagram.png'
   },
   {
-    name: 'YouTube',
+    name: 'youtube',
     href: '#',
-    icon: '/images/youtube.png'
   }
-]
+];
 
-export default function SocialLinks() {
+export default function SocialLinks({ 
+  className = "flex items-center gap-4",
+  iconSize = 24,
+  iconClassName = "transition-opacity hover:opacity-80"
+}: SocialLinksProps) {
   return (
-    <div className="flex items-center gap-4">
-      {socialLinks.map((link) => (
-        <a 
-          key={link.name}
-          href={link.href}
-          aria-label={link.name}
+    <div className={className}>
+      {socialLinks.map(({ name, href }) => (
+        <a
+          key={name}
+          href={href}
+          aria-label={name}
           target="_blank"
           rel="noopener noreferrer"
           className="transition-opacity hover:opacity-80"
         >
-          <Image 
-              src={link.icon}
-              alt={link.name}
-              width={48}
-              height={48}
-              className="object-cover"
-            />
+          <SocialIcon 
+            name={name}
+            size={iconSize}
+            className={iconClassName}
+          />
         </a>
       ))}
     </div>
-  )
+  );
 }
