@@ -1,5 +1,7 @@
-import Header from "./Header";
+
 import Footer from "./Footer";
+import SlideMenu from "../shared/SlideMenu";
+import LeduLogo from "./LeduLogo";
 
 interface GuestLayoutProps {
     children: React.ReactNode;
@@ -8,7 +10,10 @@ interface GuestLayoutProps {
   export default function GuestLayout({ children }: GuestLayoutProps) {
     return (
       <div className="min-h-screen">
-        <Header />
+        <div className="absolute top-4 left-4 z-40">
+          <LeduLogo />
+        </div>
+        <SlideMenu />
         <main>{children}</main>
         <Footer />
       </div>

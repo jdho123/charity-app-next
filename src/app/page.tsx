@@ -1,12 +1,12 @@
 'use client'
 import { useState } from 'react'
 import GuestLayout from '@/components/layout/GuestLayout'
-import Hero from '@/components/sections/Hero'
+import Hero from '@/components/sections/home/Hero'
 import WhatWeDo from '@/components/sections/WhatWeDo'
-import OurPhilosophy from '@/components/sections/OurPhilosophy'
 import NewsletterSection from '@/components/sections/NewsletterSection'
 import Modal from '@/components/shared/Modal'
 import ScrollToTop from '@/components/shared/ScrollToTop'
+import Philosophy from '@/components/sections/home/Philosophy'
 
 
 export default function HomePage() {
@@ -15,13 +15,13 @@ export default function HomePage() {
   return (
     <GuestLayout>
       {/* Hero Section */}
-      <Hero backgroundImage='/images/ropax1.png' />
-      
-      {/* What We Do Section */}
-      <WhatWeDo onWatchVideo={() => setShowVideo(true)} />
+      <Hero backgroundImage='/images/heroBackgroundMain.png' />
       
       {/* Our Philosophy Section */}
-      <OurPhilosophy />
+      <Philosophy />
+
+      {/* What We Do Section */}
+      <WhatWeDo onWatchVideo={() => setShowVideo(true)} />
       
       {/* Newsletter Section */}
       <NewsletterSection />
