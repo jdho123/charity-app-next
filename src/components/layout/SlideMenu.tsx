@@ -2,7 +2,6 @@
 
 import { useState } from 'react';
 import Link from 'next/link';
-import Image from 'next/image';
 import { Facebook } from '@/components/socials/Facebook';
 import { Instagram } from '@/components/socials/Instagram';
 import { Linkedin } from '@/components/socials/Linkedin';

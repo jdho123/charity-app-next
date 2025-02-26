@@ -1,8 +1,5 @@
 import Link from 'next/link'
 import Image from 'next/image'
-import ActiveCampaignLink from '@/components/fundraisers/navigation/ActiveCampaignLink'
-import CompletedCampaignLink from '@/components/fundraisers/navigation/CompletedCampaignsLink'
-import GeneralFundLink from '@/components/fundraisers/navigation/GeneralFundLink'
 import { Facebook } from '@/components/socials/Facebook'
 import { Instagram } from '@/components/socials/Instagram'
 import { Linkedin } from '@/components/socials/Linkedin'
@@ -78,9 +75,9 @@ export default function Footer() {
           <div className="space-y-4">
             <h3 className="text-2xl font-gloria">Fundraisers</h3>
             <nav className="space-y-2">
-              <GeneralFundLink className="block text-lg font-gloria hover:underline" />
-              <ActiveCampaignLink className="block text-lg font-gloria hover:underline" />
-              <CompletedCampaignLink className="block text-lg font-gloria hover:underline" />
+              <Link href="/fundraisers#general-fund" className="block text-lg font-gloria hover:underline">General Fund</Link>
+              <Link href="/fundraisers#active-campaigns" className="block text-lg font-gloria hover:underline">Active Campaigns</Link>
+              <Link href="/fundraisers#completed-campaigns" className="block text-lg font-gloria hover:underline">Completed Campaigns</Link>
             </nav>
           </div>
 

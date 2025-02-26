@@ -4,6 +4,7 @@ import { useState, useEffect } from "react"
 import Image from "next/image"
 import Link from "next/link"
 import NewsCard from "./newsletter/NewsCard"
+import { API_URL } from "@/env"
 
 interface Story {
   id: number
@@ -22,7 +23,7 @@ export default function NewsletterSection() {
   useEffect(() => {
     const fetchStories = async () => {
       try {
-        const response = await fetch('/api/stories')
+        const response = await fetch(API_URL + '/stories')
         if (!response.ok) {
           throw new Error('Failed to fetch stories')
         }

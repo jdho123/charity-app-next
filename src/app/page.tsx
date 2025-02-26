@@ -1,5 +1,4 @@
 'use client'
-import { useState } from 'react'
 import GuestLayout from '@/components/layout/GuestLayout'
 import Hero from '@/components/sections/home/Hero'
 import ScrollToTop from '@/components/shared/ScrollToTop'

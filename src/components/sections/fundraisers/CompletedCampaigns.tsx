@@ -1,4 +1,4 @@
-import CampaignScroller from "../shared/CampaignScroller"
+import CampaignScroller from "./CampaignScroller"
 
 interface CompletedCampaign {
     id: number

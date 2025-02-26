@@ -1,9 +1,10 @@
 import type { Metadata } from 'next'
 import { use } from 'react'
 import GuestLayout from '@/components/layout/GuestLayout'
-import GeneralFund from '@/components/fundraisers/GeneralFund'
-import ActiveCampaigns from '@/components/fundraisers/ActiveCampaigns'
-import CompletedCampaigns from '@/components/fundraisers/CompletedCampaigns'
+import GeneralFund from '@/components/sections/fundraisers/GeneralFund'
+import ActiveCampaigns from '@/components/sections/fundraisers/ActiveCampaigns'
+import CompletedCampaigns from '@/components/sections/fundraisers/CompletedCampaigns'
+import { API_URL } from '@/env'
 
 export const metadata: Metadata = {
   title: 'Fundraisers - LEDU',
@@ -44,7 +45,7 @@ type CampaignData = {
 
 // Function to fetch campaign data
 async function getCampaigns(): Promise<CampaignData> {
-  const response = await fetch('/api/campaigns', { next: { revalidate: 3600 } }) // Cache for 1 hour
+  const response = await fetch(API_URL + '/campaigns', { next: { revalidate: 3600 } }) // Cache for 1 hour
   if (!response.ok) {
     throw new Error('Failed to fetch campaigns')
   }
@@ -67,7 +68,7 @@ export default function FundraisersPage() {
 
   return (
     <GuestLayout>
-      <div className="min-h-screen bg-white">
+      <div className="min-h-screen bg-white pt-[180px]">
         {/* General Fund Section */}
         <GeneralFund />
 
