@@ -1,7 +1,6 @@
 "use client";
 
 import * as React from "react";
-import Button from "@/components/shared/Button";
 import { HeroSection } from "./how_we_teach/Main";
 import { ConnectSection } from "./how_we_teach/Connect";
 import { TeachSection } from "./how_we_teach/Teach";
