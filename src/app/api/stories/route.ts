@@ -6,7 +6,7 @@ const stories = [
     title: 'Solar Panels Installed at Impact Schools',
     excerpt: 'Bringing sustainable energy solutions to our partner schools...',
     date: '09/01/2025',
-    image: '/images/solar-panels.jpg',
+    image: '/images/solarPanels.jpeg',
     category: 'Latest News'
   },
   {
@@ -14,6 +14,7 @@ const stories = [
     title: 'New Teaching Program Launches',
     excerpt: 'Expanding our reach with innovative teaching methods...',
     date: '08/15/2025',
+    image: '/images/solarPanels.jpeg',
     category: 'News'
   },
   {
@@ -21,6 +22,16 @@ const stories = [
     title: 'Student Success Stories',
     excerpt: 'Meet the students whose lives have been transformed...',
     date: '08/01/2025',
+    image: '/images/solarPanels.jpeg',
+    category: 'News'
+  },
+
+  {
+    id: 4,
+    title: 'Student Success Stories',
+    excerpt: 'Meet the students whose lives have been transformed...',
+    date: '08/01/2025',
+    image: '/images/solarPanels.jpeg',
     category: 'News'
   }
 ]

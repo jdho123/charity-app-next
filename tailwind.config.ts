@@ -8,7 +8,7 @@ module.exports = {
   theme: {
     extend: {
       fontFamily: {
-        gloria: ['var(--font-gloria)'],
+        gloria: ['Gloria Hallelujah', 'cursive'],
         inter: ['var(--font-inter)'],
         verdana: ['Verdana', 'sans-serif'],
       },

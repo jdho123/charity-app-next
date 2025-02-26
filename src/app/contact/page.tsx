@@ -13,13 +13,13 @@ export default function ContactPage() {
       <div className="relative min-h-screen bg-white overflow-hidden">
         {/* Background World Illustration */}
         <div className="absolute inset-0 overflow-hidden">
-          <Image 
+          {/* <Image 
             src="/images/bigWorld.png" 
             alt=""
             fill
             className="object-cover object-left"
             style={{ width: '70%', right: 0 }}
-          />
+          /> */}
         </div>
 
         {/* Main Content */}

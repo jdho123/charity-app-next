@@ -3,6 +3,11 @@
 import { useState } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
+import { Facebook } from '@/components/socials/Facebook';
+import { Instagram } from '@/components/socials/Instagram';
+import { Linkedin } from '@/components/socials/Linkedin';
+import { Youtube } from '@/components/socials/Youtube';
+import { Whatsapp } from '@/components/socials/Whatsapp';
 
 export default function Menu() {
   const [isOpen, setIsOpen] = useState(false);
@@ -10,12 +15,31 @@ export default function Menu() {
   const toggleMenu = () => setIsOpen(!isOpen);
   const closeMenu = () => setIsOpen(false);
 
-  const navLinks = [
-    { href: '/about', text: 'About Us' },
-    { href: '/fundraisers', text: 'Fundraisers' },
-    { href: '/diary', text: 'the Diary' },
-    { href: '/news', text: 'Our News' },
-    { href: '/contact', text: 'Contact Us' }
+  const aboutLinks = [
+    { href: '/who-we-are', text: 'Who We Are' },
+    { href: '/what-we-do', text: 'What We Do' },
+    { href: '/philosophy', text: 'Our Philosophy' },
+    { href: '/journey', text: 'Our Journey' },
+  ];
+
+  const fundraiserLinks = [
+    { href: '/general-fund', text: 'General Fund' },
+    { href: '/active-campaigns', text: 'Active Campaigns' },
+    { href: '/completed-campaigns', text: 'Complited Campaigns' },
+  ];
+
+  const newsLinks = [
+    { href: '/latest-news', text: 'Latest News' },
+    { href: '/all-news', text: 'All News' },
+    { href: '/mission-updates', text: 'Mission Updates' },
+  ];
+
+  const socialLinks = [
+    { href: 'https://facebook.com', component: Facebook, label: 'Facebook' },
+    { href: 'https://linkedin.com', component: Linkedin, label: 'LinkedIn' },
+    { href: 'https://whatsapp.com', component: Whatsapp, name: 'whatsapp', label: 'WhatsApp' },
+    { href: 'https://instagram.com', component: Instagram, label: 'Instagram' },
+    { href: 'https://youtube.com', component: Youtube, label: 'YouTube' },
   ];
 
   return (
@@ -63,82 +87,155 @@ export default function Menu() {
 
       {/* Slide-out Menu */}
       <div 
-        className={`fixed top-0 right-0 w-80 h-full bg-white shadow-lg transform transition-transform duration-300 ease-out z-40 ${
+        className={`fixed top-0 right-0 w-full md:w-[500px] h-full bg-white shadow-lg transform transition-transform duration-300 ease-out z-40 overflow-y-auto ${
           isOpen ? 'translate-x-0' : 'translate-x-full'
         }`}
       >
-        {/* Logo */}
-        <div className="parent">
-          <Link href="/" onClick={closeMenu}>
-            <div className="relative w-full h-full">
-              <Image 
-                src="/worldMini2.png"
-                alt="LEDÚ Logo"
-                width={193}
-                height={189}
-                className="icon1"
-              />
-              <div className="group-child" />
-              <div className="ledu">LEDÚ</div>
-            </div>
-          </Link>
+        {/* Close button */}
+        <div className="flex justify-end p-6">
+          <button onClick={closeMenu} className="text-black">
+            <svg width="32" height="32" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M18 6L6 18M6 6L18 18" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
+            </svg>
+          </button>
         </div>
 
-        {/* Navigation Links */}
-        <nav className="mt-8 px-8">
-          <div className="flex flex-col gap-6">
-            {navLinks.map((link) => (
-              <Link 
-                key={link.href}
-                href={link.href}
-                className="text-2xl font-gloria text-black hover:text-gray-600 transition-colors"
-                onClick={closeMenu}
-              >
-                {link.text}
-              </Link>
-            ))}
+        <div className="px-8 pb-16">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-x-8 gap-y-8">
+            {/* About Us Section */}
+            <div>
+              <h2 className="text-3xl font-gloria text-[#F9D949] mb-4">About Us</h2>
+              <ul className="space-y-3">
+                {aboutLinks.map(link => (
+                  <li key={link.href}>
+                    <Link 
+                      href={link.href} 
+                      className="text-xl text-black font-gloria hover:underline"
+                      onClick={closeMenu}
+                    >
+                      {link.text}
+                    </Link>
+                  </li>
+                ))}
+              </ul>
+            </div>
+
+            {/* Fundraisers Section */}
+            <div>
+              <h2 className="text-3xl font-gloria text-[#E74646] mb-4">Fundraisers</h2>
+              <ul className="space-y-3">
+                {fundraiserLinks.map(link => (
+                  <li key={link.href}>
+                    <Link 
+                      href={link.href} 
+                      className="text-xl text-black font-gloria hover:underline"
+                      onClick={closeMenu}
+                    >
+                      {link.text}
+                    </Link>
+                  </li>
+                ))}
+              </ul>
+            </div>
+
+            {/* The Diary Section */}
+            <div>
+              <h2 className="text-3xl font-gloria text-[#54B435] mb-4">the Diary</h2>
+              <ul className="space-y-3">
+                <li>
+                  <Link 
+                    href="/diary" 
+                    className="text-xl text-black font-gloria hover:underline"
+                    onClick={closeMenu}
+                  >
+                    the Diary
+                  </Link>
+                </li>
+              </ul>
+            </div>
+
+            {/* Our News Section */}
+            <div>
+              <h2 className="text-3xl font-gloria text-[#19A7CE] mb-4">Our News</h2>
+              <ul className="space-y-3">
+                {newsLinks.map(link => (
+                  <li key={link.href}>
+                    <Link 
+                      href={link.href} 
+                      className="text-xl text-black font-gloria hover:underline"
+                      onClick={closeMenu}
+                    >
+                      {link.text}
+                    </Link>
+                  </li>
+                ))}
+              </ul>
+            </div>
+
+            {/* Contact Us Section */}
+            <div className="md:col-span-2">
+              <h2 className="text-3xl font-gloria text-[#9376E0] mb-4">Contact Us</h2>
+              
+              {/* Social Media Icons */}
+              <div className="flex space-x-6 mt-2 mb-8">
+                {socialLinks.map((link) => (
+                  <a 
+                    key={link.label} 
+                    href={link.href}
+                    className="text-black hover:opacity-80 transition-opacity"
+                    aria-label={link.label}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    
+                    <link.component size={36} />
+                    
+                  </a>
+                ))}
+              </div>
+            </div>
           </div>
-        </nav>
+
+          {/* CTA Buttons */}
+          <div className="mt-12 space-y-4">
+            <Link 
+              href="/donate" 
+              className="inline-flex items-center justify-between bg-white border border-gray-300 rounded-full px-8 py-3 text-xl font-gloria text-black hover:shadow-lg transition-shadow w-full"
+              onClick={closeMenu}
+            >
+              <span>Support the Cause</span>
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M13.75 6.75L19.25 12L13.75 17.25" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
+                <path d="M19 12H4.75" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
+              </svg>
+            </Link>
+            
+            <Link 
+              href="/apply_to_teach" 
+              className="inline-flex items-center justify-between bg-[#D8E6F9] rounded-full px-8 py-3 text-xl font-gloria text-black hover:shadow-lg transition-shadow w-full"
+              onClick={closeMenu}
+            >
+              <span>Join As Teacher</span>
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M13.75 6.75L19.25 12L13.75 17.25" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
+                <path d="M19 12H4.75" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
+              </svg>
+            </Link>
+            
+            <Link 
+              href="/register_school" 
+              className="inline-flex items-center justify-between bg-[#D8D8F9] rounded-full px-8 py-3 text-xl font-gloria text-black hover:shadow-lg transition-shadow w-full"
+              onClick={closeMenu}
+            >
+              <span>Join As School</span>
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M13.75 6.75L19.25 12L13.75 17.25" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
+                <path d="M19 12H4.75" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
+              </svg>
+            </Link>
+          </div>
+        </div>
       </div>
-
-      <style jsx>{`
-        .bg-black {
-          background-image: url("data:image/svg+xml,%3Csvg width='100%25' height='100%25' xmlns='http://www.w3.org/2000/svg'%3E%3Crect width='100%25' height='100%25' fill='none' stroke='black' stroke-width='4' stroke-dasharray='5,5' stroke-dashoffset='0' stroke-linecap='round'/%3E%3C/svg%3E");
-          background-color: black;
-        }
-
-        .parent {
-          position: relative;
-          width: 193px;
-          height: 189px;
-          font-size: 40px;
-        }
-
-        .icon1 {
-          position: absolute;
-          top: 0;
-          left: 0;
-          width: 193px;
-          height: 189px;
-          object-fit: cover;
-        }
-        
-        .group-child {
-          position: absolute;
-          top: 33px;
-          left: 45px;
-          border-radius: 50%;
-          background: radial-gradient(50% 50% at 50% 50%, #fff 33.5%, rgba(255, 255, 255, 0.6) 76.5%, rgba(255, 255, 255, 0.3));
-          width: 107px;
-          height: 105px;
-        }
-
-        .ledu {
-          position: absolute;
-          top: 46px;
-          left: 52px;
-        }
-      `}</style>
     </div>
   );
 }
