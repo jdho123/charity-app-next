@@ -29,8 +29,8 @@ export default function Sprite({
       const spriteRect = spriteRef.current.getBoundingClientRect();
       const windowHeight = window.innerHeight;
 
-      const start = windowHeight; // When the sprite starts at the bottom
-      const end = windowHeight * 0.33; // When the sprite reaches the middle
+      const start = windowHeight * 0.9; // When the sprite starts at the bottom
+      const end = windowHeight * 0.5; // When the sprite reaches the middle
 
       // Normalize progress: 0 when at bottom, 1 when at center
       let progress = (spriteRect.top - start) / (end - start);
