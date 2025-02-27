@@ -6,7 +6,7 @@ interface OurPhilosophyProps {
 
 export default function OurPhilosophy({ className = '' }: OurPhilosophyProps) {
   return (
-    <section className={`relative w-full min-h-[100vh] ${className}`}>
+    <section className={`relative w-full min-h-[100vh] ${className}`} id="our-philosophy">
       {/* Background Image */}
       <div className="absolute inset-0 z-0">
         <Image

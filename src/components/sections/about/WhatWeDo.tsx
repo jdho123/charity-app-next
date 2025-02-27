@@ -7,7 +7,7 @@ interface WhatWeDoProps {
   
 export default function WhatWeDo({ onWatchVideo }: WhatWeDoProps) {
     return (
-      <section className="bg-white py-16">
+      <section className="bg-white py-16" id="what-we-do">
         <div className="container mx-auto px-4">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
             <div className="space-y-8">

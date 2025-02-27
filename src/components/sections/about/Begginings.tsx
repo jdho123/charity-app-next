@@ -2,7 +2,7 @@ import Image from "next/image";
 
 export default function Beginnings() {
   return (
-    <section className="bg-gray-50 py-20">
+    <section className="bg-gray-50 py-20" id="beginnings">
       <div className="container mx-auto px-4">
         <div className="relative min-h-[800px]">
           {/* Left Side Content */}

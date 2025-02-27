@@ -60,7 +60,7 @@ export default function NewsletterSection() {
   }
 
   return (
-    <section className="bg-[#2F4F4F] py-16 min-h-screen relative overflow-hidden">
+    <section className="bg-[#2F4F4F] py-16 min-h-screen relative overflow-hidden pt-[200px]">
       {/* Star decoration */}
       <div className="absolute top-20 right-32">
         <Image 

@@ -11,6 +11,7 @@ module.exports = {
         gloria: ['Gloria Hallelujah', 'cursive'],
         inter: ['var(--font-inter)'],
         verdana: ['Verdana', 'sans-serif'],
+        handwriting: ['Architects Daughter', 'cursive'],
       },
       backgroundImage: {
         'gradient-radial': 'radial-gradient(var(--tw-gradient-stops))',
@@ -18,6 +19,7 @@ module.exports = {
       colors: {
         'custom-blue': '#0E26A5',
         'custom-beige': '#E6DBC4',
+        'diary-bg': '#D8B29A',
       },
     },
   },

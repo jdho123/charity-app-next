@@ -15,16 +15,16 @@ export default function Menu() {
   const closeMenu = () => setIsOpen(false);
 
   const aboutLinks = [
-    { href: '/who-we-are', text: 'Who We Are' },
-    { href: '/what-we-do', text: 'What We Do' },
-    { href: '/philosophy', text: 'Our Philosophy' },
-    { href: '/journey', text: 'Our Journey' },
+    { href: '/about#who-we-are', text: 'Who We Are' },
+    { href: '/about#what-we-do', text: 'What We Do' },
+    { href: '/about#our-philosophy', text: 'Our Philosophy' },
+    { href: '/about#beginnings', text: 'Our Journey' },
   ];
 
   const fundraiserLinks = [
-    { href: '/general-fund', text: 'General Fund' },
-    { href: '/active-campaigns', text: 'Active Campaigns' },
-    { href: '/completed-campaigns', text: 'Complited Campaigns' },
+    { href: '/fundraisers#general-fund', text: 'General Fund' },
+    { href: '/fundraisers#active-campaigns', text: 'Active Campaigns' },
+    { href: '/fundraisers#completed-campaigns', text: 'Complited Campaigns' },
   ];
 
   const newsLinks = [
