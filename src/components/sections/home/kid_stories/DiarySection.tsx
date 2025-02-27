@@ -1,8 +1,9 @@
-'use client';
+"use client";
 
-import Image from 'next/image';
-import Link from 'next/link';
-import React from 'react';
+import Sprite from "@/components/animation/Sprite";
+import Image from "next/image";
+import Link from "next/link";
+import React from "react";
 
 const DiarySection: React.FC = () => {
   return (
@@ -15,13 +16,21 @@ const DiarySection: React.FC = () => {
             </h2>
           </div>
           <div className="ml-5 w-[41%] max-md:ml-0 max-md:w-full">
-            <div className="relative w-full aspect-[1.21] h-[120px] max-md:mt-7">
-              <Image
+            <div className="relative w-full max-md:mt-7">
+              <Sprite
+                totalFrames={10}
+                frameWidth={550}
+                frameHeight={300}
+                scale={0.2}
+                className="object-contain"
+                imagePath="/animated/arrow3.png"
+              />
+              {/* <Image
                 src="/images/heartArrow.png"
                 alt="Diary icon"
                 fill
                 className="object-contain"
-              />
+              /> */}
             </div>
           </div>
         </div>

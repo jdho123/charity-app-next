@@ -3,6 +3,7 @@ import Image from "next/image";
 import { RoundedImage } from "../../../shared/RoundedImage";
 import BorderedText from "@/components/shared/BorderedText";
 import GloriaTitle from "@/components/shared/GloriaTitle";
+import Sprite from "@/components/animation/Sprite";
 
 export function ConnectSection() {
   return (
@@ -22,7 +23,12 @@ export function ConnectSection() {
                   className="object-contain"
                 />
                 <div className="flex flex-col">
-                  <GloriaTitle as="h2" color="black" size="6xl" className="mb-1">
+                  <GloriaTitle
+                    as="h2"
+                    color="black"
+                    size="6xl"
+                    className="mb-1"
+                  >
                     Connect
                   </GloriaTitle>
                   <p className="text-2xl font-gloria text-black leading-tight">
@@ -30,7 +36,7 @@ export function ConnectSection() {
                   </p>
                 </div>
               </div>
-              
+
               <Image
                 src="/images/rightArrowTeach.png"
                 alt="Connect illustration"
@@ -38,7 +44,7 @@ export function ConnectSection() {
                 height={40}
                 className="ml-auto mr-20 mb-10 max-md:hidden"
               />
-              
+
               <RoundedImage
                 src="/images/whatWeDoVideo.png"
                 alt="Children connecting with teachers"
@@ -61,26 +67,28 @@ export function ConnectSection() {
               />
               <div className="pl-4 border-l-4 border-[#3E6F1B]">
                 <p className="text-xl text-black mb-6">
-                  We show children that someone outside their community truly cares
-                  about them.
+                  We show children that someone outside their community truly
+                  cares about them.
                 </p>
                 <p className="text-xl text-black mb-6">
-                  This connection sparks a sense of belonging and hope, encouraging
-                  them to dream of a better future.
+                  This connection sparks a sense of belonging and hope,
+                  encouraging them to dream of a better future.
                 </p>
                 <p className="text-xl text-black">
-                  By bridging the gap between children and teachers from different
-                  parts of the world, we prove that care knows no boundaries.
+                  By bridging the gap between children and teachers from
+                  different parts of the world, we prove that care knows no
+                  boundaries.
                 </p>
               </div>
             </div>
-            
-            <Image
-              src="/images/swirlyArrow.png"
-              alt="Swirly Arrow"
-              width={300}
-              height={230}
+
+            <Sprite
+              totalFrames={10}
+              frameWidth={750}
+              frameHeight={700}
+              scale={0.4}
               className="ml-auto mt-12 max-w-[80%]"
+              imagePath="/animated/arrow2.png"
             />
           </div>
         </div>
