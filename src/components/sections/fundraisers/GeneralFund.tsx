@@ -1,5 +1,6 @@
 import Button from '@/components/shared/Button'
 import GeneralFundCard from './GeneralFundCard'
+import Link from 'next/link'
 
 export default function GeneralFund() {
   return (
@@ -25,14 +26,15 @@ export default function GeneralFund() {
                 one lesson at a time.
               </p>
             </div>
-
-            <Button 
-              variant="primary" 
-              size="lg" 
-              className="w-full max-w-md text-2xl font-gloria py-4 bg-[#B21414] rounded-full"
-            >
-              Donate to the General Fund
-            </Button>
+            <Link href="/donate" className="inline-block">
+                <Button 
+                variant="primary" 
+                size="lg" 
+                className="w-full max-w-md text-2xl font-gloria py-4 bg-[#B21414] rounded-full"
+                >
+                Donate to the General Fund
+                </Button>
+            </Link>
           </div>
 
           {/* Right Column - Using new GeneralFundCard */}

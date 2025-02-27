@@ -10,7 +10,8 @@ interface Campaign {
   raised: number
   imageUrl: string
   description: string
-  status: 'active' | 'completed'
+  status: 'active' | 'completed',
+  link?: string
 }
 
 interface CampaignScrollerProps {

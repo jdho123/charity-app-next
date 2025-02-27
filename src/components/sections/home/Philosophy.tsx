@@ -4,27 +4,27 @@ import OurMission from './philosophy/OurMission';
 
 export default function Philosophy() {
   return (
-        <section className="overflow-hidden pb-8 pl-16 bg-white max-md:pl-5">
-          <div className="flex gap-5 max-md:flex-col">
-            <article className="w-[45%] max-md:ml-0 max-md:w-full">
-              <div className="grow mt-24 text-black max-md:mt-10 max-md:max-w-full">
-                <PhilosophyHeader />
-                <div className="mt-9 w-full overflow-hidden rounded-3xl max-md:max-w-full">
-                  <Image
-                    src="/images/nightGroupPhilosophy.jpeg"
-                    alt="Philosophy illustration"
-                    width={600}
-                    height={518}
-                    className="object-cover w-full rounded-3xl"
-                  />
-                </div>
-              </div>
-            </article>
-    
-            <article className="ml-5 w-[55%] max-md:ml-0 max-md:w-full">
-              <OurMission />
-            </article>
+    <section className="overflow-hidden pb-8 px-4 sm:px-6 md:px-8 lg:pl-16 bg-white">
+      <div className="flex gap-5 flex-col lg:flex-row">
+        <article className="w-full lg:w-[45%]">
+          <div className="grow mt-10 sm:mt-16 md:mt-24 text-black">
+            <PhilosophyHeader />
+            <div className="mt-6 md:mt-9 w-full overflow-hidden rounded-xl sm:rounded-2xl md:rounded-3xl">
+              <Image
+                src="/images/nightGroupPhilosophy.jpeg"
+                alt="Philosophy illustration"
+                width={600}
+                height={518}
+                className="object-cover w-full rounded-xl sm:rounded-2xl md:rounded-3xl"
+              />
+            </div>
           </div>
-        </section>
-    );
+        </article>
+
+        <article className="w-full lg:w-[55%] lg:ml-5 mt-8 lg:mt-0">
+          <OurMission />
+        </article>
+      </div>
+    </section>
+  );
 }

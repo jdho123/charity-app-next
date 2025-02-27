@@ -114,7 +114,13 @@ export default function Menu() {
 
         {/* Menu Content - now scrollable */}
         <div className="h-[calc(100%-60px)] px-6 overflow-y-auto pb-6">
+          <div className="mb-6 pb-2">
+            <Link href='/' className='hover:underline inline-block' onClick={closeMenu}>
+              <h2 className="text-3xl font-gloria text-black mb-0">Home</h2>
+            </Link>
+          </div>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-x-8 gap-y-4">
+
             {/* About Us Section */}
             <div className="mb-6">
               <Link href='/about' className='hover:underline' onClick={closeMenu}><h2 className="text-3xl font-gloria text-[#F9D949] mb-2">About Us</h2></Link>

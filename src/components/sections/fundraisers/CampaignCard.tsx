@@ -1,6 +1,7 @@
 'use client'
 import { useMemo } from 'react'
 import Image from 'next/image'
+import Link from 'next/link'
 
 interface CampaignCardProps {
   title: string
@@ -9,6 +10,7 @@ interface CampaignCardProps {
   imageUrl: string
   description: string
   descriptionTitle?: string
+  link?: string
   type?: 'general' | 'campaign'
   children?: React.ReactNode
 }
@@ -20,6 +22,7 @@ export default function CampaignCard({
   imageUrl,
   description,
   descriptionTitle = 'Why We Need It:',
+  link,
   children
 }: CampaignCardProps) {
   const progress = useMemo(() => 
@@ -75,9 +78,11 @@ export default function CampaignCard({
         </div>
 
         {/* Donate Button */}
-        <button className="w-full bg-[#B21414] text-white rounded-full py-3 text-xl font-gloria">
-          Donate Now
-        </button>
+        <Link href={link || '/diary'}>
+            <button className="w-full bg-[#B21414] text-white rounded-full py-3 text-xl font-gloria">
+            { (progress >= 100) ? 'See More Impact Stories' : 'Donate Now'}
+            </button>
+        </Link>
       </div>
     </div>
   )
