@@ -4,12 +4,16 @@ import * as React from "react";
 import { useEffect, useRef, useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
+import useClientOnly from "@/hooks/useClientOnly";
 
 export default function Goals() {
   const sectionRef = useRef<HTMLElement | null>(null);
   const [scrollProgress, setScrollProgress] = useState(0);
+  const { isClient, windowWidth } = useClientOnly();
   
   useEffect(() => {
+    if (!isClient) return;
+    
     const handleScroll = () => {
       if (!sectionRef.current) return;
       
@@ -36,7 +40,7 @@ export default function Goals() {
     return () => {
       window.removeEventListener('scroll', handleScroll);
     };
-  }, []);
+  }, [isClient]);
   
   // Adjust progress to complete at 50% scroll (0.5)
   const adjustedProgress = Math.min(scrollProgress * 2, 1);
@@ -44,7 +48,7 @@ export default function Goals() {
   // Modified transformations for better mobile experience
   const earthTransform = {
     scale: 1 + adjustedProgress * 1.5, // Start smaller on mobile
-    translateX: `${adjustedProgress * (window.innerWidth < 768 ? 20 : 35)}%`, // Move less on mobile
+    translateX: `${adjustedProgress * (windowWidth < 768 ? 20 : 35)}%`, // Move less on mobile
     opacity: 1,
   };
   

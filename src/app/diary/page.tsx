@@ -1,28 +1,13 @@
 'use client'
 import Image from 'next/image'
 import { useRouter } from 'next/navigation'
-import { useEffect, useState } from 'react'
+import useClientOnly from '@/hooks/useClientOnly'
 import FullHeightLayout from '@/components/layout/FullHeightLayout'
 
 export default function DiaryPage() {
   const router = useRouter()
-  const [isMobile, setIsMobile] = useState(false)
-
-  useEffect(() => {
-    // Check if device is mobile
-    const checkMobile = () => {
-      setIsMobile(window.innerWidth < 1000)
-    }
-    
-    // Initial check
-    checkMobile()
-    
-    // Add resize listener
-    window.addEventListener('resize', checkMobile)
-    
-    // Cleanup
-    return () => window.removeEventListener('resize', checkMobile)
-  }, [])
+  // Use our custom hook with a custom breakpoint of 1000px
+  const { isMobile } = useClientOnly(1000)
 
   const handleDiaryClick = () => {
     if (!isMobile) {

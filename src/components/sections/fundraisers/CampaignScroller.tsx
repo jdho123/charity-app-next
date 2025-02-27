@@ -1,7 +1,8 @@
 'use client'
-import { useState, useRef, useEffect } from 'react'
+import { useState, useRef } from 'react'
 import CampaignCard from '@/components/sections/fundraisers/CampaignCard'
 import Image from 'next/image'
+import useClientOnly from '@/hooks/useClientOnly'
 
 interface Campaign {
   id: number
@@ -22,35 +23,24 @@ export default function CampaignScroller({ campaigns }: CampaignScrollerProps) {
   const [currentIndex, setCurrentIndex] = useState(0)
   const [isAnimating, setIsAnimating] = useState(false)
   const [cardWidth, setCardWidth] = useState(400) // Default width
-  const [windowWidth, setWindowWidth] = useState(1200) // Default window width
+  const [isMovingCard, setIsMovingCard] = useState<number | null>(null)
   const containerRef = useRef<HTMLDivElement>(null)
   const cardRef = useRef<HTMLDivElement>(null)
-  const [isMovingCard, setIsMovingCard] = useState<number | null>(null)
+  
+  // Use our client-side hook to get window info
+  const { isClient, windowWidth } = useClientOnly()
 
-  // Measure the width of the cards and the window
-  const updateMeasurements = () => {
+  // Update card width when we have access to DOM
+  const updateCardWidth = () => {
     if (cardRef.current) {
-      const width = cardRef.current.offsetWidth
-      setCardWidth(width)
+      setCardWidth(cardRef.current.offsetWidth)
     }
-    
-    // Update window width
-    setWindowWidth(window.innerWidth)
   }
 
-  // Calculate positions when window resizes or on mount
-  useEffect(() => {
-    // Initial measurement
-    updateMeasurements()
-    
-    // Update on window resize
-    const handleResize = () => {
-      updateMeasurements()
-    }
-    
-    window.addEventListener('resize', handleResize)
-    return () => window.removeEventListener('resize', handleResize)
-  }, [])
+  // If we're on the client side, update the card width
+  if (isClient && cardRef.current && cardWidth === 400) {
+    updateCardWidth()
+  }
 
   const nextCard = () => {
     if (isAnimating || currentIndex >= campaigns.length - 1) return
@@ -88,15 +78,6 @@ export default function CampaignScroller({ campaigns }: CampaignScrollerProps) {
   // Check if buttons should be disabled
   const isAtStart = currentIndex === 0
   const isAtEnd = currentIndex === campaigns.length - 1
-
-  // Calculate responsive arrow positions based on screen size
-  const getArrowOffset = () => {
-    if (windowWidth < 640) return '85px';       // Small mobile
-    if (windowWidth < 768) return '85%';        // Mobile - percentage based
-    if (windowWidth < 1024) return '90%';       // Tablet - percentage based
-    if (windowWidth < 1280) return '95%';       // Small desktop - percentage based
-    return '320px';                             // Large desktop
-  }
 
   // Calculate responsive card spacing based on screen size
   const getCardSpacing = () => {

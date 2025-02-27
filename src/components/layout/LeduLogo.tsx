@@ -1,31 +1,16 @@
 'use client'
 import Link from 'next/link'
 import Image from 'next/image'
-import { useState, useEffect } from 'react'
+import useClientOnly from '@/hooks/useClientOnly'
 
 interface LeduLogoProps {
   href?: string;
 }
 
 export default function LeduLogo({ href = "/" }: LeduLogoProps) {
-  const [isMobile, setIsMobile] = useState(false);
+  // Use our custom hook instead of useState + useEffect
+  const { isMobile } = useClientOnly(768)
   
-  useEffect(() => {
-    // Function to update state based on window width
-    const handleResize = () => {
-      setIsMobile(window.innerWidth < 768); // 768px is a common breakpoint for mobile
-    };
-    
-    // Set initial value
-    handleResize();
-    
-    // Add event listener
-    window.addEventListener('resize', handleResize);
-    
-    // Clean up
-    return () => window.removeEventListener('resize', handleResize);
-  }, []);
-
   // Responsive dimensions
   const containerClass = isMobile 
     ? "relative w-[120px] h-[117px] text-[28px]"
