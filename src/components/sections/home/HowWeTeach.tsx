@@ -8,9 +8,9 @@ import { TransformSection } from "./how_we_teach/Transform";
 
 function HowWeTeach() {
   return (
-    <section className="overflow-hidden pb-32 bg-white max-md:pb-24">
+    <section className=" overflow-hidden pb-32 bg-white max-md:pb-24 ">
       <HeroSection />
-      <div className="flex z-10 flex-col items-start px-16 mt-0 w-full max-md:px-5 max-md:max-w-[1500px]">
+      <div className="content-center mx-auto flex z-10 flex-col items-start px-16 mt-0 w-full max-md:px-5 max-md:max-w-[1200px] lg:pt-20 max-w-[1200px]">
         <ConnectSection />
         <TeachSection />
         <TransformSection />

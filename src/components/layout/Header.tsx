@@ -3,7 +3,7 @@ import LeduLogo from './LeduLogo'
 
 export default function Header() {
   return (
-    <nav className="relative w-full py-3 flex items-center">
+    <nav className="relative w-full pr-3 flex items-center">
       <LeduLogo />
 
       <div className="flex gap-8 ml-8">

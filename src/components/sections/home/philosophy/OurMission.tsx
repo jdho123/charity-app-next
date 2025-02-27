@@ -6,8 +6,8 @@ export default function OurMission() {
     <section>
       <div className="flex flex-col mt-1 w-full max-md:mt-10 max-md:max-w-full">
 
-        <LearnMoreCard />
         <MissionSection />
+        <LearnMoreCard />
       </div>
     </section>
   );

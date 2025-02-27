@@ -22,12 +22,12 @@ const KidsStories: React.FC = () => {
 
         <div className="relative z-10 flex flex-col w-full min-h-screen">
           {/* Header Section */}
-          <header className="w-full relative">
-            <div className="absolute" style={{ width: '760px', height: '127px', top: '50px', left: '122px' }}>
+          <header className="w-full relative pt-12 px-6 md:pt-16 md:px-12 lg:px-24">
+            <div className="md:ml-10 lg:ml-16">
               <GloriaTitle 
                 as="h1" 
                 size="6xl"
-                className="font-normal leading-[126.88px] tracking-normal text-[64px]"
+                className="font-normal text-4xl md:text-5xl lg:text-6xl leading-tight"
               >
                 Real Lives, Real Impact
               </GloriaTitle>
@@ -35,7 +35,7 @@ const KidsStories: React.FC = () => {
           </header>
 
           {/* Mountain Drawings - Full Width */}
-          <div className="relative w-full mt-48">
+          <div className="relative w-full mt-24 md:mt-32 lg:mt-48">
             <Image
               src="/images/mountainDrawings.png"
               alt="Mountain drawing"
@@ -63,7 +63,7 @@ const KidsStories: React.FC = () => {
           </div>
 
           {/* Story Content - Centered */}
-          <div className="relative self-center mt-8 w-full max-w-[856px]" style={{ height: '20vh' }}>
+          <div className="relative mx-auto mt-8 w-full max-w-[85%] md:max-w-[75%] lg:max-w-[856px]" style={{ height: '20vh' }}>
             <Image
               src="/images/weWillMissYouThisMuch.png" 
               alt="We will miss you this much"

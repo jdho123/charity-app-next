@@ -17,13 +17,13 @@ export default function LearnMoreCard() {
           <Link href="/learn-more">
             <div className="mt-24 max-md:mt-10 max-md:max-w-full">
               <div className="mt-auto">
-                <div className="flex gap-2 items-center max-md:flex-col">
-                  <div className="w-[66%] max-md:ml-0 max-md:w-full">
-                    <h2 className="self-stretch my-auto text-5xl font-gloria text-white max-md:mt-5 max-md:text-4xl border-b-2 border-white">
+                <div className="flex gap-2 items-center max-md:pt-16">
+                  <div className="w-[66%]">
+                    <h2 className="self-stretch my-auto text-5xl font-gloria text-white max-md:text-4xl underline border-white">
                       Learn More
                     </h2>
                   </div>
-                  <div className="w-[34%] max-md:ml-0 max-md:w-full">
+                  <div className="w-[34%]">
                     <div className="rounded-full p-1 w-[108px] h-[80px] flex items-center justify-center">
                       <Image
                         src="/images/learnMoreSquiggleLine.png"
