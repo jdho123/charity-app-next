@@ -1,21 +1,19 @@
-'use client'
-import GuestLayout from '@/components/layout/GuestLayout'
-import Hero from '@/components/sections/home/Hero'
-import ScrollToTop from '@/components/shared/ScrollToTop'
-import Philosophy from '@/components/sections/home/Philosophy'
-import KidsStories from '@/components/sections/home/KidsStories'
-import HowWeTeach from '@/components/sections/home/HowWeTeach'
-import Goals from '@/components/sections/home/Goals'
-import Newsletter from '@/components/sections/home/Newsletter'
-
+"use client";
+import GuestLayout from "@/components/layout/GuestLayout";
+import Hero from "@/components/sections/home/Hero";
+import ScrollToTop from "@/components/shared/ScrollToTop";
+import Philosophy from "@/components/sections/home/Philosophy";
+import KidsStories from "@/components/sections/home/KidsStories";
+import HowWeTeach from "@/components/sections/home/HowWeTeach";
+import Goals from "@/components/sections/home/Goals";
+import Newsletter from "@/components/sections/home/NewsLetter";
 
 export default function HomePage() {
-
   return (
     <GuestLayout>
       {/* Hero Section */}
-      <Hero backgroundImage='/images/heroBackgroundMain.png' />
-      
+      <Hero backgroundImage="/images/heroBackgroundMain.png" />
+
       {/* Our Philosophy Section */}
       <Philosophy />
 
@@ -26,14 +24,12 @@ export default function HomePage() {
       <HowWeTeach />
 
       {/* Gaols Section */}
-      <Goals/>
-      
+      <Goals />
+
       {/* Newsletter Section */}
       <Newsletter />
-      
-      
-      
+
       <ScrollToTop />
     </GuestLayout>
-  )
+  );
 }
