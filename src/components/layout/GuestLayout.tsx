@@ -10,7 +10,7 @@ interface GuestLayoutProps {
   export default function GuestLayout({ children }: GuestLayoutProps) {
     return (
       <div className="min-h-screen">
-        <div className="absolute top-4 left-4 z-40">
+        <div className="absolute top-2 left-2 z-40">
           <LeduLogo />
         </div>
         <SlideMenu />

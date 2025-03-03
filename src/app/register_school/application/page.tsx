@@ -75,19 +75,7 @@ export default function SchoolRegistrationPage() {
           required: true,
         },
       ],
-    },
-    {
-      title: "Terms Agreement",
-      fields: [
-        {
-          id: "termsAgreement",
-          label:
-            "By submitting this form you agree to providing your personal information to us",
-          type: "checkbox",
-          required: true,
-        },
-      ],
-    },
+    }
   ];
 
   // Initial form data
