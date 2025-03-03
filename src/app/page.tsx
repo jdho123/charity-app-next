@@ -6,7 +6,7 @@ import Philosophy from "@/components/sections/home/Philosophy";
 import KidsStories from "@/components/sections/home/KidsStories";
 import HowWeTeach from "@/components/sections/home/HowWeTeach";
 import Goals from "@/components/sections/home/Goals";
-import Newsletter from "@/components/sections/home/NewsLetter";
+import Newsletter from "@/components/sections/home/Newsletter";
 
 export default function HomePage() {
   return (
