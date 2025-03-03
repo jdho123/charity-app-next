@@ -1,4 +1,4 @@
-"use client";
+'use client';
 
 import * as React from "react";
 import { useEffect, useRef, useState } from "react";
@@ -16,47 +16,47 @@ export default function Goals() {
     
     const handleScroll = () => {
       if (!sectionRef.current) return;
-
+      
       const section = sectionRef.current;
       const rect = section.getBoundingClientRect();
       const windowHeight = window.innerHeight;
-
+      
       // Calculate how far we've scrolled into the section
       let progress = 0;
-
+      
       if (rect.top <= windowHeight && rect.bottom >= 0) {
         progress = (windowHeight - rect.top) / (windowHeight + rect.height);
         progress = Math.min(Math.max(progress, 0), 1);
       } else if (rect.top < 0) {
         progress = 1;
       }
-
+      
       setScrollProgress(progress);
     };
-
-    window.addEventListener("scroll", handleScroll);
+    
+    window.addEventListener('scroll', handleScroll);
     handleScroll(); // Initialize on mount
-
+    
     return () => {
-      window.removeEventListener("scroll", handleScroll);
+      window.removeEventListener('scroll', handleScroll);
     };
-  }, []);
-
-  // Calculate transformations based on scroll progress - but finish animation at 50% scroll
-  // Adjust progress to complete at 50% scroll (0.5)
+  }, [isClient]);
+  
+  // Adjust progress to complete at 33% scroll (0.33)
   const adjustedProgress = Math.min(scrollProgress * 3, 1);
-
+  
+  // Modified transformations for better mobile experience
   const earthTransform = {
     scale: 1 + adjustedProgress * 1.5, // Start smaller on mobile
     translateX: `${adjustedProgress * (windowWidth < 768 ? 20 : 35)}%`, // Move less on mobile
     opacity: 1,
   };
-
+  
   const titleTransform = {
     translateX: `${Math.max(Math.min(adjustedProgress * -10, -10), -10)}%`,
     opacity: 1 - adjustedProgress * 0.2,
   };
-
+  
   const infoCardsTransform = {
     opacity: 1,
     transform: `translateX(${(1 - adjustedProgress) * -100}%)`,
@@ -65,7 +65,8 @@ export default function Goals() {
   return (
     <section 
       ref={sectionRef} 
-      className="relative min-h-[150vh] sm:min-h-[140vh] md:min-h-[120vh] pb-20 sm:pb-32 overflow-hidden"
+      
+      className="relative min-h-[150vh] sm:min-h-[140vh] md:min-h-[120vh] pb-20 sm:pb-32 overflow-hidden  bg-black"
     >
       {/* Background Earth Image */}
       <div 
@@ -88,15 +89,16 @@ export default function Goals() {
             </p>
           </div>
         </div>
-
+        
         {/* Earth image that moves right and gets bigger */}
-        <div
+        <div 
           className="absolute inset-0 flex items-center justify-center transition-all duration-300 ease-out overflow-visible"
           style={{
             transform: `translateX(${earthTransform.translateX}) scale(${earthTransform.scale})`,
-            opacity: earthTransform.opacity,
+            opacity: earthTransform.opacity
           }}
         >
+          
           <div className="relative h-[60vh] w-[60vh] sm:h-[70vh] sm:w-[70vh] md:h-[80vh] md:w-[80vh]">
             <Image
               src="/images/bigWorldFull.png"
@@ -122,7 +124,7 @@ export default function Goals() {
               We are searching for passionate educators who are eager to share their knowledge 
               and make a lasting impact by teaching English to children in need around the globe.
             </p>
-            <Link
+            <Link 
               href="/apply_to_teach"
               className="inline-flex items-center gap-2 bg-white/90 rounded-full px-4 sm:px-6 py-2 sm:py-3 text-base sm:text-lg font-gloria text-gray-800 hover:bg-white transition-all group-hover:translate-x-1"
             >
@@ -141,7 +143,7 @@ export default function Goals() {
               We aim to connect with schools in underserved regions, providing them with access 
               to resources, support, and transformative learning opportunities.
             </p>
-            <Link
+            <Link 
               href="/register_school"
               className="inline-flex items-center gap-2 bg-white/90 rounded-full px-4 sm:px-6 py-2 sm:py-3 text-base sm:text-lg font-gloria text-gray-800 hover:bg-white transition-all group-hover:translate-x-1"
             >
