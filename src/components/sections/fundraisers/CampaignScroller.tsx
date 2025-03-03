@@ -1,7 +1,9 @@
 'use client'
-import { useState, useRef, useEffect } from 'react'
+import { useState, useRef } from 'react'
 import CampaignCard from '@/components/sections/fundraisers/CampaignCard'
 import Image from 'next/image'
+import useClientOnly from '@/hooks/useClientOnly'
+
 interface Campaign {
   id: number
   title: string
@@ -9,7 +11,8 @@ interface Campaign {
   raised: number
   imageUrl: string
   description: string
-  status: 'active' | 'completed'
+  status: 'active' | 'completed',
+  link?: string
 }
 
 interface CampaignScrollerProps {
@@ -20,33 +23,24 @@ export default function CampaignScroller({ campaigns }: CampaignScrollerProps) {
   const [currentIndex, setCurrentIndex] = useState(0)
   const [isAnimating, setIsAnimating] = useState(false)
   const [cardWidth, setCardWidth] = useState(400) // Default width
+  const [isMovingCard, setIsMovingCard] = useState<number | null>(null)
   const containerRef = useRef<HTMLDivElement>(null)
   const cardRef = useRef<HTMLDivElement>(null)
-  const [isMovingCard, setIsMovingCard] = useState<number | null>(null)
+  
+  // Use our client-side hook to get window info
+  const { isClient, windowWidth } = useClientOnly()
 
-  // Measure the width of the cards
-  const measureCardWidth = () => {
+  // Update card width when we have access to DOM
+  const updateCardWidth = () => {
     if (cardRef.current) {
-      const width = cardRef.current.offsetWidth
-      setCardWidth(width)
-      return width
+      setCardWidth(cardRef.current.offsetWidth)
     }
-    return cardWidth // Return current state if ref not available
   }
 
-  // Calculate positions when window resizes or on mount
-  useEffect(() => {
-    // Initial measurement
-    measureCardWidth()
-    
-    // Update on window resize
-    const handleResize = () => {
-      measureCardWidth()
-    }
-    
-    window.addEventListener('resize', handleResize)
-    return () => window.removeEventListener('resize', handleResize)
-  }, [])
+  // If we're on the client side, update the card width
+  if (isClient && cardRef.current && cardWidth === 400) {
+    updateCardWidth()
+  }
 
   const nextCard = () => {
     if (isAnimating || currentIndex >= campaigns.length - 1) return
@@ -85,15 +79,31 @@ export default function CampaignScroller({ campaigns }: CampaignScrollerProps) {
   const isAtStart = currentIndex === 0
   const isAtEnd = currentIndex === campaigns.length - 1
 
+  // Calculate responsive card spacing based on screen size
+  const getCardSpacing = () => {
+    if (windowWidth < 640) return 1.0;  // Less spacing on mobile
+    return 1.4;                         // Full spacing on desktop
+  }
+
   return (
-    <div className="w-full max-w-[1200px] mx-auto">
+    <div className="w-full max-w-[1200px] mx-auto px-4">
       <div className="relative w-full">
         {/* Left Navigation Button */}
         <button 
           onClick={previousCard}
-          className={`absolute transition-opacity duration-500 ease-in-out left-1/2 top-1/2 -translate-y-1/2 -translate-x-[320px] z-30 ${isAtStart ? 'opacity-30 cursor-not-allowed' : ''}`}
+          className={`absolute transition-opacity duration-500 ease-in-out z-30 ${isAtStart ? 'opacity-30 cursor-not-allowed' : ''}`}
+          style={{ 
+            opacity: isAtStart ? 0 : 1,
+            top: '50%',
+            transform: 'translateY(-50%)',
+            // Dynamic positioning based on screen size
+            left: windowWidth < 640 ? '8px' : 
+                  windowWidth < 768 ? '12px' : 
+                  windowWidth < 1024 ? '100px' : 
+                  windowWidth < 1280 ? '200px' : 
+                  'calc(50% - 320px)'
+          }}
           aria-label="Previous campaign"
-          style={{ opacity: isAtStart ? 0 : 1 }}
           disabled={isAnimating || isAtStart}
         >
           <Image 
@@ -101,15 +111,25 @@ export default function CampaignScroller({ campaigns }: CampaignScrollerProps) {
             alt="Previous campaign"
             width={100}
             height={100}
-            className="w-[100px] h-[100px]"
+            className="w-[50px] h-[50px] sm:w-[50px] sm:h-[50px] md:w-[60px] md:h-[60px] lg:w-[80px] lg:h-[80px]"
           />
         </button>
 
         {/* Right Navigation Button */}
         <button 
           onClick={nextCard}
-          className={`absolute transition-opacity duration-500 ease-in-out right-1/2 top-1/2 -translate-y-1/2 translate-x-[320px] z-30 ${isAtEnd ? 'opacity-30 cursor-not-allowed' : ''}`}
-          style={{ opacity: isAtEnd ? 0 : 1 }}
+          className={`absolute transition-opacity duration-500 ease-in-out z-30 ${isAtEnd ? 'opacity-30 cursor-not-allowed' : ''}`}
+          style={{ 
+            opacity: isAtEnd ? 0 : 1,
+            top: '50%',
+            transform: 'translateY(-50%)',
+            // Dynamic positioning based on screen size
+            right: windowWidth < 640 ? '8px' : 
+                   windowWidth < 768 ? '12px' : 
+                   windowWidth < 1024 ? '100px' : 
+                   windowWidth < 1280 ? '200px' : 
+                   'calc(50% - 320px)'
+          }}
           aria-label="Next campaign"
           disabled={isAnimating || isAtEnd}
         >
@@ -118,11 +138,13 @@ export default function CampaignScroller({ campaigns }: CampaignScrollerProps) {
             alt="Next campaign"
             width={100}
             height={100}
-            className="w-[100px] h-[100px]"
+            className="w-[50px] h-[50px] sm:w-[50px] sm:h-[50px] md:w-[60px] md:h-[60px] lg:w-[80px] lg:h-[80px]"
           />
         </button>
             
-        <div ref={containerRef} className="relative h-[650px] w-full overflow-hidden">
+        <div ref={containerRef} className="relative w-full overflow-hidden" style={{ 
+          height: '700px',
+        }}>
           <div className="absolute inset-0 flex items-center justify-center">
             {campaigns.map((campaign, index) => {
               // Calculate position relative to current without looping
@@ -136,12 +158,20 @@ export default function CampaignScroller({ campaigns }: CampaignScrollerProps) {
               let bgColor = "transparent"
               const transitionClass = "transition-all duration-500 ease-in-out"
               
-              // Calculate the card positions to match the design
+              // Calculate the card positions with responsive spacing
+              const spacing = getCardSpacing()
+              
+              // Set card size based on screen size
+              const cardSize = windowWidth < 500 ? {width: '260px', height: '390px'} :
+                             windowWidth < 768 ? {width: '300px', height: '430px'} :
+                             windowWidth < 1024 ? {width: '330px', height: '470px'} :
+                             {width: '350px', height: '500px'};
+              
               switch (position) {
                 case -1: // Left card (visible)
-                  xOffset = -cardWidth * 1.4 // Move left by 1.4x the card width
-                  opacity = 1
-                  scale = 1
+                  xOffset = -cardWidth * spacing 
+                  opacity = windowWidth < 768 ? 0 : 1 // Hide side cards on very small screens
+                  scale = windowWidth < 768 ? 0.9 : 1 // Slightly smaller on tablet
                   zIndex = 10
                   bgColor = "#E6F0F9" // Light blue background from mockup
                   break;
@@ -153,9 +183,9 @@ export default function CampaignScroller({ campaigns }: CampaignScrollerProps) {
                   bgColor = "#CEEAF9" // Medium blue background from mockup
                   break;
                 case 1: // Right card (visible)
-                  xOffset = cardWidth * 1.4 // Move right by 1.4x the card width
-                  opacity = 1
-                  scale = 1
+                  xOffset = cardWidth * spacing
+                  opacity = windowWidth < 768 ? 0 : 1 // Hide side cards on very small screens
+                  scale = windowWidth < 768 ? 0.9 : 1 // Slightly smaller on tablet
                   zIndex = 10
                   bgColor = "#E6F0F9" // Light blue background from mockup
                   break;
@@ -176,12 +206,14 @@ export default function CampaignScroller({ campaigns }: CampaignScrollerProps) {
                 <div 
                   key={`card-${campaign.id}`}
                   ref={isFirstCard ? cardRef : null}
-                  className={`absolute top-1/2 left-1/2 w-full max-w-[400px] ${transitionClass} rounded-3xl overflow-hidden shadow-lg`}
+                  className={`absolute top-1/2 left-1/2 ${transitionClass} rounded-3xl overflow-hidden shadow-lg`}
                   style={{ 
                     transform: `translate(calc(-50% + ${xOffset}px), -50%) scale(${scale})`,
                     opacity,
                     zIndex,
-                    backgroundColor: bgColor
+                    backgroundColor: bgColor,
+                    width: cardSize.width,
+                    maxWidth: '90%'
                   }}
                 >
                   <CampaignCard {...campaign} />

@@ -1,19 +1,27 @@
 "use client"
 import { useState, useEffect } from 'react'
+import useClientOnly from '@/hooks/useClientOnly'
 
 export default function ScrollToTop() {
   const [showButton, setShowButton] = useState(false)
+  const { isClient } = useClientOnly()
 
   useEffect(() => {
+    if (!isClient) return;
+    
     const checkScroll = () => {
       setShowButton(window.scrollY > 500)
     }
 
     window.addEventListener('scroll', checkScroll)
+    checkScroll() // Initial check
+    
     return () => window.removeEventListener('scroll', checkScroll)
-  }, [])
+  }, [isClient])
 
   const scrollToTop = () => {
+    if (!isClient) return;
+    
     window.scrollTo({
       top: 0,
       behavior: 'smooth'

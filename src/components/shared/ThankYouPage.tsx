@@ -21,7 +21,7 @@ export default function ThankYouPage({
         style={{ background: backgroundColor }}
       >
         {/* Thank you message */}
-        <div className="flex-1 flex flex-col items-center justify-center text-center">
+        <div className="flex-1 flex flex-col items-center justify-center text-center py-16 md:py-0">
           <h1 className="text-4xl sm:text-5xl md:text-6xl text-white font-gloria mb-4">{title}</h1>
           <h2 className="text-2xl sm:text-3xl md:text-4xl text-white font-gloria">{subtitle}</h2>
         </div>

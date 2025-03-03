@@ -1,5 +1,4 @@
 'use client'
-import Image from 'next/image'
 import OpenDiaryLayout from '@/components/sections/diary/layout'
 
 export default function DiaryPage2() {

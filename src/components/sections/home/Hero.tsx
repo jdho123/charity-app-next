@@ -22,7 +22,7 @@ export default function Hero({ backgroundImage }: HeroProps) {
       </div>
       
       {/* Main Heading - centered in the sky blue wave area */}
-      <div className="absolute top-0 left-0 w-full pt-20 text-center z-10">
+      <div className="absolute top-0 left-0 w-full pl-12 pt-28 md:pt-20 text-center z-10">
         <h1 className="text-5xl md:text-6xl font-gloria text-white">
           By Giving We Receive Much More
         </h1>

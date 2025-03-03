@@ -21,8 +21,8 @@ export function HeroSection() {
         />
       </div>
       
-      <div className="relative z-10 flex flex-wrap justify-between items-start self-end w-full gap-5 max-w-[1295px]  py-8 max-md:my-10 max-md:max-w-full">
-        <PageTitle className="text-white">
+      <div className="relative z-10 flex justify-between items-start self-end w-full gap-5 max-w-[1295px] py-8 max-sm:py-4 max-md:max-w-full">
+        <PageTitle className="text-white whitespace-nowrap min-w-0 overflow-hidden text-[clamp(1.5rem,5vw,3rem)]">
           How We Teach: Our Approach
         </PageTitle>
       </div>

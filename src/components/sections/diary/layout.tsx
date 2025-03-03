@@ -1,7 +1,8 @@
 'use client'
 import Image from 'next/image'
 import { useRouter } from 'next/navigation'
-import { useEffect, useState } from 'react'
+import { useEffect } from 'react'
+import useClientOnly from '@/hooks/useClientOnly'
 import FullHeightLayout from '../../layout/FullHeightLayout'
 
 interface OpenDiaryLayoutProps {
@@ -24,39 +25,19 @@ export default function OpenDiaryLayout({
   backgroundImage
 }: OpenDiaryLayoutProps) {
   const router = useRouter()
-  const [isMobile, setIsMobile] = useState(false)
+  // Use our custom hook with a custom breakpoint of 1000px
+  const { isMobile, isClient } = useClientOnly(1000)
 
   useEffect(() => {
-    // Check if device is mobile
-    const checkMobile = () => {
-      setIsMobile(window.innerWidth < 1000)
-    }
-    
-    // Initial check
-    checkMobile()
-    
-    // Add resize listener
-    window.addEventListener('resize', checkMobile)
-    
-    // Cleanup
-    return () => window.removeEventListener('resize', checkMobile)
-  }, [])
-
-  useEffect(() => {
-    // Redirect to main diary page if on mobile
-    if (isMobile) {
+    // Only redirect if we're on the client AND it's a mobile device
+    if (isClient && isMobile) {
       router.push('/diary')
     }
-  }, [isMobile, router])
+  }, [isMobile, router, isClient])
 
-  const handlePrevPage = () => {
-    router.push(prevHref)
-  }
-
-  const handleNextPage = () => {
-    if (nextHref) {
-      router.push(nextHref)
-    }
+  // Show loading or nothing during SSR
+  if (!isClient) {
+    return <div className="min-h-screen bg-[#D8B29A]"></div>
   }
 
   if (isMobile) {
@@ -95,14 +76,14 @@ export default function OpenDiaryLayout({
           {/* Navigation buttons */}
           <div className="flex justify-between w-full mt-4">
             <button 
-              onClick={handlePrevPage}
+              onClick={() => router.push(prevHref)}
               className="px-4 py-2 bg-amber-800 text-white rounded hover:bg-amber-700"
             >
               {prevLabel}
             </button>
             {nextHref && (
               <button 
-                onClick={handleNextPage}
+                onClick={() => router.push(nextHref)}
                 className="px-4 py-2 bg-amber-800 text-white rounded hover:bg-amber-700"
               >
                 {nextLabel}

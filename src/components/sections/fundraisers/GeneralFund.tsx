@@ -1,5 +1,6 @@
 import Button from '@/components/shared/Button'
 import GeneralFundCard from './GeneralFundCard'
+import Link from 'next/link'
 
 export default function GeneralFund() {
   return (
@@ -25,14 +26,15 @@ export default function GeneralFund() {
                 one lesson at a time.
               </p>
             </div>
-
-            <Button 
-              variant="primary" 
-              size="lg" 
-              className="w-full max-w-md text-2xl font-gloria py-4 bg-[#B21414] rounded-full"
-            >
-              Donate to the General Fund
-            </Button>
+            <Link href="/donate" className="inline-block">
+                <Button 
+                variant="primary" 
+                size="lg" 
+                className="w-full max-w-md text-2xl font-gloria py-4 bg-[#B21414] rounded-full"
+                >
+                Donate to the General Fund
+                </Button>
+            </Link>
           </div>
 
           {/* Right Column - Using new GeneralFundCard */}
@@ -43,6 +45,7 @@ export default function GeneralFund() {
             description="The General Fund supports all aspects of our mission. Your contributions help us provide critical resources such as Wi-Fi access for online lessons, new books to foster a love of learning, and classroom supplies like stationery and teaching tools."
             additionalInfo="By donating, you ensure that we can respond swiftly to urgent needs—whether it's setting up new online classes in remote areas, equipping schools with essential materials, or funding special projects that inspire and empower children to dream bigger."
           />
+          <div className="gfm-embed" data-url="https://www.gofundme.com/f/raising-support-for-impact-schools-nepal/widget/large?sharesheet=fundraiser sidebar&attribution_id=sl:136415b7-1a34-4fe9-9252-21fc68bf8b88"></div><script defer src="https://www.gofundme.com/static/js/embed.js"></script>
         </div>
       </div>
     </section>

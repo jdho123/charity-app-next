@@ -1,5 +1,5 @@
 'use client'
-import SlideMenu from "../shared/SlideMenu"
+import SlideMenu from "./SlideMenu"
 import LeduLogo from "./LeduLogo"
 
 interface FullHeightLayoutProps {
