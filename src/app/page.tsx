@@ -1,12 +1,12 @@
-"use client";
-import GuestLayout from "@/components/layout/GuestLayout";
-import Hero from "@/components/sections/home/Hero";
-import ScrollToTop from "@/components/shared/ScrollToTop";
-import Philosophy from "@/components/sections/home/Philosophy";
-import KidsStories from "@/components/sections/home/KidsStories";
-import HowWeTeach from "@/components/sections/home/HowWeTeach";
-import Goals from "@/components/sections/home/Goals";
-import Newsletter from "@/components/sections/home/Newsletter";
+'use client';
+import GuestLayout from '@/components/layout/GuestLayout';
+import Hero from '@/components/sections/home/Hero';
+import ScrollToTop from '@/components/shared/ScrollToTop';
+import Philosophy from '@/components/sections/home/Philosophy';
+import KidsStories from '@/components/sections/home/KidsStories';
+import HowWeTeach from '@/components/sections/home/HowWeTeach';
+import Goals from '@/components/sections/home/Goals';
+import NewsletterSection from '@/components/sections/home/Newsletter';
 
 export default function HomePage() {
   return (
@@ -27,7 +27,7 @@ export default function HomePage() {
       <Goals />
 
       {/* Newsletter Section */}
-      <Newsletter />
+      <NewsletterSection />
 
       <ScrollToTop />
     </GuestLayout>
