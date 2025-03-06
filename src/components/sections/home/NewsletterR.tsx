@@ -1,43 +1,43 @@
-'use client'
+'use client';
 
-import { useState, useEffect } from "react"
-import Image from "next/image"
-import Link from "next/link"
-import NewsCard from "./newsletter/NewsCard"
-import { API_URL } from "@/env"
+import { useState, useEffect } from 'react';
+import Image from 'next/image';
+import Link from 'next/link';
+import NewsCard from './newsletter/NewsCard';
+import { API_URL } from '@/env';
 
 interface Story {
-  id: number
-  title: string
-  excerpt: string
-  date: string
-  image?: string
-  category?: string
+  id: number;
+  title: string;
+  excerpt: string;
+  date: string;
+  image?: string;
+  category?: string;
 }
 
-export default function NewsletterSection() {
-  const [stories, setStories] = useState<Story[]>([])
-  const [isLoading, setIsLoading] = useState(true)
-  const [error, setError] = useState<string | null>(null)
+export default function Newsletter() {
+  const [stories, setStories] = useState<Story[]>([]);
+  const [isLoading, setIsLoading] = useState(true);
+  const [error, setError] = useState<string | null>(null);
 
   useEffect(() => {
     const fetchStories = async () => {
       try {
-        const response = await fetch(API_URL + '/stories')
+        const response = await fetch(API_URL + '/stories');
         if (!response.ok) {
-          throw new Error('Failed to fetch stories')
+          throw new Error('Failed to fetch stories');
         }
-        const data = await response.json()
-        setStories(data)
+        const data = await response.json();
+        setStories(data);
       } catch (err) {
-        setError(err instanceof Error ? err.message : 'Failed to load stories')
+        setError(err instanceof Error ? err.message : 'Failed to load stories');
       } finally {
-        setIsLoading(false)
+        setIsLoading(false);
       }
-    }
+    };
 
-    fetchStories()
-  }, [])
+    fetchStories();
+  }, []);
 
   if (isLoading) {
     return (
@@ -46,7 +46,7 @@ export default function NewsletterSection() {
           <div className="text-white">Loading stories...</div>
         </div>
       </section>
-    )
+    );
   }
 
   if (error) {
@@ -56,31 +56,25 @@ export default function NewsletterSection() {
           <div className="text-white">Error: {error}</div>
         </div>
       </section>
-    )
+    );
   }
 
   return (
     <section className="bg-[#2F4F4F] py-16 min-h-screen relative overflow-hidden pt-[200px]">
       {/* Star decoration */}
       <div className="absolute top-20 right-32">
-        <Image 
-          src="/images/shootingStar.png" 
-          alt="" 
-          width={180} 
-          height={100} 
+        <Image
+          src="/images/shootingStar.png"
+          alt=""
+          width={180}
+          height={100}
           className="opacity-70"
         />
       </div>
 
       {/* Lightbulb decoration */}
       <div className="absolute bottom-8 right-8">
-        <Image 
-          src="/images/lightbulb.png" 
-          alt="" 
-          width={120} 
-          height={120} 
-          className="opacity-40"
-        />
+        <Image src="/images/lightbulb.png" alt="" width={120} height={120} className="opacity-40" />
       </div>
 
       <div className="container mx-auto px-4">
@@ -89,16 +83,11 @@ export default function NewsletterSection() {
           <div className="lg:w-1/2">
             {/* Header Content */}
             <div className="mb-12">
-              <h2 className="text-7xl font-gloria text-white mb-4 leading-tight">
-                Our Journey
-              </h2>
-              <h3 className="text-4xl font-gloria text-yellow-200 mb-6">
-                One Story at a Time
-              </h3>
+              <h2 className="text-7xl font-gloria text-white mb-4 leading-tight">Our Journey</h2>
+              <h3 className="text-4xl font-gloria text-yellow-200 mb-6">One Story at a Time</h3>
               <p className="text-white text-lg leading-relaxed max-w-xl">
-                Stay updated with the latest news, inspiring stories, and
-                behind-the-scenes moments from our mission. From
-                impactful lessons to heartwarming success stories, discover
+                Stay updated with the latest news, inspiring stories, and behind-the-scenes moments
+                from our mission. From impactful lessons to heartwarming success stories, discover
                 how we&apos;re making a difference every day.
               </p>
             </div>
@@ -107,8 +96,8 @@ export default function NewsletterSection() {
             {stories[0] && (
               <div className="bg-white rounded-3xl overflow-hidden shadow-lg">
                 <div className="relative h-64">
-                  <Image 
-                    src={stories[0].image || '/images/placeholder.jpg'} 
+                  <Image
+                    src={stories[0].image || '/images/placeholder.jpg'}
                     alt={stories[0].title}
                     fill
                     className="object-cover"
@@ -121,7 +110,7 @@ export default function NewsletterSection() {
                   </div>
                   <h4 className="text-2xl font-gloria mb-4">{stories[0].title}</h4>
                   <div className="flex justify-end">
-                    <Link 
+                    <Link
                       href={`/news/${stories[0].id}`}
                       className="text-black font-bold hover:underline inline-flex items-center"
                     >
@@ -135,26 +124,24 @@ export default function NewsletterSection() {
 
           {/* Right Column - News Cards */}
           <div className="lg:w-1/2 space-y-6 flex flex-col justify-center">
-            {stories.length > 1 ? (
-              // If we have stories, show them
-              stories.slice(1, 4).map((story) => (
-                <NewsCard 
-                  key={story.id}
-                  id={story.id}
-                  title={story.title}
-                  image={story.image}
-                  category={story.category || "News"}
-                />
-              ))
-            ) : (
-              // If we don't have enough stories, show placeholder cards
-              Array.from({ length: 3 }).map((_, index) => (
-                <NewsCard key={index} />
-              ))
-            )}
+            {stories.length > 1
+              ? // If we have stories, show them
+                stories
+                  .slice(1, 4)
+                  .map((story) => (
+                    <NewsCard
+                      key={story.id}
+                      id={story.id}
+                      title={story.title}
+                      image={story.image}
+                      category={story.category || 'News'}
+                    />
+                  ))
+              : // If we don't have enough stories, show placeholder cards
+                Array.from({ length: 3 }).map((_, index) => <NewsCard key={index} />)}
           </div>
         </div>
       </div>
     </section>
-  )
+  );
 }
