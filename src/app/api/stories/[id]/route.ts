@@ -1,5 +1,11 @@
 import { NextRequest, NextResponse } from 'next/server';
 
+interface RouteParams {
+  params: {
+    id: string;
+  };
+}
+
 // Basic story data for listings
 const stories = [
   {
@@ -198,6 +204,16 @@ const storyDetails: Record<number, (typeof stories)[0] & { content: ContentItem[
 
 // GET handler for a specific story by ID
 export async function GET(request: NextRequest, { params }: { params: { id: string } }) {
+  // Handle invalid IDs (non-numeric or "undefined")
+  if (params.id === 'undefined' || isNaN(Number(params.id))) {
+    return new NextResponse(JSON.stringify({ error: 'Invalid story ID' }), {
+      status: 400,
+      headers: {
+        'Content-Type': 'application/json',
+      },
+    });
+  }
+
   const id = Number(params.id);
 
   // Check if the story exists
