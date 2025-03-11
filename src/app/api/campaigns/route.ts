@@ -86,6 +86,16 @@ const completedCampaigns = [
       'Thanks to your incredible support, we successfully provided a new collection of books to Impact Schools, inspiring a love for reading among children.',
     status: 'completed' as const,
   },
+  {
+    id: 2,
+    title: 'Books for Bright Minds',
+    goal: 500,
+    raised: 500,
+    imageUrl: '/images/sunnyDayGroupPhoto.jpeg',
+    description:
+      'Thanks to your incredible support, we successfully provided a new collection of books to Impact Schools, inspiring a love for reading among children.',
+    status: 'completed' as const,
+  },
 ];
 
 const categories: CategoryItem[] = [

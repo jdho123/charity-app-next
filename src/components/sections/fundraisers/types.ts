@@ -21,4 +21,6 @@ export interface ActiveCampaign extends Campaign {
 
 export interface CompletedCampaign extends Campaign {
   status: 'completed';
+  message: string;
+  bgColour: string;
 }

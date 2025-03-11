@@ -11,6 +11,7 @@ import {
   ActiveCampaign,
   CompletedCampaign,
 } from '@/components/sections/fundraisers/types';
+import CardScroller from '@/components/sections/fundraisers/CardScroller';
 
 type CampaignData = {
   active: ActiveCampaign[];
@@ -68,6 +69,7 @@ export default function FundraisersPage() {
   return (
     <GuestLayout>
       {/* General Fund Section */}
+      <div className=" p-[40px]"></div>
       <GeneralFund />
 
       {/* Loading and Error States */}
