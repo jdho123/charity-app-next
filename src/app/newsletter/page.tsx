@@ -1,17 +1,18 @@
 import type { Metadata } from 'next';
 import GuestLayout from '@/components/layout/GuestLayout';
 import ScrollToTop from '@/components/shared/ScrollToTop';
-import Newsletter from '@/components/sections/home/NewsletterR';
+import NewsSummaryDisplay from '@/components/sections/news/NewsSummaryDisplay';
 
 export const metadata: Metadata = {
-  title: 'Newsletter - LEDU',
+  title: 'News - LEDU',
+  description: 'Stay updated with our latest news and stories',
 };
 
-export default function NewsletterPage() {
+export default function NewsIndexPage() {
   return (
     <GuestLayout>
-      <div className="bg-[#4B7277] min-h-screen">
-        <Newsletter />
+      <div className="bg-white min-h-screen py-12">
+        <NewsSummaryDisplay />
       </div>
 
       <ScrollToTop />

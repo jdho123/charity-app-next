@@ -7,6 +7,7 @@ import KidsStories from '@/components/sections/home/KidsStories';
 import HowWeTeach from '@/components/sections/home/HowWeTeach';
 import Goals from '@/components/sections/home/Goals';
 import Newsletter from '@/components/sections/home/NewsletterR';
+import NewsSummaryDisplay from '@/components/sections/news/NewsSummaryDisplay';
 
 export default function HomePage() {
   return (
@@ -27,7 +28,9 @@ export default function HomePage() {
       <Goals />
 
       {/* Newsletter Section */}
-      <Newsletter />
+      <div className="bg-white min-h-screen">
+        <NewsSummaryDisplay />
+      </div>
 
       <ScrollToTop />
     </GuestLayout>
