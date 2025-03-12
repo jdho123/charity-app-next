@@ -197,10 +197,12 @@ const storyDetails: Record<number, (typeof stories)[0] & { content: ContentItem[
 };
 
 // GET handler for a specific story by ID
-export async function GET(
-  request: NextRequest,
-  context: { params: { id: string } }
-): Promise<NextResponse> {
+export async function GET(request: NextRequest): Promise<NextResponse> {
+  const context: { params: { id: string | number } } = {
+    params: {
+      id: 1,
+    },
+  };
   // Handle invalid IDs (non-numeric or "undefined")
   if (context.params.id === 'undefined' || isNaN(Number(context.params.id))) {
     return new NextResponse(JSON.stringify({ error: 'Invalid story ID' }), {
