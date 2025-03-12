@@ -4,13 +4,8 @@ import GuestLayout from '@/components/layout/GuestLayout';
 import ScrollToTop from '@/components/shared/ScrollToTop';
 import NewsDetailPage from '@/components/sections/news/NewsDetailPage';
 
-interface NewsPageProps {
-  params: {
-    id: string;
-  };
-  searchParams?: { [key: string]: string | string[] | undefined };
-}
-
+// Avoid extending PageProps or using any custom interface
+// Use the exact parameter structure Next.js expects
 export async function generateMetadata({ params }: { params: { id: string } }): Promise<Metadata> {
   try {
     const id = parseInt(params.id);
@@ -27,7 +22,8 @@ export async function generateMetadata({ params }: { params: { id: string } }): 
   }
 }
 
-export default function NewsPage({ params }: NewsPageProps) {
+// Use a simple, explicit parameter type directly in the function signature
+export default function NewsPage({ params }: { params: { id: string } }) {
   const id = parseInt(params.id);
 
   if (isNaN(id)) {
