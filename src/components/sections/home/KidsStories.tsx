@@ -24,8 +24,8 @@ const KidsStories: React.FC = () => {
           {/* Header Section */}
           <header className="w-full relative pt-12 px-6 md:pt-16 md:px-12 lg:px-24">
             <div className="md:ml-10 lg:ml-16">
-              <GloriaTitle 
-                as="h1" 
+              <GloriaTitle
+                as="h1"
                 size="6xl"
                 className="font-normal text-4xl md:text-5xl lg:text-6xl leading-tight"
               >
@@ -43,7 +43,7 @@ const KidsStories: React.FC = () => {
               height={300}
               style={{
                 width: '100%',
-                height: 'auto'
+                height: 'auto',
               }}
             />
           </div>
@@ -57,15 +57,18 @@ const KidsStories: React.FC = () => {
               height={300}
               style={{
                 width: '100%',
-                height: 'auto'
+                height: 'auto',
               }}
             />
           </div>
 
           {/* Story Content - Centered */}
-          <div className="relative mx-auto mt-8 w-full max-w-[85%] md:max-w-[75%] lg:max-w-[856px]" style={{ height: '20vh' }}>
+          <div
+            className="relative mx-auto mt-8 w-full max-w-[85%] md:max-w-[75%] lg:max-w-[856px]"
+            style={{ height: '20vh' }}
+          >
             <Image
-              src="/images/weWillMissYouThisMuch.png" 
+              src="/images/weWillMissYouThisMuch.png"
               alt="We will miss you this much"
               fill
               className="object-contain"

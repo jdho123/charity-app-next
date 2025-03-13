@@ -1,9 +1,9 @@
-import * as React from "react";
-import Image from "next/image";
-import { RoundedImage } from "../../../shared/RoundedImage";
-import BorderedText from "@/components/shared/BorderedText";
-import GloriaTitle from "@/components/shared/GloriaTitle";
-import Sprite from "@/components/animation/Sprite";
+import * as React from 'react';
+import Image from 'next/image';
+import { RoundedImage } from '../../../shared/RoundedImage';
+import BorderedText from '@/components/shared/BorderedText';
+import GloriaTitle from '@/components/shared/GloriaTitle';
+import Sprite from '@/components/animation/Sprite';
 
 export function ConnectSection() {
   return (
@@ -24,10 +24,10 @@ export function ConnectSection() {
                   className="object-contain w-20 h-20 sm:w-28 sm:h-28 md:w-[110px] md:h-[110px]"
                 />
                 <div className="flex flex-col">
-                  <GloriaTitle 
-                    as="h2" 
-                    color="black" 
-                    size="6xl" 
+                  <GloriaTitle
+                    as="h2"
+                    color="black"
+                    size="6xl"
                     className="mb-1 text-4xl sm:text-5xl md:text-6xl"
                   >
                     Connect
@@ -37,7 +37,7 @@ export function ConnectSection() {
                   </p>
                 </div>
               </div>
-              
+
               {/* Arrow only shows on large screens */}
               <Image
                 src="/images/rightArrowTeach.png"
@@ -69,28 +69,26 @@ export function ConnectSection() {
               />
               <div className="pl-4 border-l-4 border-[#3E6F1B]">
                 <p className="text-base sm:text-lg md:text-xl text-black mb-4 sm:mb-6">
-                  We show children that someone outside their community truly
-                  cares about them.
+                  We show children that someone outside their community truly cares about them.
                 </p>
                 <p className="text-base sm:text-lg md:text-xl text-black mb-4 sm:mb-6">
-                  This connection sparks a sense of belonging and hope,
-                  encouraging them to dream of a better future.
+                  This connection sparks a sense of belonging and hope, encouraging them to dream of
+                  a better future.
                 </p>
                 <p className="text-base sm:text-lg md:text-xl text-black">
-                  By bridging the gap between children and teachers from
-                  different parts of the world, we prove that care knows no
-                  boundaries.
+                  By bridging the gap between children and teachers from different parts of the
+                  world, we prove that care knows no boundaries.
                 </p>
               </div>
             </div>
 
             <Sprite
-              totalFrames={10}
-              frameWidth={750}
-              frameHeight={700}
-              scale={0.4}
+              totalFrames={24}
+              frameWidth={500}
+              frameHeight={500}
+              scale={0.6}
               className="ml-auto mt-12 max-w-[80%]"
-              imagePath="/animated/arrow2.png"
+              imagePath="/animated/arrow1smooth.png"
             />
           </div>
         </div>
@@ -107,10 +105,10 @@ export function ConnectSection() {
             className="object-contain w-20 h-16 sm:w-24 sm:h-20 md:w-[120px] md:h-[100px]"
           />
           <div className="flex flex-col">
-            <GloriaTitle 
-              as="h2" 
-              color="black" 
-              size="6xl" 
+            <GloriaTitle
+              as="h2"
+              color="black"
+              size="6xl"
               className="mb-1 text-4xl sm:text-5xl md:text-6xl"
             >
               Teach
