@@ -4,7 +4,7 @@
 - [] When the browser is in dark mode, a lot of the colours are messed up and parts of the website are very hard to see. Can we please make it the same/fixed for both the dark and bright mode of the website?
 - [] ⁠The bottom part still looks a bit weird - is this after you have tried changing it as we discussed?
 - [] ⁠For now the news part, can we please leave just one article, just to have the template? It won’t be problem to add more articles in the future right?
-- [] ⁠In the side bar can you please change complited to completed campaigns
+- [x] ⁠In the side bar can you please change complited to completed campaigns
 - [] ⁠By updating newsletter did you mean the news page, or the news part of the front page? If the former, then the link right now doesn’t work.
 - [] ⁠In the message below I have written where each link should lead to, could we please update that?
 
