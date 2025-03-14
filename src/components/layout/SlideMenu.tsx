@@ -14,13 +14,17 @@ export default function Menu() {
   // Prevent body scrolling when menu is open
   useEffect(() => {
     if (isOpen) {
+      const scrollbarWidth = window.innerWidth - document.documentElement.clientWidth;
+      document.body.style.paddingRight = `${scrollbarWidth}px`;
       document.body.style.overflow = 'hidden';
     } else {
       document.body.style.overflow = 'auto';
+      document.body.style.paddingRight = '';
     }
 
     return () => {
       document.body.style.overflow = 'auto';
+      document.body.style.paddingRight = '';
     };
   }, [isOpen]);
 

@@ -23,7 +23,7 @@
 - [] Lera has added flowers to the bottom part of the about us scroll.
 - [] On that page can we please make the white on the our journey so far the same as the visionary who returned home (going for the same colour as on the former)?
 - [x] Can we also please blend the blacks into the same colour going into how we teach: our approach - on front page
-- [] You noticed that the side bar was slightly jumpy and wanted to have a look into it.
+- [x] You noticed that the side bar was slightly jumpy and wanted to have a look into it.
 - [x] I have asked Lera about the completed campaigns question you had and will keep you updated on that and also about the logo icon - I will keep you updated on that.
 - [] The animations for the bottom part of questionnaires, I don’t remember was that something you were working on or Anton?
 - [x] Adjusting the text on the first page even more up so that it is just in the sky
