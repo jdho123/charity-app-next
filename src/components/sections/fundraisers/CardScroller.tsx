@@ -1,7 +1,7 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 'use client';
 
-import React, { useState, useEffect, useRef, ReactNode } from 'react';
+import React, { useState, useEffect, useRef, ReactNode, TouchEvent } from 'react';
 
 type CardStatus = 'active' | 'entering-left' | 'entering-right' | 'exiting-left' | 'exiting-right';
 
@@ -13,9 +13,10 @@ interface VisibleCard {
 
 interface CardScrollerProps {
   cards: ReactNode[];
+  swipeThreshold?: number; // Minimum distance required to trigger a swipe
 }
 
-const CardScroller: React.FC<CardScrollerProps> = ({ cards = [] }) => {
+const CardScroller: React.FC<CardScrollerProps> = ({ cards = [], swipeThreshold = 50 }) => {
   const [currentIndex, setCurrentIndex] = useState<number>(0);
   const [direction, setDirection] = useState<'left' | 'right' | null>(null);
   const [isAnimating, setIsAnimating] = useState<boolean>(false);
@@ -23,6 +24,11 @@ const CardScroller: React.FC<CardScrollerProps> = ({ cards = [] }) => {
   const containerRef = useRef<HTMLDivElement>(null);
   const animationTimerRef = useRef<NodeJS.Timeout | null>(null);
   const cleanupTimerRef = useRef<NodeJS.Timeout | null>(null);
+
+  // Touch handling refs
+  const touchStartXRef = useRef<number | null>(null);
+  const touchStartYRef = useRef<number | null>(null);
+  const isSwipingRef = useRef<boolean>(false);
 
   // Initialize visible cards on mount and when cards array changes
   useEffect(() => {
@@ -106,6 +112,51 @@ const CardScroller: React.FC<CardScrollerProps> = ({ cards = [] }) => {
     setDirection('right');
   };
 
+  // Touch event handlers for swipe
+  const handleTouchStart = (e: TouchEvent<HTMLDivElement>): void => {
+    if (isAnimating || cards.length <= 1) return;
+
+    const touch = e.touches[0];
+    touchStartXRef.current = touch.clientX;
+    touchStartYRef.current = touch.clientY;
+    isSwipingRef.current = true;
+  };
+
+  const handleTouchMove = (e: TouchEvent<HTMLDivElement>): void => {
+    // Optional: Add drag effect here if needed
+  };
+
+  const handleTouchEnd = (e: TouchEvent<HTMLDivElement>): void => {
+    if (!isSwipingRef.current || isAnimating || cards.length <= 1) return;
+
+    const touchEndX = e.changedTouches[0].clientX;
+    const touchEndY = e.changedTouches[0].clientY;
+
+    if (touchStartXRef.current === null) return;
+
+    const deltaX = touchEndX - touchStartXRef.current;
+    const deltaY = touchEndY - (touchStartYRef.current || 0);
+
+    // Check if horizontal swipe is more significant than vertical
+    if (Math.abs(deltaX) > Math.abs(deltaY)) {
+      // Check if swipe distance exceeds threshold
+      if (Math.abs(deltaX) >= swipeThreshold) {
+        if (deltaX > 0) {
+          // Swiped right -> go to previous card
+          goToPrevious();
+        } else {
+          // Swiped left -> go to next card
+          goToNext();
+        }
+      }
+    }
+
+    // Reset touch tracking
+    touchStartXRef.current = null;
+    touchStartYRef.current = null;
+    isSwipingRef.current = false;
+  };
+
   // Get the appropriate Tailwind classes based on card status
   const getCardClasses = (status: CardStatus): string => {
     const baseClasses =
@@ -132,8 +183,14 @@ const CardScroller: React.FC<CardScrollerProps> = ({ cards = [] }) => {
 
   return (
     <div className="relative w-full h-full overflow-visible">
-      {/* Cards Container */}
-      <div ref={containerRef} className="relative w-full h-full">
+      {/* Cards Container with touch event handlers */}
+      <div
+        ref={containerRef}
+        className="relative w-full h-full touch-pan-y"
+        onTouchStart={handleTouchStart}
+        onTouchMove={handleTouchMove}
+        onTouchEnd={handleTouchEnd}
+      >
         {visibleCards.map((card) => (
           <div key={card.id} className={getCardClasses(card.status)}>
             {cards[card.index]}

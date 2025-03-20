@@ -1,7 +1,7 @@
 - [] Playing around with the different side bars that Lera has designed to work out which looks best
 - [] Could we please make the lamp and apple bigger and on the end of the completed part of the progress bar? So that in the final stage it is shining on the submit button?
 - [x] Syncing the new design of the fundraising widgets (Lera should update them with regards to the numbers as discussed yesterday)
-- [] Add slider swipe mechanics
+- [x] Add slider swipe mechanics
 - [] fix mobile view of slider
 - [x] Add favicons
 - [] When the browser is in dark mode, a lot of the colours are messed up and parts of the website are very hard to see. Can we please make it the same/fixed for both the dark and bright mode of the website?
@@ -34,3 +34,15 @@
 - [x] Removing the double text on the brown questionnaire at the end
 - [] Could we please make the lamp and apple bigger and on the end of the completed part of the progress bar? So that in the final stage it is shining on the submit button?
 - [x] Syncing the new design of the fundraising widgets (Lera should update them with regards to the numbers as discussed yesterday)
+- [] ⁠⁠In the side bar can you please change complited to completed campaigns
+- [] ⁠Lera has added flowers to the bottom part of the about us scroll. Could you please update it?
+- [] ⁠On that page can we please make the white on the our journey so far the same as the visionary who returned home (going for the same colour as on the former)?
+- [] ⁠The school questionnaire, can the lamp be to the right of the progress bar and in the final stage shine on “submit” please?
+- [] ⁠⁠The bottom part still looks a bit weird - is this after you have tried changing it as we discussed?
+- [] ⁠For now the news part, can we please leave just one article, just to have the template? It won’t be problem to add more articles in the future right? With this we discussed finalising the design for the news part and adding a link for it to the side bar
+- [] ⁠⁠Lera has created a design for the favicon as you asked. She sent it to the chat, please see if it suits.
+- [] ⁠For the missing links, would this be a final step or could you please update Front page:
+
+  Our philosophy learn more —> Our philosophy part in the about us part
+
+  Donate to the general fund and support the cause on the bottom part —> https://www.gofundme.com/f/raising-support-for-impact-schools-nepal?utm_medium=email&utm_source=product&utm_campaign=p_email%2Bhtml_summary_donations
