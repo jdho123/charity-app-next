@@ -17,7 +17,7 @@
 
 - [x] ⁠The school questionnaire, can the lamp be to the right of the progress bar and in the final stage shine on “submit” please?
 - [] Lera has found a way of downloading the images in high resolution so we can try now uploading the logo and the bottom part of the page in higher resolution. We were also thinking about making the opaque part of the bottom of the page wider.
-- [] Would it be possible to please make sure that the menu button is visible even on black backgrounds?
+- [x] Would it be possible to please make sure that the menu button is visible even on black backgrounds?
 - [x] Lera is finalising now the design of the news page and I think we can bring it across at the beginning of next week, which also means we can fix the news part on the front page?
 - [x] The fundraiser designs have now been updated and can be uploaded please.
 - [] Lera has added flowers to the bottom part of the about us scroll.
