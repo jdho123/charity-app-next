@@ -2,7 +2,7 @@
 - [] Could we please make the lamp and apple bigger and on the end of the completed part of the progress bar? So that in the final stage it is shining on the submit button?
 - [x] Syncing the new design of the fundraising widgets (Lera should update them with regards to the numbers as discussed yesterday)
 - [x] Add slider swipe mechanics
-- [] fix mobile view of slider
+- [x] fix mobile view of slider
 - [x] Add favicons
 - [] When the browser is in dark mode, a lot of the colours are messed up and parts of the website are very hard to see. Can we please make it the same/fixed for both the dark and bright mode of the website?
 - [] ⁠The bottom part still looks a bit weird - is this after you have tried changing it as we discussed?

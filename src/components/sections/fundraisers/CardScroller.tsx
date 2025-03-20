@@ -268,7 +268,7 @@ const CardScroller: React.FC<CardScrollerProps> = ({ cards = [], swipeThreshold 
           <button
             onClick={goToPrevious}
             disabled={isAnimating}
-            className="absolute max-sm:hidden left-4 top-1/2 -translate-y-1/2 bg-white bg-opacity-80 rounded-full p-2 shadow-md z-10 disabled:opacity-50"
+            className="absolute max-md:hidden left-4 top-1/2 -translate-y-1/2 bg-white bg-opacity-80 rounded-full p-2 shadow-md z-10 disabled:opacity-50"
             aria-label="Previous card"
           >
             <svg
@@ -289,7 +289,7 @@ const CardScroller: React.FC<CardScrollerProps> = ({ cards = [], swipeThreshold 
           <button
             onClick={goToNext}
             disabled={isAnimating}
-            className="absolute max-sm:hidden right-4 top-1/2 -translate-y-1/2 bg-white bg-opacity-80 rounded-full p-2 shadow-md z-10 disabled:opacity-50"
+            className="absolute max-md:hidden right-4 top-1/2 -translate-y-1/2 bg-white bg-opacity-80 rounded-full p-2 shadow-md z-10 disabled:opacity-50"
             aria-label="Next card"
           >
             <svg
@@ -311,12 +311,12 @@ const CardScroller: React.FC<CardScrollerProps> = ({ cards = [], swipeThreshold 
 
       {/* Card Indicator Dots */}
       {cards.length > 1 && (
-        <div className="absolute bottom-4 left-1/2 -translate-x-1/2 flex gap-2">
+        <div className="absolute bottom-4 left-1/2 -translate-x-1/2 flex flex-wrap justify-center gap-1 md:gap-2 max-w-full px-2">
           {cards.map((_, index) => (
             <div
               key={`indicator-${index}`}
-              className={`h-2 w-2 rounded-full ${
-                index === currentIndex ? 'bg-blue-500' : 'bg-gray-300'
+              className={`h-1.5 w-1.5 md:h-2 md:w-2 rounded-full transition-all duration-300 ${
+                index === currentIndex ? 'bg-blue-500 scale-125' : 'bg-gray-300'
               }`}
             />
           ))}

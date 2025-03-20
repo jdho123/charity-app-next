@@ -26,7 +26,7 @@ export default function CompletedCampaigns({
 
         <div className="px-4 overflow-visible mb-12">
           {completedCampaigns.length > 0 ? (
-            <div className="w-full h-[800px] md:h-[780px] overflow-visible">
+            <div className="w-full h-[780px] md:h-[780px] overflow-visible">
               <CampaignScroller campaigns={completedCampaigns} />
             </div>
           ) : (
