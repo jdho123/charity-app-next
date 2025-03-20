@@ -38,20 +38,30 @@ const socialLinks = [
 
 export default function Footer() {
   return (
-    <footer className="relative py-8 sm:py-12 overflow-hidden">
+    <footer className="relative items-center py-8 sm:py-12 overflow-hidden">
       {/* Background Image */}
       <div className="absolute inset-0 w-full h-full z-0">
-        <Image
-          src="/images/footerAlt.svg"
-          alt="Wavy background"
-          fill
-          className="object-cover"
-          priority
-        />
+        {1 ? (
+          <Image
+            src="/images/footerAlt.svg"
+            alt="Wavy background"
+            fill
+            className="object-cover"
+            priority
+          />
+        ) : (
+          <Image
+            src="/images/footer.png"
+            alt="Colorful wavy background"
+            fill
+            priority
+            className="object-cover object-center"
+          />
+        )}
       </div>
 
       {/* Main Content Container */}
-      <div className="container mx-auto px-4 relative z-10">
+      <div className="w-full px-4 relative z-10">
         <BlurryBox
           position="custom"
           customPosition="relative mx-auto"
