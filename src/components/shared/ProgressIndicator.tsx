@@ -38,7 +38,7 @@ const ProgressIndicator: React.FC<ProgressIndicatorProps> = ({
               <div
                 key={`step-${index}`}
                 className={`absolute w-3 h-3 top-1/2 -translate-y-1/2 rounded-full ${
-                  index < currentView ? 'bg-white' : 'bg-white/30'
+                  index < currentView ? 'bg-white' : 'bg-white'
                 }`}
                 style={{
                   left: `${position}%`,

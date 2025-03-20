@@ -4,7 +4,6 @@
 - [x] Add slider swipe mechanics
 - [x] fix mobile view of slider
 - [x] Add favicons
-- [] When the browser is in dark mode, a lot of the colours are messed up and parts of the website are very hard to see. Can we please make it the same/fixed for both the dark and bright mode of the website?
 - [x] ⁠The bottom part still looks a bit weird - is this after you have tried changing it as we discussed?
 - [] ⁠For now the news part, can we please leave just one article, just to have the template? It won’t be problem to add more articles in the future right?
 - [x] ⁠In the side bar can you please change complited to completed campaigns
@@ -43,3 +42,7 @@
   Our philosophy learn more —> Our philosophy part in the about us part
 
   Donate to the general fund and support the cause on the bottom part —> https://www.gofundme.com/f/raising-support-for-impact-schools-nepal?utm_medium=email&utm_source=product&utm_campaign=p_email%2Bhtml_summary_donations
+
+- [] Add email forms off
+- [x] make progress bar just white
+- [] Try and smooth out the svg
