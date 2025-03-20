@@ -1,22 +1,22 @@
-'use client'
+'use client';
 
-import Image from "next/image"
-import Link from "next/link"
+import Image from 'next/image';
+import Link from 'next/link';
 
 interface NewsCardProps {
-  id?: number
-  title?: string
-  image?: string
-  category?: string
-  url?: string
+  id?: number;
+  title?: string;
+  image?: string;
+  category?: string;
+  url?: string;
 }
 
-export default function NewsCard({ 
-  id = 1, 
-  title = "", 
-  image = "", 
-  category = "News", 
-  url = "#" 
+export default function NewsCard({
+  id = 1,
+  title = '',
+  image = '',
+  category = 'News',
+  url = '#',
 }: NewsCardProps) {
   // Use a link if URL or ID is provided, otherwise just render the card content
   const CardContent = () => (
@@ -26,19 +26,14 @@ export default function NewsCard({
         <div className="h-full w-full bg-white rounded-xl overflow-hidden">
           {image ? (
             <div className="relative h-full w-full">
-              <Image 
-                src={image} 
-                alt={title || "News image"}
-                fill
-                className="object-cover"
-              />
+              <Image src={image} alt={title || 'News image'} fill className="object-cover" />
             </div>
           ) : (
             <div className="h-full w-full bg-white"></div>
           )}
         </div>
       </div>
-      
+
       {/* Content section - right side */}
       <div className="w-2/3 p-5 flex flex-col justify-between">
         <div>
@@ -50,26 +45,26 @@ export default function NewsCard({
         </div>
       </div>
     </div>
-  )
+  );
 
   // If URL is provided, wrap in Link
-  if (url !== "#" || id > 1) {
-    const hrefUrl = url !== "#" ? url : `/news/${id}`
-    
+  if (url !== '#' || id > 1) {
+    const hrefUrl = url !== '#' ? url : `/newsletter/${id}`;
+
     return (
-      <Link 
+      <Link
         href={hrefUrl}
         className="block bg-[#D1CDBC] rounded-2xl overflow-hidden shadow-md hover:shadow-lg transition-shadow min-h-[140px] h-32"
       >
         <CardContent />
       </Link>
-    )
+    );
   }
-  
+
   // Otherwise return just the card
   return (
     <div className="bg-[#D1CDBC] rounded-2xl overflow-hidden shadow-md min-h-[140px] h-32">
       <CardContent />
     </div>
-  )
+  );
 }
