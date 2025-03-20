@@ -34,10 +34,9 @@
 - [x] Removing the double text on the brown questionnaire at the end
 - [] Could we please make the lamp and apple bigger and on the end of the completed part of the progress bar? So that in the final stage it is shining on the submit button?
 - [x] Syncing the new design of the fundraising widgets (Lera should update them with regards to the numbers as discussed yesterday)
-- [] ⁠⁠In the side bar can you please change complited to completed campaigns
 - [] ⁠Lera has added flowers to the bottom part of the about us scroll. Could you please update it?
 - [] ⁠On that page can we please make the white on the our journey so far the same as the visionary who returned home (going for the same colour as on the former)?
-- [] ⁠The school questionnaire, can the lamp be to the right of the progress bar and in the final stage shine on “submit” please?
+- [] ⁠The scool questionnaire, can the lamp be to the right of the progress bar and in the final stage shine on “submit” please?
 - [x] ⁠⁠Lera has created a design for the favicon as you asked. She sent it to the chat, please see if it suits.
 - [x] ⁠For the missing links, would this be a final step or could you please update Front page:
 
