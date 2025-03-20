@@ -51,17 +51,13 @@ const ProgressIndicator: React.FC<ProgressIndicatorProps> = ({
 
         {/* Progress image - positioned at discrete stops rather than continuous points */}
         <div
-          className="absolute transition-all duration-500 ease-in-out z-10 overflow-visible"
+          className="absolute top-0 transition-all duration-500 ease-in-out z-10 overflow-visible"
           style={{
-            top: '-24px', // Adjust based on your image size
             left: `${stagePosition}%`,
             transform: 'translateX(-50%)',
           }}
         >
-          {/* Fixed-size wrapper to maintain consistent dimensions */}
-          <div className="h-12 w-12 flex items-center justify-center">
-            {getProgressImage(currentView)}
-          </div>
+          {getProgressImage(currentView)}
         </div>
       </div>
     </div>
