@@ -14,7 +14,7 @@ const CampaignScroller: React.FC<CampaignScrollerProps> = ({ campaigns }) => {
   const campaignCards = campaigns.map((campaign) => (
     <div
       key={campaign.id}
-      className="w-full max-w-5xl mx-auto px-16 py-16 h-full flex items-center"
+      className="w-full max-sm:p-0 max-w-5xl mx-auto px-16 py-16 h-full flex items-center"
     >
       <CompletedCampaignCard campaign={campaign} />
     </div>

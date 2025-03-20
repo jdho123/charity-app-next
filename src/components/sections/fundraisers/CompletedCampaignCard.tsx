@@ -18,7 +18,7 @@ export default function CompletedCampaignCard({ campaign, onSeeMore }: Completed
   return (
     <div className="w-full flex flex-col h-full relative">
       {/* Celebration Cracker Image - top right */}
-      <div className="absolute -top-28 -right-36 w-80 h-80 z-10 pointer-events-none">
+      <div className="absolute -top-28 -right-36 w-80 h-80 max-md:hidden z-10 pointer-events-none">
         <Image
           src="/images/celebrationCracker.png"
           alt="Celebration"
@@ -35,7 +35,7 @@ export default function CompletedCampaignCard({ campaign, onSeeMore }: Completed
           alt="Thank you"
           width={300}
           height={150}
-          className="object-contain"
+          className="object-contain max-md:hidden"
         />
       </div>
 
@@ -54,7 +54,7 @@ export default function CompletedCampaignCard({ campaign, onSeeMore }: Completed
         </div>
 
         {/* Progress Bar */}
-        <div className="mb-6">
+        <div className="mb-6 max-md:hidden">
           <div className="flex items-center gap-2 mb-1">
             <span className="font-medium">Progress: 100%</span>
           </div>

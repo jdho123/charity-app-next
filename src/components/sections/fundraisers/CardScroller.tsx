@@ -1,7 +1,7 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 'use client';
 
-import React, { useState, useEffect, useRef, ReactNode, TouchEvent } from 'react';
+import React, { useState, useEffect, useRef, ReactNode, TouchEvent, MouseEvent } from 'react';
 
 type CardStatus = 'active' | 'entering-left' | 'entering-right' | 'exiting-left' | 'exiting-right';
 
@@ -25,10 +25,11 @@ const CardScroller: React.FC<CardScrollerProps> = ({ cards = [], swipeThreshold 
   const animationTimerRef = useRef<NodeJS.Timeout | null>(null);
   const cleanupTimerRef = useRef<NodeJS.Timeout | null>(null);
 
-  // Touch handling refs
+  // Touch and mouse handling refs
   const touchStartXRef = useRef<number | null>(null);
   const touchStartYRef = useRef<number | null>(null);
   const isSwipingRef = useRef<boolean>(false);
+  const isDraggingRef = useRef<boolean>(false);
 
   // Initialize visible cards on mount and when cards array changes
   useEffect(() => {
@@ -97,6 +98,10 @@ const CardScroller: React.FC<CardScrollerProps> = ({ cards = [], swipeThreshold 
     return () => {
       if (animationTimerRef.current) clearTimeout(animationTimerRef.current);
       if (cleanupTimerRef.current) clearTimeout(cleanupTimerRef.current);
+
+      // Clean up any mouse event listeners
+      document.removeEventListener('mousemove', handleMouseMove);
+      document.removeEventListener('mouseup', handleMouseUp);
     };
   }, [direction, cards.length]);
 
@@ -157,6 +162,64 @@ const CardScroller: React.FC<CardScrollerProps> = ({ cards = [], swipeThreshold 
     isSwipingRef.current = false;
   };
 
+  // Mouse event handlers for drag
+  const handleMouseDown = (e: MouseEvent<HTMLDivElement>): void => {
+    if (isAnimating || cards.length <= 1) return;
+
+    // Only track primary button clicks (left button)
+    if (e.button !== 0) return;
+
+    // Prevent default drag behavior
+    e.preventDefault();
+
+    touchStartXRef.current = e.clientX;
+    touchStartYRef.current = e.clientY;
+    isDraggingRef.current = true;
+
+    // Add global mouse event listeners
+    document.addEventListener('mousemove', handleMouseMove);
+    document.addEventListener('mouseup', handleMouseUp);
+  };
+
+  const handleMouseMove = (e: globalThis.MouseEvent): void => {
+    // Optional: Add visual dragging feedback here
+  };
+
+  const handleMouseUp = (e: globalThis.MouseEvent): void => {
+    if (!isDraggingRef.current || isAnimating || cards.length <= 1) return;
+
+    // Remove global event listeners
+    document.removeEventListener('mousemove', handleMouseMove);
+    document.removeEventListener('mouseup', handleMouseUp);
+
+    const mouseEndX = e.clientX;
+    const mouseEndY = e.clientY;
+
+    if (touchStartXRef.current === null) return;
+
+    const deltaX = mouseEndX - touchStartXRef.current;
+    const deltaY = mouseEndY - (touchStartYRef.current || 0);
+
+    // Check if horizontal drag is more significant than vertical
+    if (Math.abs(deltaX) > Math.abs(deltaY)) {
+      // Check if drag distance exceeds threshold
+      if (Math.abs(deltaX) >= swipeThreshold) {
+        if (deltaX > 0) {
+          // Dragged right -> go to previous card
+          goToPrevious();
+        } else {
+          // Dragged left -> go to next card
+          goToNext();
+        }
+      }
+    }
+
+    // Reset tracking
+    touchStartXRef.current = null;
+    touchStartYRef.current = null;
+    isDraggingRef.current = false;
+  };
+
   // Get the appropriate Tailwind classes based on card status
   const getCardClasses = (status: CardStatus): string => {
     const baseClasses =
@@ -186,10 +249,11 @@ const CardScroller: React.FC<CardScrollerProps> = ({ cards = [], swipeThreshold 
       {/* Cards Container with touch event handlers */}
       <div
         ref={containerRef}
-        className="relative w-full h-full touch-pan-y"
+        className="relative w-full h-full touch-pan-y cursor-grab active:cursor-grabbing"
         onTouchStart={handleTouchStart}
         onTouchMove={handleTouchMove}
         onTouchEnd={handleTouchEnd}
+        onMouseDown={handleMouseDown}
       >
         {visibleCards.map((card) => (
           <div key={card.id} className={getCardClasses(card.status)}>
@@ -204,7 +268,7 @@ const CardScroller: React.FC<CardScrollerProps> = ({ cards = [], swipeThreshold 
           <button
             onClick={goToPrevious}
             disabled={isAnimating}
-            className="absolute left-4 top-1/2 -translate-y-1/2 bg-white bg-opacity-80 rounded-full p-2 shadow-md z-10 disabled:opacity-50"
+            className="absolute max-sm:hidden left-4 top-1/2 -translate-y-1/2 bg-white bg-opacity-80 rounded-full p-2 shadow-md z-10 disabled:opacity-50"
             aria-label="Previous card"
           >
             <svg
@@ -225,7 +289,7 @@ const CardScroller: React.FC<CardScrollerProps> = ({ cards = [], swipeThreshold 
           <button
             onClick={goToNext}
             disabled={isAnimating}
-            className="absolute right-4 top-1/2 -translate-y-1/2 bg-white bg-opacity-80 rounded-full p-2 shadow-md z-10 disabled:opacity-50"
+            className="absolute max-sm:hidden right-4 top-1/2 -translate-y-1/2 bg-white bg-opacity-80 rounded-full p-2 shadow-md z-10 disabled:opacity-50"
             aria-label="Next card"
           >
             <svg
