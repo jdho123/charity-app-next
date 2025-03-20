@@ -1,6 +1,6 @@
-import Button from '@/components/shared/Button'
-import GeneralFundCard from './GeneralFundCard'
-import Link from 'next/link'
+import Button from '@/components/shared/Button';
+import GeneralFundCard from './GeneralFundCard';
+import Link from 'next/link';
 
 export default function GeneralFund() {
   return (
@@ -12,28 +12,31 @@ export default function GeneralFund() {
             <h1 className="text-6xl font-gloria text-[#B21414] leading-tight">
               Support Our Mission to Transform Lives
             </h1>
-            
+
             <div className="space-y-4">
               <p className="font-verdana text-base">
-                Your contribution directly impacts the lives of children by providing essential resources 
-                like Wi-Fi, books, and educational tools in underserved communities. Together, we can 
-                empower the next generation by opening doors to education, fostering hope, and 
-                inspiring change.
+                Your contribution directly impacts the lives of children by providing essential
+                resources like Wi-Fi, books, and educational tools in underserved communities.
+                Together, we can empower the next generation by opening doors to education,
+                fostering hope, and inspiring change.
               </p>
-              
+
               <p className="font-verdana text-base font-bold">
-                Every dollar counts. Join us in making a tangible difference—one child, one teacher, 
+                Every dollar counts. Join us in making a tangible difference—one child, one teacher,
                 one lesson at a time.
               </p>
             </div>
-            <Link href="/donate" className="inline-block">
-                <Button 
-                variant="primary" 
-                size="lg" 
+            <Link
+              href="https://www.gofundme.com/f/raising-support-for-impact-schools-nepal?utm_medium=email&utm_source=product&utm_campaign=p_email%2Bhtml_summary_donations"
+              className="inline-block"
+            >
+              <Button
+                variant="primary"
+                size="lg"
                 className="w-full max-w-md text-2xl font-gloria py-4 bg-[#B21414] rounded-full"
-                >
+              >
                 Donate to the General Fund
-                </Button>
+              </Button>
             </Link>
           </div>
 
@@ -48,5 +51,5 @@ export default function GeneralFund() {
         </div>
       </div>
     </section>
-  )
+  );
 }
