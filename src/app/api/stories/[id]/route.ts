@@ -199,23 +199,26 @@ const storyDetails: Record<number, (typeof stories)[0] & { content: ContentItem[
 
 export async function GET(
   request: NextRequest,
-  { params }: { params: { id: string } }
+  {
+    params,
+  }: {
+    params: Promise<{ id: string }>;
+  }
 ): Promise<NextResponse> {
+  const { id } = await params;
   // Handle invalid IDs (non-numeric or "undefined")
-  if (params.id === 'undefined' || isNaN(Number(params.id))) {
+  if (id === 'undefined' || isNaN(Number(id))) {
     const errorResponse = NextResponse.json({ error: 'Invalid story ID' }, { status: 400 });
     return corsHeaders(errorResponse);
   }
-
-  const id = Number(params.id);
-
+  const nId = Number(id);
   // Check if the story exists
-  if (!storyDetails[id]) {
+  if (!storyDetails[nId]) {
     const errorResponse = NextResponse.json({ error: 'Story not found' }, { status: 404 });
     return corsHeaders(errorResponse);
   }
 
-  const response = NextResponse.json(storyDetails[id]);
+  const response = NextResponse.json(storyDetails[nId]);
   return corsHeaders(response);
 }
 
