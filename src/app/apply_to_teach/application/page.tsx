@@ -110,7 +110,8 @@ export default function TeacherApplicationPage() {
                   className="flex items-center justify-center w-12 h-12"
                   style={{
                     position: 'relative',
-                    top: `-24px`,
+                    bottom: `-18px`, // ends up being 36px tall
+                    // transform: 'translateY(50%)',
                   }}
                 >
                   <Image

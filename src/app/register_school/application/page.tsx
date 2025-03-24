@@ -124,50 +124,29 @@ export default function SchoolRegistrationPage() {
             onSubmit={handleSubmit}
             onSuccess={handleSuccess}
             getProgressImage={(stage: number) => {
-              if (stage < 4) {
-                const imageSize = 48 + (stage - 1) * 50;
-                return (
-                  <div
-                    className="flex items-center justify-center transform-none"
-                    style={{
-                      position: 'relative',
-                      width: `${imageSize}px`,
-                      height: `${imageSize}px`,
-                      transform: `translateY(-${(3 * imageSize) / 4}px)`,
-                    }}
-                  >
-                    <Image
-                      src={`/progress/lamp/${stage - 1}.png`}
-                      alt="Progress"
-                      width={48 + (stage - 1) * 50}
-                      height={48 + (stage - 1) * 50}
-                      className=" h-full w-full"
-                    />
-                  </div>
-                );
-              } else {
-                // The immage is massively different so must make large changes
-                const imageSize = 48 + 170;
-                return (
-                  <div
-                    className="flex items-center justify-center transition-none"
-                    style={{
-                      position: 'relative',
-                      width: `${imageSize}px`,
-                      height: `${imageSize}px`,
-                      transform: `translateY(-${(2.5 * imageSize) / 4}px) translateX(40%)`,
-                    }}
-                  >
-                    <Image
-                      src={`/progress/lamp/3.png`}
-                      alt="Progress"
-                      width={48 + (stage - 1) * 50}
-                      height={48 + (stage - 1) * 50}
-                      className=" h-full w-full"
-                    />
-                  </div>
-                );
-              }
+              // Base size + growth factor based on stage
+              const baseSize = 48;
+              const growthFactor = (stage - 1) * 70;
+              const imageSize = baseSize + growthFactor;
+
+              return (
+                <div
+                  className="transition-all duration-500 ease-in-out"
+                  style={{
+                    width: `${imageSize}px`,
+                    height: `${imageSize}px`,
+                    transform: 'translateX(40%) translateY(10%)',
+                  }}
+                >
+                  <Image
+                    src={`/progress/lamp/${stage - 1}.png`}
+                    alt={`Progress Stage ${stage}`}
+                    width={500}
+                    height={500}
+                    className="h-full w-full object-contain transition-all duration-500"
+                  />
+                </div>
+              );
             }}
             backgroundColor="linear-gradient(180deg, #3D1809 0%, #6F4433 100%)"
             hundredPercentColour="#6F4433"

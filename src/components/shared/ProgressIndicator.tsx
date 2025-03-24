@@ -1,4 +1,4 @@
-import { ReactNode } from 'react';
+import { ReactNode, useEffect, useState } from 'react';
 
 interface ProgressIndicatorProps {
   progress: number;
@@ -16,6 +16,23 @@ const ProgressIndicator: React.FC<ProgressIndicatorProps> = ({
   // Calculate endpoints for safe image placement
   // Creates "stops" at each stage position instead of continuous tracking
   const stagePosition = ((currentView - 1) / (totalViews - 1)) * 100;
+
+  // Track the previous view to handle animations
+  const [prevView, setPrevView] = useState(currentView);
+  const [animating, setAnimating] = useState(false);
+
+  // Handle view changes
+  useEffect(() => {
+    if (currentView !== prevView) {
+      setAnimating(true);
+      const timer = setTimeout(() => {
+        setPrevView(currentView);
+        setAnimating(false);
+      }, 500); // Match this to your transition duration
+
+      return () => clearTimeout(timer);
+    }
+  }, [currentView, prevView]);
 
   return (
     <div className="flex items-center justify-center w-24 sm:w-32 md:w-48">
@@ -49,15 +66,18 @@ const ProgressIndicator: React.FC<ProgressIndicatorProps> = ({
           })}
         </div>
 
-        {/* Progress image - positioned at discrete stops rather than continuous points */}
+        {/* Progress image - positioned at discrete stops with size transition */}
         <div
-          className="absolute top-0 transition-all duration-500 ease-in-out z-10 overflow-visible"
+          className="absolute bottom-0 transition-all duration-500 ease-in-out z-10 overflow-visible"
           style={{
             left: `${stagePosition}%`,
             transform: 'translateX(-50%)',
           }}
         >
-          {getProgressImage(currentView)}
+          {/* This wrapper will handle the size transition */}
+          <div className="transition-all duration-500 ease-in-out transform origin-bottom">
+            {getProgressImage(currentView)}
+          </div>
         </div>
       </div>
     </div>
