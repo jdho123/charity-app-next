@@ -1,3 +1,4 @@
+import { corsHeaders } from '@/utils/cors';
 import { NextRequest, NextResponse } from 'next/server';
 
 // Basic story data for listings
@@ -196,34 +197,30 @@ const storyDetails: Record<number, (typeof stories)[0] & { content: ContentItem[
   },
 };
 
-// GET handler for a specific story by ID
-export async function GET(request: NextRequest): Promise<NextResponse> {
-  const context: { params: { id: string | number } } = {
-    params: {
-      id: 1,
-    },
-  };
+export async function GET(
+  request: NextRequest,
+  context: { params: { id: string } }
+): Promise<NextResponse> {
   // Handle invalid IDs (non-numeric or "undefined")
   if (context.params.id === 'undefined' || isNaN(Number(context.params.id))) {
-    return new NextResponse(JSON.stringify({ error: 'Invalid story ID' }), {
-      status: 400,
-      headers: {
-        'Content-Type': 'application/json',
-      },
-    });
+    const errorResponse = NextResponse.json({ error: 'Invalid story ID' }, { status: 400 });
+    return corsHeaders(errorResponse);
   }
 
   const id = Number(context.params.id);
 
   // Check if the story exists
   if (!storyDetails[id]) {
-    return new NextResponse(JSON.stringify({ error: 'Story not found' }), {
-      status: 404,
-      headers: {
-        'Content-Type': 'application/json',
-      },
-    });
+    const errorResponse = NextResponse.json({ error: 'Story not found' }, { status: 404 });
+    return corsHeaders(errorResponse);
   }
 
-  return NextResponse.json(storyDetails[id]);
+  const response = NextResponse.json(storyDetails[id]);
+  return corsHeaders(response);
+}
+
+// OPTIONS handler for CORS preflight requests
+export async function OPTIONS() {
+  const response = new NextResponse(null, { status: 204 });
+  return corsHeaders(response);
 }

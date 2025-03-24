@@ -1,3 +1,5 @@
+import { API_URL } from '@/env';
+import { corsHeaders } from '@/utils/cors';
 import { NextRequest, NextResponse } from 'next/server';
 
 // Basic story data for listings
@@ -313,12 +315,16 @@ const storyDetails = {
   },
 };
 
-// GET handler for listing all stories
 export async function GET() {
-  return NextResponse.json(stories);
+  const response = NextResponse.json(stories);
+  return corsHeaders(response);
 }
 
-// GET handler for a specific story by ID
+export async function OPTIONS() {
+  const response = new NextResponse(null, { status: 204 });
+  return corsHeaders(response);
+}
+
 export async function generateStaticParams() {
   return stories.map((story) => ({
     id: story.id.toString(),
