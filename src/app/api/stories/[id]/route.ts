@@ -199,15 +199,15 @@ const storyDetails: Record<number, (typeof stories)[0] & { content: ContentItem[
 
 export async function GET(
   request: NextRequest,
-  context: { params: { id: string } }
+  { params }: { params: { id: string } }
 ): Promise<NextResponse> {
   // Handle invalid IDs (non-numeric or "undefined")
-  if (context.params.id === 'undefined' || isNaN(Number(context.params.id))) {
+  if (params.id === 'undefined' || isNaN(Number(params.id))) {
     const errorResponse = NextResponse.json({ error: 'Invalid story ID' }, { status: 400 });
     return corsHeaders(errorResponse);
   }
 
-  const id = Number(context.params.id);
+  const id = Number(params.id);
 
   // Check if the story exists
   if (!storyDetails[id]) {
