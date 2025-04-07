@@ -7,7 +7,6 @@
 - [x] ⁠The bottom part still looks a bit weird - is this after you have tried changing it as we discussed?
 - [] ⁠For now the news part, can we please leave just one article, just to have the template? It won’t be problem to add more articles in the future right?
 - [x] ⁠In the side bar can you please change complited to completed campaigns
-- [] ⁠By updating newsletter did you mean the news page, or the news part of the front page? If the former, then the link right now doesn’t work.
 - [x] ⁠In the message below I have written where each link should lead to, could we please update that?
 
   - Our philosophy learn more —> Our philosophy part in the about us part
@@ -46,3 +45,6 @@
 - [] Add email forms off
 - [x] make progress bar just white
 - [] Try and smooth out the svg
+
+- [x] White bg for our journey so far
+- [] Flowers
