@@ -28,9 +28,7 @@ export default function HomePage() {
       <Goals />
 
       {/* Newsletter Section */}
-      <div className="bg-white min-h-screen">
-        <NewsSummaryDisplay />
-      </div>
+      <Newsletter />
 
       <ScrollToTop />
     </GuestLayout>

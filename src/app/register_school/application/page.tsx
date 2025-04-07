@@ -1,9 +1,9 @@
-"use client";
-import { useState } from "react";
-import { useRouter } from "next/navigation";
-import FullHeightLayout from "@/components/layout/FullHeightLayout";
-import MultiViewForm, { FormView } from "@/components/shared/MultiViewForm";
-import Image from "next/image";
+'use client';
+import { useState } from 'react';
+import { useRouter } from 'next/navigation';
+import FullHeightLayout from '@/components/layout/FullHeightLayout';
+import MultiViewForm, { FormView } from '@/components/shared/MultiViewForm';
+import Image from 'next/image';
 
 export default function SchoolRegistrationPage() {
   const router = useRouter();
@@ -11,82 +11,80 @@ export default function SchoolRegistrationPage() {
   // Define form views with proper typing
   const formViews: FormView[] = [
     {
-      title: "Basic Information",
+      title: 'Basic Information',
       fields: [
         {
-          id: "fullName",
-          label: "What is your full name?",
-          type: "text",
-          placeholder: "Your Answer",
+          id: 'fullName',
+          label: 'What is your full name?',
+          type: 'text',
+          placeholder: 'Your Answer',
           required: true,
         },
         {
-          id: "email",
-          label: "What is your email address?",
-          type: "email",
-          placeholder: "Your Answer",
+          id: 'email',
+          label: 'What is your email address?',
+          type: 'email',
+          placeholder: 'Your Answer',
           required: true,
         },
         {
-          id: "phone",
-          label: "What is your phone number?",
-          type: "tel",
-          placeholder: "Your Answer",
+          id: 'phone',
+          label: 'What is your phone number?',
+          type: 'tel',
+          placeholder: 'Your Answer',
           required: true,
         },
       ],
     },
     {
-      title: "Student Demographics",
+      title: 'Student Demographics',
       fields: [
         {
-          id: "ageRange",
-          label: "What is the age range?",
-          type: "text",
-          placeholder: "Your Answer",
+          id: 'ageRange',
+          label: 'What is the age range?',
+          type: 'text',
+          placeholder: 'Your Answer',
           required: true,
         },
         {
-          id: "genderRatio",
-          label: "What is their gender ratio?",
-          type: "text",
-          placeholder: "Your Answer",
+          id: 'genderRatio',
+          label: 'What is their gender ratio?',
+          type: 'text',
+          placeholder: 'Your Answer',
           required: true,
         },
       ],
     },
     {
-      title: "Educational Information",
+      title: 'Educational Information',
       fields: [
         {
-          id: "educationalDevelopment",
-          label:
-            "What is their level of educational development in specific subjects?",
-          type: "textarea",
-          placeholder: "Your Answer",
+          id: 'educationalDevelopment',
+          label: 'What is their level of educational development in specific subjects?',
+          type: 'textarea',
+          placeholder: 'Your Answer',
           required: true,
         },
         {
-          id: "teacherConsiderations",
-          label:
-            "Is there anything in particular that you would like the teacher be conscious of?",
-          type: "textarea",
-          placeholder: "Your Answer",
+          id: 'teacherConsiderations',
+          label: 'Is there anything in particular that you would like the teacher be conscious of?',
+          type: 'textarea',
+          placeholder: 'Your Answer',
           required: true,
         },
       ],
-    }
+    },
   ];
 
   // Initial form data
   const initialData = {
-    fullName: "",
-    email: "",
-    phone: "",
-    ageRange: "",
-    genderRatio: "",
-    educationalDevelopment: "",
-    teacherConsiderations: "",
+    fullName: '',
+    email: '',
+    phone: '',
+    ageRange: '',
+    genderRatio: '',
+    educationalDevelopment: '',
+    teacherConsiderations: '',
     termsAgreement: false,
     finalConfirmation: false,
   };
@@ -94,7 +92,7 @@ export default function SchoolRegistrationPage() {
   // Handle form submission
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   const handleSubmit = async (formData: Record<string, any>) => {
-    console.log("School registration form submitted:", formData);
+    console.log('School registration form submitted:', formData);
     // Handle submission (API call, etc.)
 
     // For now, just simulate an API call with a timeout
@@ -107,7 +105,7 @@ export default function SchoolRegistrationPage() {
 
   // Navigate to thank you page after successful submission
   const handleSuccess = () => {
-    router.push("/thank-you-school");
+    router.push('/thank-you-school');
   };
 
   return (
@@ -115,9 +113,7 @@ export default function SchoolRegistrationPage() {
       <div className="h-full flex flex-col">
         {/* Header */}
         <div className="py-6 text-center bg-[#3D1809]">
-          <h1 className="text-5xl text-white font-gloria">
-            Join as a School Partner
-          </h1>
+          <h1 className="text-5xl text-white font-gloria">Join as a School Partner</h1>
         </div>
 
         {/* Form Component */}
@@ -127,14 +123,31 @@ export default function SchoolRegistrationPage() {
             initialData={initialData}
             onSubmit={handleSubmit}
             onSuccess={handleSuccess}
-            getProgressImage={(stage: number) => (
-              <Image
-                src={`/progress/lamp/${Math.min(stage - 1, 3)}.png`}
-                alt="Progress"
-                width={48}
-                height={48}
-              />
-            )}
+            getProgressImage={(stage: number) => {
+              // Base size + growth factor based on stage
+              const baseSize = 48;
+              const growthFactor = (stage - 1) * 70;
+              const imageSize = baseSize + growthFactor;
+
+              return (
+                <div
+                  className="transition-all duration-500 ease-in-out"
+                  style={{
+                    width: `${imageSize}px`,
+                    height: `${imageSize}px`,
+                    transform: 'translateX(40%) translateY(10%)',
+                  }}
+                >
+                  <Image
+                    src={`/progress/lamp/${stage - 1}.png`}
+                    alt={`Progress Stage ${stage}`}
+                    width={500}
+                    height={500}
+                    className="h-full w-full object-contain transition-all duration-500"
+                  />
+                </div>
+              );
+            }}
             backgroundColor="linear-gradient(180deg, #3D1809 0%, #6F4433 100%)"
             hundredPercentColour="#6F4433"
             labelColor="white"

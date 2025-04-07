@@ -8,7 +8,7 @@ interface NewsBreadcrumbProps {
 export default function NewsBreadcrumb({ title }: NewsBreadcrumbProps) {
   return (
     <div className="flex items-center space-x-2 font-gloria mb-2">
-      <Link href="/news" className="hover:opacity-80">
+      <Link href="/newsletter" className="hover:opacity-80">
         <GloriaTitle as="span" size="xl" color="black">
           Our News
         </GloriaTitle>

@@ -1,4 +1,5 @@
 import { Campaign, CategoryItem } from '@/components/sections/fundraisers/types';
+import { corsHeaders } from '@/utils/cors';
 import { NextResponse } from 'next/server';
 
 const activeCampaigns: Campaign[] = [
@@ -106,10 +107,19 @@ const categories: CategoryItem[] = [
 ];
 
 export async function GET() {
-  // Return your campaign data
-  return NextResponse.json({
+  // Create the response
+  const response = NextResponse.json({
     active: activeCampaigns,
     completed: completedCampaigns,
     categories: categories,
   });
+
+  // Add CORS headers and return
+  return corsHeaders(response);
+}
+
+// OPTIONS handler for CORS preflight requests
+export async function OPTIONS() {
+  const response = new NextResponse(null, { status: 204 });
+  return corsHeaders(response);
 }
