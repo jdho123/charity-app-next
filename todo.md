@@ -18,8 +18,8 @@
 - [x] Would it be possible to please make sure that the menu button is visible even on black backgrounds?
 - [x] Lera is finalising now the design of the news page and I think we can bring it across at the beginning of next week, which also means we can fix the news part on the front page?
 - [x] The fundraiser designs have now been updated and can be uploaded please.
-- [] Lera has added flowers to the bottom part of the about us scroll.
-- [] On that page can we please make the white on the our journey so far the same as the visionary who returned home (going for the same colour as on the former)?
+- [x] Lera has added flowers to the bottom part of the about us scroll.
+- [x] On that page can we please make the white on the our journey so far the same as the visionary who returned home (going for the same colour as on the former)?
 - [x] Can we also please blend the blacks into the same colour going into how we teach: our approach - on front page
 - [x] You noticed that the side bar was slightly jumpy and wanted to have a look into it.
 - [x] I have asked Lera about the completed campaigns question you had and will keep you updated on that and also about the logo icon - I will keep you updated on that.
@@ -32,8 +32,8 @@
 - [x] Removing the double text on the brown questionnaire at the end
 - [x] Could we please make the lamp and apple bigger and on the end of the completed part of the progress bar? So that in the final stage it is shining on the submit button?
 - [x] Syncing the new design of the fundraising widgets (Lera should update them with regards to the numbers as discussed yesterday)
-- [] ⁠Lera has added flowers to the bottom part of the about us scroll. Could you please update it?
-- [] ⁠On that page can we please make the white on the our journey so far the same as the visionary who returned home (going for the same colour as on the former)?
+- [x] ⁠Lera has added flowers to the bottom part of the about us scroll. Could you please update it?
+- [x] ⁠On that page can we please make the white on the our journey so far the same as the visionary who returned home (going for the same colour as on the former)?
 - [x] ⁠The scool questionnaire, can the lamp be to the right of the progress bar and in the final stage shine on “submit” please?
 - [x] ⁠⁠Lera has created a design for the favicon as you asked. She sent it to the chat, please see if it suits.
 - [x] ⁠For the missing links, would this be a final step or could you please update Front page:
@@ -47,4 +47,4 @@
 - [] Try and smooth out the svg
 
 - [x] White bg for our journey so far
-- [] Flowers
+- [x] Flowers
