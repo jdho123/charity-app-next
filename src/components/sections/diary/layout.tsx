@@ -25,66 +25,71 @@ export default function OpenDiaryLayout({
   nextLabel = 'Next Page',
   backgroundImage,
 }: OpenDiaryLayoutProps) {
-  // useEffect(() => {
-  //   [...Array(19).keys()].forEach((i) => {
-  //     const img = new window.Image();
-  //     img.src = `/images/bookpages/${i}.png`; // Browsers will fetch & cache
-  //   });
-  // }, []);
-
   const router = useRouter();
-  // Use our custom hook with a custom breakpoint of 1000px
   const { isMobile, isClient } = useClientOnly(1000);
 
   const [isAnimating, setIsAnimating] = useState(false);
-  const [pageIndex, setPageIndex] = useState(0);
 
+  // This will be our “current frame index.”
+  const [pageIndex, setPageIndex] = useState(0);
   const maxPageIndex = 18;
 
+  /**
+   * Animate turning the page, updating pageIndex from 0..18 or 18..0
+   * and then navigate away.
+   */
   const animateAndNavigate = (href: string, reverse: boolean = false) => {
     if (isAnimating) return;
-
     setIsAnimating(true);
 
+    // If reversing, start at maxPageIndex and go down;
+    // otherwise start at 0 and go up.
     if (reverse) setPageIndex(maxPageIndex);
+
     let index = reverse ? maxPageIndex : 0;
 
+    // Give text some time to fade out (300 ms),
+    // then animate frames every 50 ms (or 20 ms, as you had before).
     setTimeout(() => {
       const interval = setInterval(() => {
         setPageIndex(index);
         index += reverse ? -1 : 1;
-        //setPageIndex((prev) => prev + (reverse ? -1 : 1));
-        if (reverse ? index <= 0 : index >= maxPageIndex) {
+
+        const done = reverse ? index < 0 : index > maxPageIndex;
+        if (done) {
           clearInterval(interval);
           router.push(href);
         }
-      }, 20); // Adjust timing for how fast you want each frame
-    }, 300); // Matches CSS fade-out duration
+      }, 50); // Adjust to your taste (20ms might be too fast to see a crossfade)
+    }, 300);
   };
 
+  // Guard for mobile devices -> redirect
   useEffect(() => {
-    // Only redirect if we're on the client AND it's a mobile device
     if (isClient && isMobile) {
       router.push('/diary');
     }
   }, [isMobile, router, isClient]);
 
-  // Show loading or nothing during SSR
+  // SSR guard
   if (!isClient) {
-    return <div className="min-h-screen bg-[#D8B29A]"></div>;
+    return <div className="min-h-screen bg-[#D8B29A]" />;
   }
 
   if (isMobile) {
-    return null; // Will redirect via useEffect
+    return null; // We'll redirect in the effect above
   }
 
   return (
     <FullHeightLayout>
       <div className="flex flex-col items-center justify-center min-h-screen bg-[#D8B29A] p-4">
-        {/* Open Diary Layout with background image */}
         <div className="relative w-full max-w-5xl mx-auto">
           <div className="w-full aspect-[3/2] relative">
-            {/* Background diary image */}
+            {/* 
+              Main diary background (static).
+              When not animating, use the normal background image.
+              When animating, you could swap to an "open" image if you wish.
+            */}
             <Image
               src={!isAnimating ? backgroundImage : '/images/bookpages/open.png'}
               alt="Diary background"
@@ -93,29 +98,54 @@ export default function OpenDiaryLayout({
               priority
             />
 
-            {/* Content overlay - positioned to match the diary pages */}
-            <div className="absolute inset-0 flex">
+            {/* 
+              Our absolute overlay for text + frames 
+            */}
+            <div className="absolute flex overflow-hidden">
+              {/* Left page content (fade out during animation) */}
               <div
                 className="w-1/2 pt-28 pb-20 pl-12 flex flex-col"
-                style={{ transition: 'opacity 0.3s ease', opacity: Number(!isAnimating) }}
+                style={{
+                  transition: 'opacity 0.3s ease',
+                  // Using Number(...) trick sets opacity 1 or 0
+                  opacity: Number(!isAnimating),
+                }}
               >
                 {leftPageContent}
               </div>
+
+              {/* Right page content (fade out during animation) */}
               <div
                 className="w-1/2 pt-28 pb-20 pr-12 flex flex-col"
-                style={{ transition: 'opacity 0.3s ease', opacity: Number(!isAnimating) }}
+                style={{
+                  transition: 'opacity 0.3s ease',
+                  opacity: Number(!isAnimating),
+                }}
               >
                 {rightPageContent}
               </div>
-              <Image
-                src={`/images/bookpages/${pageIndex}.png`}
-                key={pageIndex}
-                alt="Turning page"
-                fill
-                className="object-contain"
-                style={{ transition: 'opacity 0.3s ease', opacity: Number(isAnimating) }}
-                priority
-              />
+
+              {/* 
+                RENDER ALL FRAMES AT ONCE so they are preloaded:
+                - Each frame is absolutely positioned,
+                - Only the current "pageIndex" frame is visible with opacity=1,
+                  the others stay at 0.
+                - The CSS transition on opacity does the crossfade.
+              */}
+              {Array.from({ length: maxPageIndex + 1 }, (_, i) => (
+                <Image
+                  key={i}
+                  src={`/images/bookpages/${i}.png`}
+                  alt={`Turning page ${i}`}
+                  fill
+                  className="pointer-events-none absolute top-[-20%] scale-x-110 scale-y-125"
+                  style={{
+                    transition: 'opacity 0.1s ease',
+                    opacity: Number(isAnimating) && (i === pageIndex ? 1 : 0),
+                  }}
+                  priority
+                />
+              ))}
             </div>
           </div>
 
