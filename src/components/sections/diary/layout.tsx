@@ -28,6 +28,8 @@ export default function OpenDiaryLayout({
   const router = useRouter();
   const { isMobile, isClient } = useClientOnly(1000);
 
+  const [mobileViewStep, setMobileViewStep] = useState(0); // only used on mobile
+
   const [isAnimating, setIsAnimating] = useState(false);
 
   // This will be our “current frame index.”
@@ -40,105 +42,115 @@ export default function OpenDiaryLayout({
    */
   const animateAndNavigate = (href: string, reverse: boolean = false) => {
     if (isAnimating) return;
+
+    // // On mobile: first click slides to right page
+    // if (isMobile && mobileViewStep === 0) {
+    //   setMobileViewStep(1);
+    //   return;
+    // }
+
+    // // On mobile: second click triggers animation and navigation
+    // if (isMobile && mobileViewStep === 1) {
+    //   setMobileViewStep(2); // freeze interaction
+    // }
+
     setIsAnimating(true);
-
-    // If reversing, start at maxPageIndex and go down;
-    // otherwise start at 0 and go up.
     if (reverse) setPageIndex(maxPageIndex);
-
     let index = reverse ? maxPageIndex : 0;
 
-    // Give text some time to fade out (300 ms),
-    // then animate frames every 50 ms (or 20 ms, as you had before).
     setTimeout(() => {
       const interval = setInterval(() => {
         setPageIndex(index);
         index += reverse ? -1 : 1;
 
-        const done = reverse ? index < 0 : index > maxPageIndex;
-        if (done) {
+        if (reverse ? index < 0 : index > maxPageIndex) {
           clearInterval(interval);
           router.push(href);
         }
-      }, 50); // Adjust to your taste (20ms might be too fast to see a crossfade)
+      }, 50);
     }, 300);
   };
 
   // Guard for mobile devices -> redirect
-  useEffect(() => {
-    if (isClient && isMobile) {
-      router.push('/diary');
-    }
-  }, [isMobile, router, isClient]);
+  // useEffect(() => {
+  //   if (isClient && isMobile) {
+  //     router.push('/diary');
+  //   }
+  // }, [isMobile, router, isClient]);
 
   // SSR guard
   if (!isClient) {
     return <div className="min-h-screen bg-[#D8B29A]" />;
   }
 
-  if (isMobile) {
-    return null; // We'll redirect in the effect above
-  }
+  // if (isMobile) {
+  //   return null; // We'll redirect in the effect above
+  // }
 
   return (
     <FullHeightLayout>
       <div className="flex flex-col items-center justify-center min-h-screen bg-[#D8B29A] p-4">
         <div className="relative w-full max-w-5xl mx-auto">
-          <div className="w-full aspect-[3/2] relative">
-            {/* 
-              Main diary background (static).
-              When not animating, use the normal background image.
-              When animating, you could swap to an "open" image if you wish.
-            */}
-            <Image
-              src={!isAnimating ? backgroundImage : '/images/bookpages/open.png'}
-              alt="Diary background"
-              fill
-              className="object-contain"
-              priority
-            />
-
-            {/* 
-              Our absolute overlay for text + frames 
-            */}
-            <div className="absolute flex overflow-hidden">
-              {/* Left page content (fade out during animation) */}
-              <div
-                className="w-1/2 pt-28 pb-20 pl-12 flex flex-col"
-                style={{
-                  transition: 'opacity 0.3s ease',
-                  // Using Number(...) trick sets opacity 1 or 0
-                  opacity: Number(!isAnimating),
-                }}
-              >
-                {leftPageContent}
+          {/* Mobile crops only 1 page at a time */}
+          <div
+            className={`relative ${
+              isMobile ? 'w-screen overflow-hidden h-[80vh]' : 'w-full aspect-[3/2]'
+            }`}
+          >
+            {/* 👇 Sliding container holds EVERYTHING that should move (bg + text + frames) */}
+            <div
+              className={`absolute top-0 left-0 h-full flex transition-transform duration-500 ease-in-out ${
+                isMobile && mobileViewStep === 1 ? '-translate-x-[100vw]' : 'translate-x-0'
+              } ${isMobile ? 'w-[200vw]' : 'w-full'}`}
+            >
+              {/* ✅ Background image covers full 200vw area */}
+              <div className="absolute inset-0 z-0">
+                <Image
+                  src={!isAnimating ? backgroundImage : '/images/bookpages/open.png'}
+                  alt="Diary background"
+                  fill
+                  className={isMobile ? 'object-cover' : 'object-contain'}
+                  priority
+                />
               </div>
 
-              {/* Right page content (fade out during animation) */}
-              <div
-                className="w-1/2 pt-28 pb-20 pr-12 flex flex-col"
-                style={{
-                  transition: 'opacity 0.3s ease',
-                  opacity: Number(!isAnimating),
-                }}
-              >
-                {rightPageContent}
+              {/* ✅ Text + overlay content (aligned with background) */}
+              <div className={`relative z-10 flex ${isMobile ? 'w-[200vw]' : 'w-full'}`}>
+                {/* LEFT PAGE */}
+                <div
+                  className={`${isMobile ? 'w-screen' : 'w-1/2'} ${
+                    isMobile ? 'pt-16 pb-16 px-6' : 'pt-28 pb-20 pl-12'
+                  } flex flex-col justify-start`}
+                  style={{
+                    transition: 'opacity 0.3s ease',
+                    opacity: Number(!isAnimating),
+                  }}
+                >
+                  {leftPageContent}
+                </div>
+
+                {/* RIGHT PAGE */}
+                <div
+                  className={`${isMobile ? 'w-screen' : 'w-1/2'} ${
+                    isMobile ? 'pt-16 pb-16 px-6' : 'pt-28 pb-20 pr-12'
+                  } flex flex-col justify-start`}
+                  style={{
+                    transition: 'opacity 0.3s ease',
+                    opacity: Number(!isAnimating),
+                  }}
+                >
+                  {rightPageContent}
+                </div>
               </div>
 
-              {/* 
-                RENDER ALL FRAMES AT ONCE so they are preloaded:
-                - Each frame is absolutely positioned,
-                - Only the current "pageIndex" frame is visible with opacity=1,
-                  the others stay at 0.
-                - The CSS transition on opacity does the crossfade.
-              */}
+              {/* ✅ Animated page-turn frames (overlayed at highest z-index) */}
               {Array.from({ length: maxPageIndex + 1 }, (_, i) => (
                 <Image
                   key={i}
                   src={`/images/bookpages/${i}.png`}
                   alt={`Turning page ${i}`}
                   fill
-                  className="pointer-events-none absolute top-[-20%] scale-x-110 scale-y-125"
+                  className="pointer-events-none absolute top-[-20%] scale-x-110 scale-y-125 object-contain z-20"
                   style={{
                     transition: 'opacity 0.1s ease',
                     opacity: Number(isAnimating) && (i === pageIndex ? 1 : 0),
@@ -149,17 +161,43 @@ export default function OpenDiaryLayout({
             </div>
           </div>
 
-          {/* Navigation buttons */}
+          {/* NAVIGATION BUTTONS */}
           <div className="flex justify-between w-full mt-4">
             <button
-              onClick={() => animateAndNavigate(prevHref, true)}
+              onClick={() => {
+                if (isAnimating) return;
+                if (isMobile) {
+                  if (mobileViewStep === 1) {
+                    // From right page → back to left
+                    setMobileViewStep(0);
+                    return;
+                  } else {
+                    // On left page → animate reverse
+                    animateAndNavigate(prevHref, true);
+                    return;
+                  }
+                }
+                animateAndNavigate(prevHref, true);
+              }}
               className="px-4 py-2 bg-amber-800 text-white rounded hover:bg-amber-700"
             >
               {prevLabel}
             </button>
+
             {nextHref && (
               <button
-                onClick={() => animateAndNavigate(nextHref)}
+                onClick={() => {
+                  if (isAnimating) return;
+                  if (isMobile) {
+                    if (mobileViewStep === 0) {
+                      // From left page → go to right
+                      setMobileViewStep(1);
+                      return;
+                    }
+                    // From right page → animate forward
+                  }
+                  animateAndNavigate(nextHref);
+                }}
                 className="px-4 py-2 bg-amber-800 text-white rounded hover:bg-amber-700"
               >
                 {nextLabel}
