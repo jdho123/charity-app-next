@@ -3,9 +3,10 @@ const nextConfig = {
   output: 'standalone',
   env: {
     BLOB_READ_WRITE_TOKEN: process.env.BLOB_READ_WRITE_TOKEN,
+    NEXT_PUBLIC_BLOB_STORE_DOMAIN: process.env.NEXT_PUBLIC_BLOB_STORE_DOMAIN,
   },
   images: {
-    domains: ['0la1uvc3qcxl8npj.public.blob.vercel-storage.com'],
+    domains: ['btgflyxste3cgojj.public.blob.vercel-storage.com'],
     remotePatterns: [
       {
         protocol: 'https',
