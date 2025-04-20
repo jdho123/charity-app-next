@@ -10,9 +10,9 @@ import {
 import { ActiveCampaign, CompletedCampaign } from '@/types/campaignTypes';
 
 // Get a campaign by ID
-export async function GET(request: NextRequest, { params }: { params: { id: string } }) {
+export async function GET(request: NextRequest, { params }: { params: Promise<{ id: string }> }) {
   try {
-    const id = Number(params.id);
+    const id = Number((await params).id);
 
     if (isNaN(id)) {
       const errorResponse = NextResponse.json({ error: 'Invalid campaign ID' }, { status: 400 });

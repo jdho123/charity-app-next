@@ -3,9 +3,9 @@ import { NextRequest, NextResponse } from 'next/server';
 import { markCampaignCompleted } from '@/services/campaignService';
 
 // Mark a campaign as completed
-export async function POST(request: NextRequest, context: { params: { id: string } }) {
+export async function POST(request: NextRequest, { params }: { params: Promise<{ id: string }> }) {
   try {
-    const id = Number(context.params.id);
+    const id = Number((await params).id);
 
     if (isNaN(id)) {
       const errorResponse = NextResponse.json({ error: 'Invalid campaign ID' }, { status: 400 });
