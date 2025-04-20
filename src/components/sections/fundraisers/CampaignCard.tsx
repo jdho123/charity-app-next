@@ -76,7 +76,7 @@ export default function CampaignCard({
 
       {/* Donate Button - Outside the card */}
       <Link
-        href={link || '/donate'}
+        href={link || '/fundraisers'}
         onClick={
           onDonate
             ? (e) => {

@@ -45,11 +45,7 @@ export default function Menu() {
     { href: '/fundraisers#completed-campaigns', text: 'Completed Campaigns' },
   ];
 
-  const newsLinks = [
-    { href: '/latest-news', text: 'Latest News' },
-    { href: '/all-news', text: 'All News' },
-    { href: '/mission-updates', text: 'Mission Updates' },
-  ];
+  const newsLinks = [{ href: '/newsletter', text: 'Latest News' }];
 
   const socialLinks = [
     { href: 'https://facebook.com', component: Facebook, label: 'Facebook' },
@@ -206,7 +202,7 @@ export default function Menu() {
           {/* CTA Buttons */}
           <div className="space-y-3 mt-4">
             <Link
-              href="/donate"
+              href="/fundraisers"
               className="inline-flex items-center justify-between bg-white border border-gray-300 rounded-full px-6 py-2 text-lg font-gloria text-black hover:shadow-lg transition-shadow w-full"
               onClick={closeMenu}
             >

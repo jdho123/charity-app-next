@@ -110,7 +110,7 @@ export default function Newsletter() {
                   <h4 className="text-2xl font-gloria mb-4">{stories[0].title}</h4>
                   <div className="flex justify-end">
                     <Link
-                      href={`/news/${stories[0].id}`}
+                      href={`/newsletter/${stories[0].id}`}
                       className="text-black font-bold hover:underline inline-flex items-center"
                     >
                       Read More&gt;&gt;&gt;

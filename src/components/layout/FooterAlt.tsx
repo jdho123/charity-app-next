@@ -14,11 +14,7 @@ const aboutLinks = [
   { href: '/about#beginnings', text: 'Our Journey' },
 ];
 
-const newsLinks = [
-  { href: '/latest-news', text: 'Latest News' },
-  { href: '/all-news', text: 'All News' },
-  { href: '/mission-updates', text: 'Mission Updates' },
-];
+const newsLinks = [{ href: '/newsletter', text: 'Latest News' }];
 
 const fundraiserLinks = [
   { href: '/fundraisers#general-fund', text: 'General Fund' },
@@ -134,7 +130,7 @@ export default function Footer() {
               {/* Right column - CTA buttons */}
               <div className="flex-1 flex flex-col space-y-4">
                 <Link
-                  href="/donate"
+                  href="/fundraisers"
                   className="inline-flex items-center justify-between bg-white rounded-full px-4 py-2 text-base font-handwriting text-black hover:shadow-lg transition-shadow"
                 >
                   <span>Support the Cause</span>
@@ -348,7 +344,7 @@ export default function Footer() {
                 {/* CTA Buttons */}
                 <div className="space-y-4">
                   <Link
-                    href="/donate"
+                    href="/fundraisers"
                     className="inline-flex items-center justify-between bg-white rounded-full px-6 py-3 text-lg font-handwriting text-black hover:shadow-lg transition-shadow w-full"
                   >
                     <span>Support the Cause</span>

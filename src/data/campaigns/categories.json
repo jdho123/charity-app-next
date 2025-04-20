@@ -1,0 +1,30 @@
+[
+  {
+    "name": "Books",
+    "color": "bg-[#C6F0A8]"
+  },
+  {
+    "name": "Wi-Fi",
+    "color": "bg-[#B9C0FA]"
+  },
+  {
+    "name": "Sport",
+    "color": "bg-[#FFEF9A]"
+  },
+  {
+    "name": "Music",
+    "color": "bg-[#FFBC92]"
+  },
+  {
+    "name": "Technology",
+    "color": "bg-[#D8BFD8]"
+  },
+  {
+    "name": "Infrastructure",
+    "color": "bg-[#F5F5DC]"
+  },
+  {
+    "name": "Teacher Training",
+    "color": "bg-[#E0FFFF]"
+  }
+]

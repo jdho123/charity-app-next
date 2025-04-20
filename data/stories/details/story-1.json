@@ -1,0 +1,18 @@
+[
+  {
+    "type": "image",
+    "id": "main-image",
+    "src": "/images/solarPanels.jpeg",
+    "alt": "Solar panels being installed at an impact school"
+  },
+  {
+    "type": "title",
+    "id": "main-title",
+    "content": "Solar Panels Installed at Impact Schools"
+  },
+  {
+    "type": "text",
+    "id": "intro-text",
+    "content": "We're proud to announce the successful installation of solar panels across five of our impact schools, providing clean, renewable energy and reducing operational costs that can be redirected to educational resources."
+  }
+]

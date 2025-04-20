@@ -1,0 +1,38 @@
+[
+  {
+    "id": 1,
+    "title": "Solar Panels Installed at Impact Schools",
+    "excerpt": "Bringing sustainable energy solutions to our partner schools...",
+    "date": "09/01/2025",
+    "image": "/images/solarPanels.jpeg",
+    "category": "Latest News",
+    "readTime": 5
+  },
+  {
+    "id": 2,
+    "title": "New Teaching Program Launches",
+    "excerpt": "Expanding our reach with innovative teaching methods...",
+    "date": "08/15/2025",
+    "image": "/images/teaching.jpeg",
+    "category": "News",
+    "readTime": 4
+  },
+  {
+    "id": 3,
+    "title": "Student Success Stories",
+    "excerpt": "Meet the students whose lives have been transformed...",
+    "date": "08/01/2025",
+    "image": "/images/students.jpeg",
+    "category": "News",
+    "readTime": 6
+  },
+  {
+    "id": 4,
+    "title": "Community Partnership Expands",
+    "excerpt": "New collaboration with local businesses creates opportunities...",
+    "date": "07/20/2025",
+    "image": "/images/community.jpeg",
+    "category": "News",
+    "readTime": 3
+  }
+]

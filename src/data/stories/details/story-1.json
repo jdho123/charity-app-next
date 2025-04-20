@@ -1,0 +1,85 @@
+[
+  {
+    "type": "image",
+    "id": "main-image",
+    "src": "/images/solarPanels.jpeg",
+    "alt": "Solar panels being installed at an impact school"
+  },
+  {
+    "type": "title",
+    "id": "main-title",
+    "content": "Solar Panels Installed at Impact Schools"
+  },
+  {
+    "type": "text",
+    "id": "intro-text",
+    "content": "We're proud to announce the successful installation of solar panels across five of our impact schools, providing clean, renewable energy and reducing operational costs that can be redirected to educational resources."
+  },
+  {
+    "type": "row",
+    "id": "image-text-row",
+    "content": [
+      {
+        "type": "column",
+        "id": "image-column",
+        "content": [
+          {
+            "type": "image",
+            "id": "detail-image",
+            "src": "/images/solar-installation.jpeg",
+            "alt": "Close-up of solar panel installation"
+          }
+        ]
+      },
+      {
+        "type": "column",
+        "id": "text-column",
+        "content": [
+          {
+            "type": "text",
+            "id": "detail-text",
+            "content": "The solar panel project was completed in partnership with GreenEnergy Solutions, who provided technical expertise and installation services. Each school received a 10kW system capable of generating approximately 40% of the school's electricity needs. This initiative is part of our broader commitment to environmental sustainability and reducing the carbon footprint of educational institutions in our network."
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "type": "title",
+    "id": "benefits-title",
+    "content": "Headline 2"
+  },
+  {
+    "type": "text",
+    "id": "benefits-text",
+    "content": "Beyond the environmental benefits, this project serves as an educational opportunity for students, who can learn about renewable energy and sustainability through real-world application. Teachers have already incorporated the solar installation into science and environmental studies curricula, helping students understand the importance of clean energy for our future."
+  },
+  {
+    "type": "row",
+    "id": "single-column-row",
+    "content": [
+      {
+        "type": "column",
+        "id": "single-column",
+        "content": [
+          {
+            "type": "image",
+            "id": "students-image",
+            "src": "/images/students-learning.jpeg",
+            "alt": "Students learning about solar energy"
+          },
+          {
+            "type": "text",
+            "id": "image-caption",
+            "content": "Students learning about solar energy during a classroom demonstration"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "type": "text",
+    "id": "conclusion-text",
+    "content": "This initiative is just the beginning. We plan to expand the solar program to all schools in our network over the next three years, creating a more sustainable and cost-effective educational environment for communities that need it most."
+  }
+]

@@ -38,8 +38,11 @@ function ColumnRenderer({ content }: ColumnTag) {
 
 // Render row content
 function RowRenderer({ content }: RowTag) {
+  // If there's only one column, make it full width
+  const isSingleColumn = content.length === 1;
+
   return (
-    <div className="flex flex-col md:flex-row gap-6 my-6">
+    <div className={`flex flex-col ${isSingleColumn ? '' : 'md:flex-row'} gap-6 my-6`}>
       {content.map((item, index) => (
         <ContentRenderer key={item.id || `row-item-${index}`} tag={item} />
       ))}

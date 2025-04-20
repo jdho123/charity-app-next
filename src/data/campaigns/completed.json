@@ -1,0 +1,41 @@
+[
+  {
+    "id": 6,
+    "title": "Books for Bright Minds",
+    "goal": 500,
+    "raised": 500,
+    "imageUrl": "/images/sunnyDayGroupPhoto.jpeg",
+    "description": "Thanks to your incredible support, we successfully provided a new collection of books to Impact Schools, inspiring a love for reading among children.\n\nAll funds were used to purchase age-appropriate reading materials for five schools in our network, benefiting over 1,200 students.",
+    "status": "completed",
+    "message": "Thank you for your generous support!",
+    "bgColour": "bg-[#E8F4FF]",
+    "category": "Books",
+    "fundLink": "/impact"
+  },
+  {
+    "id": 7,
+    "title": "Music Program Funding",
+    "goal": 800,
+    "raised": 800,
+    "imageUrl": "/images/sunnyDayGroupPhoto.jpeg",
+    "description": "With your help, we've been able to start a music program in five schools, providing instruments and qualified teachers.\n\nThe new music program has already shown positive results, with students demonstrating improved concentration and engagement in other subject areas as well.",
+    "status": "completed",
+    "message": "Music brings joy to our schools!",
+    "bgColour": "bg-[#FFF0DB]",
+    "category": "Music",
+    "fundLink": "/impact"
+  },
+  {
+    "id": 8,
+    "title": "Technology Lab Campaign",
+    "goal": 1500,
+    "raised": 1500,
+    "imageUrl": "/images/sunnyDayGroupPhoto.jpeg",
+    "description": "Our technology lab campaign has successfully raised funds to equip three schools with modern computer labs.\n\nStudents now have access to educational software and resources that prepare them for an increasingly digital world. Teachers report increased student engagement and improved learning outcomes.",
+    "status": "completed",
+    "message": "Bridging the digital divide, one school at a time!",
+    "bgColour": "bg-[#D6F5E3]",
+    "category": "Wi-Fi",
+    "fundLink": "/impact"
+  }
+]

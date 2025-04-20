@@ -1,0 +1,57 @@
+[
+  {
+    "id": 1,
+    "title": "Books for Schools",
+    "goal": 500,
+    "raised": 375,
+    "imageUrl": "/images/books.png",
+    "description": "Access to educational materials is essential for nurturing young minds and fostering creativity. This fundraiser will help provide books for children in remote areas, creating opportunities for growth and learning.",
+    "status": "active",
+    "fundLink": "https://google.com",
+    "category": "Books"
+  },
+  {
+    "id": 2,
+    "title": "Wi-Fi for Learning",
+    "goal": 1000,
+    "raised": 450,
+    "imageUrl": "/images/wifi-campaign.jpg",
+    "description": "Internet access is crucial for modern education. This campaign aims to provide reliable Wi-Fi connections for schools in underserved communities.",
+    "status": "active",
+    "fundLink": "https://google.com",
+    "category": "Wi-Fi"
+  },
+  {
+    "id": 3,
+    "title": "Sports Equipment",
+    "goal": 750,
+    "raised": 300,
+    "imageUrl": "/images/sport-campaign.jpg",
+    "description": "Physical education is an important part of child development. Help us provide sports equipment to schools that lack proper facilities.",
+    "status": "active",
+    "fundLink": "https://google.com",
+    "category": "Sport"
+  },
+  {
+    "id": 4,
+    "title": "Musical Instruments",
+    "goal": 1200,
+    "raised": 480,
+    "imageUrl": "/images/books.png",
+    "description": "Music education enhances cognitive development and provides creative outlets for students. This campaign will help purchase instruments for schools without music programs.",
+    "status": "active",
+    "fundLink": "https://google.com",
+    "category": "Music"
+  },
+  {
+    "id": 5,
+    "title": "Teacher Training",
+    "goal": 2000,
+    "raised": 1200,
+    "imageUrl": "/images/wifi-campaign.jpg",
+    "description": "Professional development for teachers directly impacts student success. Support our campaign to provide specialized training to educators in underserved communities.",
+    "status": "active",
+    "fundLink": "https://google.com",
+    "category": "Books"
+  }
+]

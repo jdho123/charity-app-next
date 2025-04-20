@@ -1,124 +1,100 @@
-import { Campaign, CategoryItem } from '@/components/sections/fundraisers/types';
+// app/api/campaigns/route.ts
+
 import { corsHeaders } from '@/utils/cors';
-import { NextResponse } from 'next/server';
+import { NextRequest, NextResponse } from 'next/server';
+import {
+  getActiveCampaigns,
+  getCompletedCampaigns,
+  getCategories,
+  saveActiveCampaign,
+  saveCompletedCampaign,
+  deleteCampaign,
+  initializeExampleData,
+} from '@/services/campaignService';
+import { ActiveCampaign, CompletedCampaign } from '@/types/campaignTypes';
 
-const activeCampaigns: Campaign[] = [
-  {
-    id: 1,
-    title: 'Books',
-    goal: 500,
-    raised: 375,
-    imageUrl: '/images/books.png',
-    description:
-      'Access to educational materials is essential for nurturing young minds and fostering creativity. This fundraiser will help provide books for children in remote areas, creating opportunities for growth and learning.',
-    status: 'active' as const,
-    fundLink: 'https://google.com',
-    category: 'Books',
-  },
-  {
-    id: 2,
-    title: 'Books 2',
-    goal: 500,
-    raised: 375,
-    imageUrl: '/images/books.png',
-    description:
-      'Access to educational materials is essential for nurturing young minds and fostering creativity. This fundraiser will help provide books for children in remote areas, creating opportunities for growth and learning.',
-    status: 'active' as const,
-    fundLink: 'https://google.com',
-    category: 'Books',
-  },
-  {
-    id: 3,
-    title: 'Books 3',
-    goal: 500,
-    raised: 375,
-    imageUrl: '/images/books.png',
-    description:
-      'Access to educational materials is essential for nurturing young minds and fostering creativity. This fundraiser will help provide books for children in remote areas, creating opportunities for growth and learning.',
-    status: 'active' as const,
-    fundLink: 'https://google.com',
-    category: 'Books',
-  },
-  {
-    id: 4,
-    title: 'Books 3',
-    goal: 500,
-    raised: 375,
-    imageUrl: '/images/books.png',
-    description:
-      'Access to educational materials is essential for nurturing young minds and fostering creativity. This fundraiser will help provide books for children in remote areas, creating opportunities for growth and learning.',
-    status: 'active' as const,
-    fundLink: 'https://google.com',
-    category: 'Books',
-  },
-  {
-    id: 5,
-    title: 'Wi-Fi',
-    goal: 500,
-    raised: 375,
-    imageUrl: '/images/wifi-campaign.jpg',
-    description:
-      'Access to educational materials is essential for nurturing young minds and fostering creativity. This fundraiser will help provide books for children in remote areas, creating opportunities for growth and learning.',
-    status: 'active',
-    fundLink: 'https://google.com',
-    category: 'Wi-Fi',
-  },
-  {
-    id: 6,
-    title: 'Sport',
-    goal: 500,
-    raised: 375,
-    imageUrl: '/images/sport-campaign.jpg',
-    description:
-      'Access to educational materials is essential for nurturing young minds and fostering creativity. This fundraiser will help provide books for children in remote areas, creating opportunities for growth and learning.',
-    status: 'active',
-    fundLink: 'https://google.com',
-    category: 'Sport',
-  },
-];
-const completedCampaigns = [
-  {
-    id: 1,
-    title: 'Books for Bright Minds',
-    goal: 500,
-    raised: 500,
-    imageUrl: '/images/sunnyDayGroupPhoto.jpeg',
-    description:
-      'Thanks to your incredible support, we successfully provided a new collection of books to Impact Schools, inspiring a love for reading among children.',
-    status: 'completed' as const,
-  },
-  {
-    id: 2,
-    title: 'Books for Bright Minds',
-    goal: 500,
-    raised: 500,
-    imageUrl: '/images/sunnyDayGroupPhoto.jpeg',
-    description:
-      'Thanks to your incredible support, we successfully provided a new collection of books to Impact Schools, inspiring a love for reading among children.',
-    status: 'completed' as const,
-  },
-];
-
-const categories: CategoryItem[] = [
-  { name: 'Books', color: 'bg-[#C6F0A8]' },
-  { name: 'Wi-Fi', color: 'bg-[#B9C0FA]' },
-  { name: 'Sport', color: 'bg-[#FFEF9A]' },
-  { name: 'Music', color: 'bg-[#FFBC92]' },
-];
+// Initialize example data if needed
+initializeExampleData().catch(console.error);
 
 export async function GET() {
-  // Create the response
-  const response = NextResponse.json({
-    active: activeCampaigns,
-    completed: completedCampaigns,
-    categories: categories,
-  });
+  try {
+    // Get all data types
+    const activeCampaigns = await getActiveCampaigns();
+    const completedCampaigns = await getCompletedCampaigns();
+    const categories = await getCategories();
 
-  // Add CORS headers and return
-  return corsHeaders(response);
+    // Create response with all data
+    const response = NextResponse.json({
+      active: activeCampaigns,
+      completed: completedCampaigns,
+      categories: categories,
+    });
+
+    // Add CORS headers and return
+    return corsHeaders(response);
+  } catch (error) {
+    console.error('Error in GET campaigns:', error);
+    const errorResponse = NextResponse.json(
+      { error: 'Failed to fetch campaigns' },
+      { status: 500 }
+    );
+    return corsHeaders(errorResponse);
+  }
 }
 
-// OPTIONS handler for CORS preflight requests
+// Create a new campaign
+export async function POST(request: NextRequest) {
+  try {
+    const data = await request.json();
+
+    // Basic validation
+    if (!data.title || !data.goal || !data.category) {
+      const errorResponse = NextResponse.json(
+        { error: 'Missing required fields' },
+        { status: 400 }
+      );
+      return corsHeaders(errorResponse);
+    }
+
+    let success = false;
+
+    // Determine if it's an active or completed campaign
+    if (data.status === 'active') {
+      success = await saveActiveCampaign(data as ActiveCampaign);
+    } else if (data.status === 'completed') {
+      success = await saveCompletedCampaign(data as CompletedCampaign);
+    } else {
+      const errorResponse = NextResponse.json(
+        { error: 'Invalid campaign status' },
+        { status: 400 }
+      );
+      return corsHeaders(errorResponse);
+    }
+
+    if (!success) {
+      const errorResponse = NextResponse.json(
+        { error: 'Failed to save campaign' },
+        { status: 500 }
+      );
+      return corsHeaders(errorResponse);
+    }
+
+    const response = NextResponse.json(
+      { message: 'Campaign created successfully', id: data.id },
+      { status: 201 }
+    );
+    return corsHeaders(response);
+  } catch (error) {
+    console.error('Error in POST campaign:', error);
+    const errorResponse = NextResponse.json(
+      { error: 'Failed to create campaign' },
+      { status: 500 }
+    );
+    return corsHeaders(errorResponse);
+  }
+}
+
+// Handle CORS preflight requests
 export async function OPTIONS() {
   const response = new NextResponse(null, { status: 204 });
   return corsHeaders(response);
