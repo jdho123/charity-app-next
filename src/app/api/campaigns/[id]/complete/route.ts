@@ -1,13 +1,11 @@
-// app/api/campaigns/[id]/complete/route.ts
-
 import { corsHeaders } from '@/utils/cors';
 import { NextRequest, NextResponse } from 'next/server';
 import { markCampaignCompleted } from '@/services/campaignService';
 
 // Mark a campaign as completed
-export async function POST(request: NextRequest, { params }: { params: { id: string } }) {
+export async function POST(request: NextRequest, context: { params: { id: string } }) {
   try {
-    const id = Number(params.id);
+    const id = Number(context.params.id);
 
     if (isNaN(id)) {
       const errorResponse = NextResponse.json({ error: 'Invalid campaign ID' }, { status: 400 });
