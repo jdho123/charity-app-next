@@ -1,6 +1,6 @@
 'use client';
 
-import { useState, useEffect } from 'react';
+import { useState, useEffect, use } from 'react';
 import { useRouter } from 'next/navigation';
 import Link from 'next/link';
 import { Campaign, CategoryItem } from '@/types/campaignTypes';
@@ -9,9 +9,9 @@ import GloriaTitle from '@/components/shared/GloriaTitle';
 import AdminLayout from '@/components/admin/AdminLayout';
 
 interface EditCampaignPageProps {
-  params: {
+  params: Promise<{
     id: string;
-  };
+  }>;
 }
 
 export default function EditCampaignPage({ params }: EditCampaignPageProps) {
@@ -21,7 +21,8 @@ export default function EditCampaignPage({ params }: EditCampaignPageProps) {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
 
-  const id = Number(params.id);
+  const resolvedParams = use(params);
+  const id = Number(resolvedParams.id);
 
   useEffect(() => {
     if (isNaN(id)) {
