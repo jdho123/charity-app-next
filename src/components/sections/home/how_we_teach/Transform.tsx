@@ -1,7 +1,7 @@
-import * as React from "react";
-import Image from "next/image";
-import GloriaTitle from "@/components/shared/GloriaTitle";
-import Sprite from "@/components/animation/Sprite";
+import * as React from 'react';
+import Image from 'next/image';
+import GloriaTitle from '@/components/shared/GloriaTitle';
+import Sprite from '@/components/animation/Sprite';
 
 export function TransformSection() {
   return (
@@ -10,12 +10,12 @@ export function TransformSection() {
         <div className="w-[55%] max-md:ml-0 max-md:w-full">
           <div className="flex flex-col max-md:mt-10 max-md:max-w-full">
             <Sprite
-              totalFrames={10}
-              frameWidth={750}
-              frameHeight={700}
-              scale={0.55}
+              totalFrames={24}
+              frameWidth={385}
+              frameHeight={385}
+              scale={1}
               className="self-end w-[80%] max-w-full"
-              imagePath="/animated/arrow1.png"
+              imagePath="/animated/arrow2smooth.png"
             />
             <div className="mt-10 lg:mt-20 w-full overflow-hidden rounded-[30px]">
               <Image
@@ -41,10 +41,10 @@ export function TransformSection() {
                 className="object-contain w-[140px] sm:w-[170px] md:w-[206px]"
               />
             </div>
-            <GloriaTitle 
-              as="h2" 
-              color="black" 
-              size="6xl" 
+            <GloriaTitle
+              as="h2"
+              color="black"
+              size="6xl"
               className="self-start text-4xl sm:text-5xl lg:text-6xl"
             >
               Transform
@@ -52,20 +52,19 @@ export function TransformSection() {
             <h3 className="font-gloria text-xl sm:text-2xl lg:text-3xl leading-tight sm:leading-normal lg:leading-[50px] mt-4 mb-6 lg:mb-10 max-w-[600px]">
               How do we help children grow beyond their circumstances?
             </h3>
-            
+
             <div className="pl-4 sm:pl-6 border-l-4 border-[#3E6F1B] text-base sm:text-lg lg:text-xl">
               <p className="mb-4 sm:mb-6">
-                Through fundraisers, we provide essential resources like Wi-Fi,
-                books, and sports equipment that make learning possible.
+                Through fundraisers, we provide essential resources like Wi-Fi, books, and sports
+                equipment that make learning possible.
               </p>
               <p className="mb-4 sm:mb-6">
-                Our efforts extend beyond education; we aim to transform lives by
-                helping children dream bigger and giving them the tools to achieve
-                those dreams.
+                Our efforts extend beyond education; we aim to transform lives by helping children
+                dream bigger and giving them the tools to achieve those dreams.
               </p>
               <p className="mb-8 lg:mb-0">
-                For many, our lessons become a source of joy and hope, sparking a
-                belief that their circumstances can change for the better.
+                For many, our lessons become a source of joy and hope, sparking a belief that their
+                circumstances can change for the better.
               </p>
             </div>
           </div>
