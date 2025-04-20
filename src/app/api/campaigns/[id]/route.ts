@@ -36,9 +36,9 @@ export async function GET(request: NextRequest, { params }: { params: Promise<{ 
 }
 
 // Update a campaign
-export async function PUT(request: NextRequest, { params }: { params: { id: string } }) {
+export async function PUT(request: NextRequest, { params }: { params: Promise<{ id: string }> }) {
   try {
-    const id = Number(params.id);
+    const id = Number((await params).id);
 
     if (isNaN(id)) {
       const errorResponse = NextResponse.json({ error: 'Invalid campaign ID' }, { status: 400 });
@@ -86,9 +86,12 @@ export async function PUT(request: NextRequest, { params }: { params: { id: stri
 }
 
 // Delete a campaign
-export async function DELETE(request: NextRequest, { params }: { params: { id: string } }) {
+export async function DELETE(
+  request: NextRequest,
+  { params }: { params: Promise<{ id: string }> }
+) {
   try {
-    const id = Number(params.id);
+    const id = Number((await params).id);
 
     if (isNaN(id)) {
       const errorResponse = NextResponse.json({ error: 'Invalid campaign ID' }, { status: 400 });
