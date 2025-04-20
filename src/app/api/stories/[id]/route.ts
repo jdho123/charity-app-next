@@ -5,9 +5,9 @@ import { getStoryById, updateStory, deleteStory } from '@/services/storyService'
 import { StoryDetail } from '@/types/newsTypes';
 
 // Get a specific story by ID
-export async function GET(request: NextRequest, { params }: { params: { id: string } }) {
+export async function GET(request: NextRequest, { params }: { params: Promise<{ id: string }> }) {
   try {
-    const id = Number(params.id);
+    const id = Number((await params).id);
 
     if (isNaN(id)) {
       return corsHeaders(NextResponse.json({ error: 'Invalid story ID' }, { status: 400 }));
@@ -27,9 +27,9 @@ export async function GET(request: NextRequest, { params }: { params: { id: stri
 }
 
 // Update a specific story
-export async function PUT(request: NextRequest, { params }: { params: { id: string } }) {
+export async function PUT(request: NextRequest, { params }: { params: Promise<{ id: string }> }) {
   try {
-    const id = Number(params.id);
+    const id = Number((await params).id);
 
     if (isNaN(id)) {
       return corsHeaders(NextResponse.json({ error: 'Invalid story ID' }, { status: 400 }));
@@ -52,9 +52,12 @@ export async function PUT(request: NextRequest, { params }: { params: { id: stri
 }
 
 // Delete a specific story
-export async function DELETE(request: NextRequest, { params }: { params: { id: string } }) {
+export async function DELETE(
+  request: NextRequest,
+  { params }: { params: Promise<{ id: string }> }
+) {
   try {
-    const id = Number(params.id);
+    const id = Number((await params).id);
 
     if (isNaN(id)) {
       return corsHeaders(NextResponse.json({ error: 'Invalid story ID' }, { status: 400 }));
