@@ -71,12 +71,12 @@ export default function TeacherApplicationPage() {
     terms: false,
   };
 
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  const handleSubmit = async (formData: Record<string, any>) => {
+  // Handle form submission
+  const handleSubmit = async (formData: unknown) => {
     console.log('Form submitted:', formData);
-    // Handle submission (API call, etc.)
+    // No need to handle the API call here as it's done in MultiViewForm
 
-    // For now, just simulate an API call with a timeout
+    // Simulate any additional processing if needed
     return new Promise<void>((resolve) => {
       setTimeout(() => {
         resolve();
@@ -111,7 +111,6 @@ export default function TeacherApplicationPage() {
                   style={{
                     position: 'relative',
                     bottom: `-18px`, // ends up being 36px tall
-                    // transform: 'translateY(50%)',
                   }}
                 >
                   <Image
@@ -124,9 +123,10 @@ export default function TeacherApplicationPage() {
               );
             }}
             backgroundColor="linear-gradient(180deg, #163E42 0%, #31848C 100%)"
-            hundredPercentColour="#31848"
+            hundredPercentColour="#31848C" // Fixed the typo here
             labelColor="white"
             showReviewStep={true}
+            thankYouPageUrl="/thank-you" // Add explicit thank you page URL
           />
         </div>
       </div>

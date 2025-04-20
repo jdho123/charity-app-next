@@ -85,17 +85,15 @@ export default function SchoolRegistrationPage() {
     genderRatio: '',
     educationalDevelopment: '',
     teacherConsiderations: '',
-    termsAgreement: false,
-    finalConfirmation: false,
+    terms: false,
   };
 
   // Handle form submission
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  const handleSubmit = async (formData: Record<string, any>) => {
+  const handleSubmit = async (formData: unknown) => {
     console.log('School registration form submitted:', formData);
-    // Handle submission (API call, etc.)
+    // No need to handle the API call here as it's done in MultiViewForm
 
-    // For now, just simulate an API call with a timeout
+    // Simulate any additional processing if needed
     return new Promise<void>((resolve) => {
       setTimeout(() => {
         resolve();
@@ -151,7 +149,8 @@ export default function SchoolRegistrationPage() {
             backgroundColor="linear-gradient(180deg, #3D1809 0%, #6F4433 100%)"
             hundredPercentColour="#6F4433"
             labelColor="white"
-            showReviewStep={true} // We already have 5 views including two agreement views
+            showReviewStep={true}
+            thankYouPageUrl="/thank-you-school" // Add explicit thank you page URL
           />
         </div>
       </div>

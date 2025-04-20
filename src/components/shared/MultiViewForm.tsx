@@ -1,9 +1,12 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 'use client';
 import { useState, useEffect, ReactNode } from 'react';
+import { useRouter } from 'next/navigation';
 import BorderedText from '@/components/shared/BorderedText';
-import ProgressIndicator from './ProgressIndicator'; // Import the new component
+import ProgressIndicator from './ProgressIndicator';
 import FormControls from './FormControls';
+import LoadingOverlay from './LoadingOverlay';
+import ErrorMessage from './ErrorMessage';
 
 export interface FormField {
   id: string;
@@ -21,7 +24,7 @@ export interface FormView {
 interface MultiViewFormProps {
   views: FormView[];
   initialData: Record<string, any>;
-  onSubmit: (data: Record<string, any>) => void;
+  onSubmit?: (data: Record<string, any>) => void;
   getProgressImage: (stage: number) => ReactNode;
   backgroundColor?: string;
   hundredPercentColour?: string;
@@ -29,6 +32,7 @@ interface MultiViewFormProps {
   showReviewStep?: boolean;
   reviewTitle?: string;
   onSuccess?: () => void;
+  thankYouPageUrl?: string;
 }
 
 export default function MultiViewForm({
@@ -42,7 +46,13 @@ export default function MultiViewForm({
   showReviewStep = true,
   reviewTitle = 'Review your information:',
   onSuccess,
+  thankYouPageUrl = '/thank-you',
 }: MultiViewFormProps) {
+  // Always call useRouter unconditionally
+  const router = useRouter();
+  const [submitting, setSubmitting] = useState(false);
+  const [submitError, setSubmitError] = useState<string | null>(null);
+
   // Add a review view if showReviewStep is true
   const allViews = showReviewStep
     ? [
@@ -65,6 +75,7 @@ export default function MultiViewForm({
 
   const [currentView, setCurrentView] = useState(1);
   const [progress, setProgress] = useState(0);
+  const [errors, setErrors] = useState<Record<string, string>>({});
   const [formData, setFormData] = useState<Record<string, any>>(initialData);
 
   // Update progress when view changes
@@ -83,18 +94,91 @@ export default function MultiViewForm({
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+
+    // Validate current view before submitting
+    if (!validateCurrentView()) {
+      return; // Don't submit if validation fails
+    }
+
+    setSubmitting(true);
+    setSubmitError(null);
+
     try {
-      await onSubmit(formData);
-      // If submission is successful and onSuccess callback exists, call it
+      // Call the custom onSubmit handler if provided
+      if (onSubmit) {
+        await onSubmit(formData);
+      }
+
+      // Send email using our API
+      const response = await fetch('/api/submit-form', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(formData),
+      });
+
+      const result = await response.json();
+
+      if (!response.ok) {
+        throw new Error(result.error || 'Failed to submit form');
+      }
+
+      // If submission is successful
+      setSubmitting(false);
+
+      // If onSuccess callback exists, call it
       if (onSuccess) {
         onSuccess();
+      } else {
+        // Default behavior: redirect to thank you page
+        try {
+          router.push(thankYouPageUrl);
+        } catch (e) {
+          // Fallback for when router isn't available
+          window.location.href = thankYouPageUrl;
+        }
       }
     } catch (error) {
       console.error('Error submitting form:', error);
+      setSubmitError(error instanceof Error ? error.message : 'An unknown error occurred');
+      setSubmitting(false);
     }
   };
 
+  const validateCurrentView = (): boolean => {
+    const currentFields = allViews[currentView - 1].fields;
+    const newErrors: Record<string, string> = {};
+    let isValid = true;
+
+    // Check each required field in the current view
+    currentFields.forEach((field) => {
+      if (field.required) {
+        const value = formData[field.id];
+
+        // Check if field is empty or only whitespace
+        if (
+          value === undefined ||
+          value === null ||
+          (typeof value === 'string' && value.trim() === '') ||
+          (field.type === 'checkbox' && !value)
+        ) {
+          newErrors[field.id] = `${field.label.split('?')[0].trim()} is required`;
+          isValid = false;
+        }
+      }
+    });
+
+    setErrors(newErrors);
+    return isValid;
+  };
+
   const nextView = () => {
+    // Validate current view before proceeding
+    if (!validateCurrentView()) {
+      return; // Don't proceed if validation fails
+    }
+
     if (currentView < allViews.length) {
       setCurrentView(currentView + 1);
     } else {
@@ -121,6 +205,15 @@ export default function MultiViewForm({
             {allViews[currentView - 1].title || 'Complete Your Application'}
           </h2>
 
+          {/* Error message if submission failed */}
+          {submitError && (
+            <ErrorMessage
+              message={submitError}
+              variant="dark"
+              onClose={() => setSubmitError(null)}
+            />
+          )}
+
           {/* Checkbox for terms */}
           <div className="flex items-start gap-4 mb-8">
             <input
@@ -129,11 +222,16 @@ export default function MultiViewForm({
               checked={!!formData.terms}
               onChange={handleInputChange}
               required
-              className="mt-1 w-5 h-5 rounded border-2 border-white checked:bg-blue-500 appearance-none cursor-pointer"
+              className={`mt-1 w-5 h-5 rounded border-2 ${
+                errors.terms ? 'border-red-500' : 'border-white'
+              } checked:bg-blue-500 appearance-none cursor-pointer`}
             />
-            <label htmlFor="terms" className={`text-base font-verdana text-${labelColor}`}>
-              {currentFields[0].label}
-            </label>
+            <div>
+              <label htmlFor="terms" className={`text-base font-verdana text-${labelColor}`}>
+                {currentFields[0].label}
+              </label>
+              {errors.terms && <p className="mt-1 text-red-300 text-sm">{errors.terms}</p>}
+            </div>
           </div>
 
           {/* Review data section */}
@@ -173,41 +271,62 @@ export default function MultiViewForm({
             </BorderedText>
 
             {field.type === 'textarea' ? (
-              <textarea
-                id={field.id}
-                value={formData[field.id] || ''}
-                onChange={handleInputChange}
-                placeholder={field.placeholder || 'Your Answer'}
-                required={field.required}
-                rows={6}
-                className="w-full bg-white/90 border-2 border-black rounded-3xl px-6 py-4 text-lg font-verdana
-                         placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-blue-500 resize-y min-h-[120px] md:min-h-[150px]"
-              />
-            ) : field.type === 'checkbox' ? (
-              <div className="flex items-center">
-                <input
-                  type="checkbox"
+              <div>
+                <textarea
                   id={field.id}
-                  checked={!!formData[field.id]}
+                  value={formData[field.id] || ''}
                   onChange={handleInputChange}
+                  placeholder={field.placeholder || 'Your Answer'}
                   required={field.required}
-                  className="w-5 h-5 rounded border-2 border-black checked:bg-blue-500 appearance-none cursor-pointer"
+                  rows={6}
+                  className={`w-full bg-white/90 border-2 ${
+                    errors[field.id] ? 'border-red-500' : 'border-black'
+                  } rounded-3xl px-6 py-4 text-lg font-verdana
+                           placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-blue-500 resize-y min-h-[120px] md:min-h-[150px]`}
                 />
-                <label htmlFor={field.id} className="ml-2 text-lg font-verdana text-white">
-                  {field.label}
-                </label>
+                {errors[field.id] && (
+                  <p className="mt-2 text-red-500 text-sm">{errors[field.id]}</p>
+                )}
+              </div>
+            ) : field.type === 'checkbox' ? (
+              <div className="flex items-start flex-col">
+                <div className="flex items-center">
+                  <input
+                    type="checkbox"
+                    id={field.id}
+                    checked={!!formData[field.id]}
+                    onChange={handleInputChange}
+                    required={field.required}
+                    className={`w-5 h-5 rounded border-2 ${
+                      errors[field.id] ? 'border-red-500' : 'border-black'
+                    } checked:bg-blue-500 appearance-none cursor-pointer`}
+                  />
+                  <label htmlFor={field.id} className="ml-2 text-lg font-verdana text-white">
+                    {field.label}
+                  </label>
+                </div>
+                {errors[field.id] && (
+                  <p className="mt-2 text-red-500 text-sm">{errors[field.id]}</p>
+                )}
               </div>
             ) : (
-              <input
-                type={field.type}
-                id={field.id}
-                value={formData[field.id] || ''}
-                onChange={handleInputChange}
-                placeholder={field.placeholder || 'Your Answer'}
-                required={field.required}
-                className="w-full bg-white/90 border-2 border-black rounded-full px-6 py-4 text-lg font-verdana
-                         placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-blue-500"
-              />
+              <div>
+                <input
+                  type={field.type}
+                  id={field.id}
+                  value={formData[field.id] || ''}
+                  onChange={handleInputChange}
+                  placeholder={field.placeholder || 'Your Answer'}
+                  required={field.required}
+                  className={`w-full bg-white/90 border-2 ${
+                    errors[field.id] ? 'border-red-500' : 'border-black'
+                  } rounded-full px-6 py-4 text-lg font-verdana
+                           placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-blue-500`}
+                />
+                {errors[field.id] && (
+                  <p className="mt-2 text-red-500 text-sm">{errors[field.id]}</p>
+                )}
+              </div>
             )}
           </div>
         ))}
@@ -217,6 +336,9 @@ export default function MultiViewForm({
 
   return (
     <div className="w-full h-screen flex flex-col" style={{ background: backgroundColor }}>
+      {/* Loading overlay */}
+      <LoadingOverlay show={submitting} />
+
       <div className="max-w-3xl mx-auto px-4 w-full flex-1 flex flex-col overflow-auto pb-24 pt-6 md:pt-8">
         <form className="space-y-8 md:space-y-12 flex-1 flex flex-col" onSubmit={handleSubmit}>
           {renderFields()}
