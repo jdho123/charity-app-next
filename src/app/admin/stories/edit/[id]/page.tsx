@@ -20,8 +20,8 @@ export default function EditStoryPage({ params }: EditStoryPageProps) {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
 
-  const { id: id1 } = use(params);
-  const id = Number(id1);
+  const resolvedParams = use(params);
+  const id = Number(resolvedParams.id);
 
   useEffect(() => {
     if (isNaN(id)) {
