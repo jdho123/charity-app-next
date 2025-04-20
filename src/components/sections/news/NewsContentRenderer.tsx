@@ -19,8 +19,15 @@ function TitleRenderer({ content }: TitleTag) {
 // Render image content
 function ImageRenderer({ src, alt = 'News image' }: ImageTag) {
   return (
-    <div className="w-full relative h-80 my-6 rounded-lg overflow-hidden">
-      <Image src={src} alt={alt} fill className="object-cover" />
+    <div className="w-full my-6">
+      <Image
+        src={src}
+        alt={alt}
+        width={1200}
+        height={800}
+        className="w-full h-auto rounded-lg object-contain"
+        style={{ maxHeight: '600px' }}
+      />
     </div>
   );
 }
