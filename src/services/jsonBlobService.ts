@@ -1,6 +1,15 @@
 // jsonBlobService.ts
 import { put, list, del } from '@vercel/blob';
 
+// Get the Blob token from environment variables
+const getBlobToken = () => {
+  const token = process.env.BLOB_READ_WRITE_TOKEN;
+  if (!token) {
+    throw new Error('BLOB_READ_WRITE_TOKEN environment variable is not set');
+  }
+  return token;
+};
+
 // Generate a unique filename for JSON data
 const generateUniqueFilename = (name: string): string => {
   const timestamp = Date.now();
@@ -23,11 +32,12 @@ export const saveJsonToBlob = async <T>(
     // Generate filename
     const filename = generateUniqueFilename(name);
 
-    // Upload to Vercel Blob Storage
+    // Upload to Vercel Blob Storage with token
     const result = await put(filename, blob, {
       access: 'public',
       contentType: 'application/json',
       addRandomSuffix: false,
+      token: getBlobToken(),
     });
 
     // Return the URL to the uploaded blob
@@ -43,6 +53,7 @@ export const saveJsonToBlob = async <T>(
     };
   }
 };
+
 // Get JSON data from Vercel Blob Storage
 export const getJsonFromBlob = async <T = Record<string, unknown>>(
   url: string
@@ -87,6 +98,7 @@ export const listJsonBlobs = async (
     const { blobs } = await list({
       prefix: prefix || '',
       limit: 1000,
+      token: getBlobToken(),
     });
 
     // Filter for only JSON files
@@ -116,7 +128,7 @@ export const deleteJsonBlob = async (
   error?: string;
 }> => {
   try {
-    await del(url);
+    await del(url, { token: getBlobToken() });
 
     return {
       success: true,
@@ -146,8 +158,8 @@ export const updateJsonBlob = async <T>(
     const filename = pathname.split('/').pop() || '';
     const nameWithoutTimestamp = filename.split('-').slice(0, -1).join('-').replace('.json', '');
 
-    // Delete the old blob
-    await del(url);
+    // Delete the old blob with token
+    await del(url, { token: getBlobToken() });
 
     // Create a new blob with the updated data
     return await saveJsonToBlob(newData, nameWithoutTimestamp);

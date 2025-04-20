@@ -1,5 +1,14 @@
 import { put } from '@vercel/blob';
 
+// Get the Blob token from environment variables
+const getBlobToken = () => {
+  const token = process.env.BLOB_READ_WRITE_TOKEN;
+  if (!token) {
+    throw new Error('BLOB_READ_WRITE_TOKEN environment variable is not set');
+  }
+  return token;
+};
+
 // Generate a unique filename
 const generateUniqueFilename = (originalFilename: string): string => {
   const timestamp = Date.now();
@@ -43,12 +52,12 @@ export const saveImageFromFormData = async (
     // Generate filename with proper path
     const filename = generateUniqueFilename(file.name);
 
-    // Upload to Vercel Blob Storage
+    // Upload to Vercel Blob Storage with token
     const blob = await put(filename, file, {
       access: 'public',
-      // Optional: Add metadata for organization
       contentType: file.type,
       addRandomSuffix: false,
+      token: getBlobToken(),
     });
 
     // Return the URL to the uploaded blob
