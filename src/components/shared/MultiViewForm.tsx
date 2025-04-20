@@ -109,7 +109,6 @@ export default function MultiViewForm({
         await onSubmit(formData);
       }
 
-      // Send email using our API
       const response = await fetch('/api/submit-form', {
         method: 'POST',
         headers: {
@@ -132,9 +131,9 @@ export default function MultiViewForm({
         onSuccess();
       } else {
         // Default behavior: redirect to thank you page
-        try {
+        if (router) {
           router.push(thankYouPageUrl);
-        } catch (e) {
+        } else {
           // Fallback for when router isn't available
           window.location.href = thankYouPageUrl;
         }

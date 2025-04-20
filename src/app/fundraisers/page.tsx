@@ -4,7 +4,6 @@ import GuestLayout from '@/components/layout/GuestLayout';
 import GeneralFund from '@/components/sections/fundraisers/GeneralFund';
 import ActiveCampaigns from '@/components/sections/fundraisers/ActiveCampaigns';
 import CompletedCampaigns from '@/components/sections/fundraisers/CompletedCampaigns';
-import { API_URL } from '@/env';
 import {
   Campaign,
   CategoryItem,
@@ -32,7 +31,7 @@ export default function FundraisersPage() {
     const fetchCampaigns = async () => {
       try {
         setIsLoading(true);
-        const response = await fetch(API_URL + '/campaigns');
+        const response = await fetch('/api/campaigns');
 
         if (!response.ok) {
           throw new Error(`Failed to fetch campaigns: ${response.status}`);

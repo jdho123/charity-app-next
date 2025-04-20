@@ -1,8 +1,15 @@
 import { Resend } from 'resend';
+import { NextResponse } from 'next/server';
+import { corsHeaders } from '@/utils/cors';
 
 // Initialize Resend with your API key
 const resend = new Resend(process.env.RESEND_API_KEY);
-console.log(process.env.RESEND_API_KEY);
+
+// Handle preflight OPTIONS request
+export async function OPTIONS() {
+  const response = new NextResponse(null, { status: 204 });
+  return corsHeaders(response);
+}
 
 export async function POST(req: Request) {
   try {
@@ -65,18 +72,24 @@ export async function POST(req: Request) {
 
     if (error) {
       console.error('Resend API error:', error);
-      return Response.json({ success: false, error: error.message }, { status: 500 });
+      const errorResponse = NextResponse.json(
+        { success: false, error: error.message },
+        { status: 500 }
+      );
+      return corsHeaders(errorResponse);
     }
 
-    return Response.json({ success: true, messageId: data?.id });
+    const successResponse = NextResponse.json({ success: true, messageId: data?.id });
+    return corsHeaders(successResponse);
   } catch (error) {
     console.error('Error sending email:', error);
-    return Response.json(
+    const errorResponse = NextResponse.json(
       {
         success: false,
         error: error instanceof Error ? error.message : 'An unknown error occurred',
       },
       { status: 500 }
     );
+    return corsHeaders(errorResponse);
   }
 }

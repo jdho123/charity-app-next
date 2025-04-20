@@ -1,4 +1,3 @@
-import { API_URL } from '@/env';
 import { corsHeaders } from '@/utils/cors';
 import { NextRequest, NextResponse } from 'next/server';
 
