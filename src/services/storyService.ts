@@ -1,38 +1,48 @@
-import fs from 'fs';
-import path from 'path';
-import { StoryListing, StoryDetail } from '@/types/newsTypes';
+// storyService.ts
+import { StoryListing, StoryDetail, StoryContentSection } from '@/types/newsTypes';
+import {
+  saveJsonToBlob,
+  getJsonFromBlob,
+  listJsonBlobs,
+  deleteJsonBlob,
+  updateJsonBlob,
+} from './jsonBlobService';
 
-// Path to the stories data directory
-const STORIES_DIR = path.join(process.cwd(), 'data', 'stories');
-const STORIES_BASIC_FILE = path.join(STORIES_DIR, 'basic.json');
-const STORIES_DETAILS_DIR = path.join(STORIES_DIR, 'details');
-
-// Ensure directories exist
-function ensureDirectoriesExist() {
-  if (!fs.existsSync(STORIES_DIR)) {
-    fs.mkdirSync(STORIES_DIR, { recursive: true });
-  }
-
-  if (!fs.existsSync(STORIES_DETAILS_DIR)) {
-    fs.mkdirSync(STORIES_DETAILS_DIR, { recursive: true });
-  }
-}
+// Prefix keys for different types of data
+const STORY_LISTINGS_KEY = 'story-listings';
+const STORY_DETAIL_PREFIX = 'story-detail-';
 
 // Function to get all story listings
 export async function getAllStories(): Promise<StoryListing[]> {
-  ensureDirectoriesExist();
-
   try {
-    // Check if basic.json exists
-    if (!fs.existsSync(STORIES_BASIC_FILE)) {
-      // Create empty basic file if it doesn't exist
-      fs.writeFileSync(STORIES_BASIC_FILE, JSON.stringify([], null, 2), 'utf8');
+    // Try to fetch the listings blob
+    const { blobs } = await listJsonBlobs(STORY_LISTINGS_KEY);
+
+    // If no listings blob exists yet, create an empty one
+    if (!blobs || blobs.length === 0) {
+      await saveJsonToBlob([] as StoryListing[], STORY_LISTINGS_KEY);
       return [];
     }
 
-    // Read the basic listings file
-    const fileContents = fs.readFileSync(STORIES_BASIC_FILE, 'utf8');
-    const stories: StoryListing[] = JSON.parse(fileContents);
+    // Get the latest listings blob (should only be one, but just in case)
+    const latestBlob = blobs.sort((a, b) => b.pathname.localeCompare(a.pathname))[0];
+
+    // Fetch the data
+    const result = await getJsonFromBlob(latestBlob.url);
+
+    if (!result.success || !result.data) {
+      console.error('Failed to get story listings:', result.error);
+      return [];
+    }
+
+    // Ensure we have an array
+    if (!Array.isArray(result.data)) {
+      console.error('Invalid data format for story listings');
+      return [];
+    }
+
+    // Cast data to the correct type
+    const stories = result.data as StoryListing[];
 
     // Sort by date (newest first)
     return stories.sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime());
@@ -54,19 +64,31 @@ export async function getStoryById(id: number): Promise<StoryDetail | null> {
     }
 
     // Then get the detailed content
-    const detailPath = path.join(STORIES_DETAILS_DIR, `story-${id}.json`);
+    const { blobs } = await listJsonBlobs(`${STORY_DETAIL_PREFIX}${id}`);
 
-    if (!fs.existsSync(detailPath)) {
+    if (!blobs || blobs.length === 0) {
       return null;
     }
 
-    const detailContents = fs.readFileSync(detailPath, 'utf8');
-    const contentData = JSON.parse(detailContents);
+    // Get the latest version of the content
+    const latestBlob = blobs.sort((a, b) => b.pathname.localeCompare(a.pathname))[0];
+    const result = await getJsonFromBlob<StoryContentSection[]>(latestBlob.url);
+
+    if (!result.success || !result.data) {
+      console.error(`Failed to get story content for ID ${id}:`, result.error);
+      return null;
+    }
+
+    // Check if we have valid content data
+    if (!Array.isArray(result.data)) {
+      console.error(`Invalid content format for story ID ${id}`);
+      return null;
+    }
 
     // Combine basic info with content
     return {
       ...basicInfo,
-      content: contentData,
+      content: result.data,
     };
   } catch (error) {
     console.error(`Error reading story with ID ${id}:`, error);
@@ -76,8 +98,6 @@ export async function getStoryById(id: number): Promise<StoryDetail | null> {
 
 // Function to save a new story
 export async function saveStory(story: StoryDetail): Promise<boolean> {
-  ensureDirectoriesExist();
-
   try {
     // Get all existing stories
     const stories = await getAllStories();
@@ -110,15 +130,38 @@ export async function saveStory(story: StoryDetail): Promise<boolean> {
     }
 
     // Save the basic info
-    fs.writeFileSync(STORIES_BASIC_FILE, JSON.stringify(stories, null, 2), 'utf8');
+    const listingsResult = await updateOrCreateListings(stories);
+    if (!listingsResult) {
+      return false;
+    }
 
     // Save the detailed content separately
-    const detailPath = path.join(STORIES_DETAILS_DIR, `story-${story.id}.json`);
-    fs.writeFileSync(detailPath, JSON.stringify(story.content, null, 2), 'utf8');
+    const contentResult = await saveJsonToBlob(story.content, `${STORY_DETAIL_PREFIX}${story.id}`);
 
-    return true;
+    return contentResult.success;
   } catch (error) {
     console.error('Error saving story:', error);
+    return false;
+  }
+}
+
+// Helper function to update or create listings blob
+async function updateOrCreateListings(stories: StoryListing[]): Promise<boolean> {
+  try {
+    const { blobs } = await listJsonBlobs(STORY_LISTINGS_KEY);
+
+    if (!blobs || blobs.length === 0) {
+      // Create new listings blob
+      const result = await saveJsonToBlob<StoryListing[]>(stories, STORY_LISTINGS_KEY);
+      return result.success;
+    } else {
+      // Update existing listings blob
+      const latestBlob = blobs.sort((a, b) => b.pathname.localeCompare(a.pathname))[0];
+      const result = await updateJsonBlob<StoryListing[]>(latestBlob.url, stories);
+      return result.success;
+    }
+  } catch (error) {
+    console.error('Error updating story listings:', error);
     return false;
   }
 }
@@ -142,13 +185,18 @@ export async function deleteStory(id: number): Promise<boolean> {
       return false;
     }
 
-    // Update the basic.json file
-    fs.writeFileSync(STORIES_BASIC_FILE, JSON.stringify(filteredStories, null, 2), 'utf8');
+    // Update the listings
+    const listingsResult = await updateOrCreateListings(filteredStories);
+    if (!listingsResult) {
+      return false;
+    }
 
-    // Delete the detail file if it exists
-    const detailPath = path.join(STORIES_DETAILS_DIR, `story-${id}.json`);
-    if (fs.existsSync(detailPath)) {
-      fs.unlinkSync(detailPath);
+    // Delete the detail blob if it exists
+    const { blobs } = await listJsonBlobs(`${STORY_DETAIL_PREFIX}${id}`);
+    if (blobs && blobs.length > 0) {
+      // Delete all versions of this story's content
+      const deletePromises = blobs.map((blob) => deleteJsonBlob(blob.url));
+      await Promise.all(deletePromises);
     }
 
     return true;
@@ -158,19 +206,16 @@ export async function deleteStory(id: number): Promise<boolean> {
   }
 }
 
-// Initialize with example data if the files don't exist
+// Initialize with example data if no data exists
 export async function initializeExampleData(): Promise<void> {
-  ensureDirectoriesExist();
-
-  // Only initialize if no data exists
-  const stories = await getAllStories();
-  if (stories.length > 0) {
-    return;
-  }
-
   try {
-    // Get example data from your current implementation
-    // This is where you'd import your example data
+    // Only initialize if no data exists
+    const stories = await getAllStories();
+    if (stories.length > 0) {
+      return;
+    }
+
+    // Example basic story data
     const exampleStories = [
       {
         id: 1,
@@ -190,11 +235,10 @@ export async function initializeExampleData(): Promise<void> {
         category: 'News',
         readTime: 4,
       },
-      // Add more example stories as needed
     ];
 
     // Save basic info
-    fs.writeFileSync(STORIES_BASIC_FILE, JSON.stringify(exampleStories, null, 2), 'utf8');
+    await saveJsonToBlob(exampleStories, STORY_LISTINGS_KEY);
 
     // Example detailed content for story 1
     const story1Content = [
@@ -266,13 +310,9 @@ export async function initializeExampleData(): Promise<void> {
     ];
 
     // Save detailed content
-    fs.writeFileSync(
-      path.join(STORIES_DETAILS_DIR, 'story-1.json'),
-      JSON.stringify(story1Content, null, 2),
-      'utf8'
-    );
+    await saveJsonToBlob(story1Content, `${STORY_DETAIL_PREFIX}1`);
 
-    // Add more example story details as needed
+    console.log('Example story data initialized in Vercel Blob storage');
   } catch (error) {
     console.error('Error initializing example data:', error);
   }

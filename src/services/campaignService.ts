@@ -1,38 +1,39 @@
-import fs from 'fs';
-import path from 'path';
+// campaignService.ts
 import { Campaign, ActiveCampaign, CompletedCampaign, CategoryItem } from '@/types/campaignTypes';
+import { saveJsonToBlob, getJsonFromBlob, listJsonBlobs, updateJsonBlob } from './jsonBlobService';
 
-// Path to the campaigns data directory
-const DATA_DIR = path.join(process.cwd(), 'data');
-const CAMPAIGNS_DIR = path.join(DATA_DIR, 'campaigns');
-const ACTIVE_CAMPAIGNS_FILE = path.join(CAMPAIGNS_DIR, 'active.json');
-const COMPLETED_CAMPAIGNS_FILE = path.join(CAMPAIGNS_DIR, 'completed.json');
-const CATEGORIES_FILE = path.join(CAMPAIGNS_DIR, 'categories.json');
-
-// Ensure directories exist
-function ensureDirectoriesExist() {
-  if (!fs.existsSync(DATA_DIR)) {
-    fs.mkdirSync(DATA_DIR, { recursive: true });
-  }
-
-  if (!fs.existsSync(CAMPAIGNS_DIR)) {
-    fs.mkdirSync(CAMPAIGNS_DIR, { recursive: true });
-  }
-}
+// Prefix keys for different types of data
+const ACTIVE_CAMPAIGNS_KEY = 'campaigns-active';
+const COMPLETED_CAMPAIGNS_KEY = 'campaigns-completed';
+const CATEGORIES_KEY = 'campaigns-categories';
 
 // Get all active campaigns
 export async function getActiveCampaigns(): Promise<ActiveCampaign[]> {
-  ensureDirectoriesExist();
-
   try {
-    if (!fs.existsSync(ACTIVE_CAMPAIGNS_FILE)) {
+    const { blobs } = await listJsonBlobs(ACTIVE_CAMPAIGNS_KEY);
+
+    if (!blobs || blobs.length === 0) {
       // Create empty file if it doesn't exist
-      fs.writeFileSync(ACTIVE_CAMPAIGNS_FILE, JSON.stringify([], null, 2), 'utf8');
+      await saveJsonToBlob([] as ActiveCampaign[], ACTIVE_CAMPAIGNS_KEY);
       return [];
     }
 
-    const fileContents = fs.readFileSync(ACTIVE_CAMPAIGNS_FILE, 'utf8');
-    return JSON.parse(fileContents) as ActiveCampaign[];
+    // Get the latest active campaigns blob
+    const latestBlob = blobs.sort((a, b) => b.pathname.localeCompare(a.pathname))[0];
+    const result = await getJsonFromBlob(latestBlob.url);
+
+    if (!result.success || !result.data) {
+      console.error('Failed to get active campaigns:', result.error);
+      return [];
+    }
+
+    // Ensure we have an array
+    if (!Array.isArray(result.data)) {
+      console.error('Invalid data format for active campaigns');
+      return [];
+    }
+
+    return result.data as ActiveCampaign[];
   } catch (error) {
     console.error('Error reading active campaigns:', error);
     return [];
@@ -41,17 +42,31 @@ export async function getActiveCampaigns(): Promise<ActiveCampaign[]> {
 
 // Get all completed campaigns
 export async function getCompletedCampaigns(): Promise<CompletedCampaign[]> {
-  ensureDirectoriesExist();
-
   try {
-    if (!fs.existsSync(COMPLETED_CAMPAIGNS_FILE)) {
+    const { blobs } = await listJsonBlobs(COMPLETED_CAMPAIGNS_KEY);
+
+    if (!blobs || blobs.length === 0) {
       // Create empty file if it doesn't exist
-      fs.writeFileSync(COMPLETED_CAMPAIGNS_FILE, JSON.stringify([], null, 2), 'utf8');
+      await saveJsonToBlob([] as CompletedCampaign[], COMPLETED_CAMPAIGNS_KEY);
       return [];
     }
 
-    const fileContents = fs.readFileSync(COMPLETED_CAMPAIGNS_FILE, 'utf8');
-    return JSON.parse(fileContents) as CompletedCampaign[];
+    // Get the latest completed campaigns blob
+    const latestBlob = blobs.sort((a, b) => b.pathname.localeCompare(a.pathname))[0];
+    const result = await getJsonFromBlob(latestBlob.url);
+
+    if (!result.success || !result.data) {
+      console.error('Failed to get completed campaigns:', result.error);
+      return [];
+    }
+
+    // Ensure we have an array
+    if (!Array.isArray(result.data)) {
+      console.error('Invalid data format for completed campaigns');
+      return [];
+    }
+
+    return result.data as CompletedCampaign[];
   } catch (error) {
     console.error('Error reading completed campaigns:', error);
     return [];
@@ -60,17 +75,31 @@ export async function getCompletedCampaigns(): Promise<CompletedCampaign[]> {
 
 // Get all categories
 export async function getCategories(): Promise<CategoryItem[]> {
-  ensureDirectoriesExist();
-
   try {
-    if (!fs.existsSync(CATEGORIES_FILE)) {
+    const { blobs } = await listJsonBlobs(CATEGORIES_KEY);
+
+    if (!blobs || blobs.length === 0) {
       // Create empty file if it doesn't exist
-      fs.writeFileSync(CATEGORIES_FILE, JSON.stringify([], null, 2), 'utf8');
+      await saveJsonToBlob([] as CategoryItem[], CATEGORIES_KEY);
       return [];
     }
 
-    const fileContents = fs.readFileSync(CATEGORIES_FILE, 'utf8');
-    return JSON.parse(fileContents) as CategoryItem[];
+    // Get the latest categories blob
+    const latestBlob = blobs.sort((a, b) => b.pathname.localeCompare(a.pathname))[0];
+    const result = await getJsonFromBlob(latestBlob.url);
+
+    if (!result.success || !result.data) {
+      console.error('Failed to get categories:', result.error);
+      return [];
+    }
+
+    // Ensure we have an array
+    if (!Array.isArray(result.data)) {
+      console.error('Invalid data format for categories');
+      return [];
+    }
+
+    return result.data as CategoryItem[];
   } catch (error) {
     console.error('Error reading categories:', error);
     return [];
@@ -94,6 +123,69 @@ export async function getCampaignById(id: number): Promise<Campaign | null> {
   } catch (error) {
     console.error(`Error getting campaign with ID ${id}:`, error);
     return null;
+  }
+}
+
+// Helper function to update active campaigns
+async function updateActiveCampaigns(campaigns: ActiveCampaign[]): Promise<boolean> {
+  try {
+    const { blobs } = await listJsonBlobs(ACTIVE_CAMPAIGNS_KEY);
+
+    if (!blobs || blobs.length === 0) {
+      // Create new blob
+      const result = await saveJsonToBlob<ActiveCampaign[]>(campaigns, ACTIVE_CAMPAIGNS_KEY);
+      return result.success;
+    } else {
+      // Update existing blob
+      const latestBlob = blobs.sort((a, b) => b.pathname.localeCompare(a.pathname))[0];
+      const result = await updateJsonBlob<ActiveCampaign[]>(latestBlob.url, campaigns);
+      return result.success;
+    }
+  } catch (error) {
+    console.error('Error updating active campaigns:', error);
+    return false;
+  }
+}
+
+// Helper function to update completed campaigns
+async function updateCompletedCampaigns(campaigns: CompletedCampaign[]): Promise<boolean> {
+  try {
+    const { blobs } = await listJsonBlobs(COMPLETED_CAMPAIGNS_KEY);
+
+    if (!blobs || blobs.length === 0) {
+      // Create new blob
+      const result = await saveJsonToBlob<CompletedCampaign[]>(campaigns, COMPLETED_CAMPAIGNS_KEY);
+      return result.success;
+    } else {
+      // Update existing blob
+      const latestBlob = blobs.sort((a, b) => b.pathname.localeCompare(a.pathname))[0];
+      const result = await updateJsonBlob<CompletedCampaign[]>(latestBlob.url, campaigns);
+      return result.success;
+    }
+  } catch (error) {
+    console.error('Error updating completed campaigns:', error);
+    return false;
+  }
+}
+
+// Helper function to update categories
+async function updateCategories(categories: CategoryItem[]): Promise<boolean> {
+  try {
+    const { blobs } = await listJsonBlobs(CATEGORIES_KEY);
+
+    if (!blobs || blobs.length === 0) {
+      // Create new blob
+      const result = await saveJsonToBlob<CategoryItem[]>(categories, CATEGORIES_KEY);
+      return result.success;
+    } else {
+      // Update existing blob
+      const latestBlob = blobs.sort((a, b) => b.pathname.localeCompare(a.pathname))[0];
+      const result = await updateJsonBlob<CategoryItem[]>(latestBlob.url, categories);
+      return result.success;
+    }
+  } catch (error) {
+    console.error('Error updating categories:', error);
+    return false;
   }
 }
 
@@ -121,8 +213,7 @@ export async function saveActiveCampaign(campaign: ActiveCampaign): Promise<bool
     }
 
     // Save the updated list
-    fs.writeFileSync(ACTIVE_CAMPAIGNS_FILE, JSON.stringify(activeCampaigns, null, 2), 'utf8');
-    return true;
+    return await updateActiveCampaigns(activeCampaigns);
   } catch (error) {
     console.error('Error saving active campaign:', error);
     return false;
@@ -153,8 +244,7 @@ export async function saveCompletedCampaign(campaign: CompletedCampaign): Promis
     }
 
     // Save the updated list
-    fs.writeFileSync(COMPLETED_CAMPAIGNS_FILE, JSON.stringify(completedCampaigns, null, 2), 'utf8');
-    return true;
+    return await updateCompletedCampaigns(completedCampaigns);
   } catch (error) {
     console.error('Error saving completed campaign:', error);
     return false;
@@ -171,8 +261,7 @@ export async function deleteCampaign(id: number): Promise<boolean> {
     if (activeIndex >= 0) {
       // Remove from active campaigns
       activeCampaigns.splice(activeIndex, 1);
-      fs.writeFileSync(ACTIVE_CAMPAIGNS_FILE, JSON.stringify(activeCampaigns, null, 2), 'utf8');
-      return true;
+      return await updateActiveCampaigns(activeCampaigns);
     }
 
     // Then check completed campaigns
@@ -182,12 +271,7 @@ export async function deleteCampaign(id: number): Promise<boolean> {
     if (completedIndex >= 0) {
       // Remove from completed campaigns
       completedCampaigns.splice(completedIndex, 1);
-      fs.writeFileSync(
-        COMPLETED_CAMPAIGNS_FILE,
-        JSON.stringify(completedCampaigns, null, 2),
-        'utf8'
-      );
-      return true;
+      return await updateCompletedCampaigns(completedCampaigns);
     }
 
     return false; // Campaign not found
@@ -216,7 +300,10 @@ export async function markCampaignCompleted(
     activeCampaigns.splice(campaignIndex, 1);
 
     // Save the updated active campaigns
-    fs.writeFileSync(ACTIVE_CAMPAIGNS_FILE, JSON.stringify(activeCampaigns, null, 2), 'utf8');
+    const activeSuccess = await updateActiveCampaigns(activeCampaigns);
+    if (!activeSuccess) {
+      return false;
+    }
 
     // Convert to completed campaign
     const completedCampaign: CompletedCampaign = {
@@ -252,8 +339,7 @@ export async function saveCategory(category: CategoryItem): Promise<boolean> {
     }
 
     // Save the updated list
-    fs.writeFileSync(CATEGORIES_FILE, JSON.stringify(categories, null, 2), 'utf8');
-    return true;
+    return await updateCategories(categories);
   } catch (error) {
     console.error('Error saving category:', error);
     return false;
@@ -270,28 +356,25 @@ export async function deleteCategory(name: string): Promise<boolean> {
       return false; // Category not found
     }
 
-    fs.writeFileSync(CATEGORIES_FILE, JSON.stringify(filteredCategories, null, 2), 'utf8');
-    return true;
+    return await updateCategories(filteredCategories);
   } catch (error) {
     console.error(`Error deleting category ${name}:`, error);
     return false;
   }
 }
 
-// Initialize with example data if the files don't exist
+// Initialize with example data if no data exists
 export async function initializeExampleData(): Promise<void> {
-  ensureDirectoriesExist();
-
-  // Only initialize if no data exists
-  const activeCampaigns = await getActiveCampaigns();
-  const completedCampaigns = await getCompletedCampaigns();
-  const categories = await getCategories();
-
-  if (activeCampaigns.length > 0 || completedCampaigns.length > 0 || categories.length > 0) {
-    return;
-  }
-
   try {
+    // Only initialize if no data exists
+    const activeCampaigns = await getActiveCampaigns();
+    const completedCampaigns = await getCompletedCampaigns();
+    const categories = await getCategories();
+
+    if (activeCampaigns.length > 0 || completedCampaigns.length > 0 || categories.length > 0) {
+      return;
+    }
+
     // Example active campaigns
     const exampleActiveCampaigns: ActiveCampaign[] = [
       {
@@ -371,19 +454,11 @@ export async function initializeExampleData(): Promise<void> {
     ];
 
     // Save example data
-    fs.writeFileSync(
-      ACTIVE_CAMPAIGNS_FILE,
-      JSON.stringify(exampleActiveCampaigns, null, 2),
-      'utf8'
-    );
-    fs.writeFileSync(
-      COMPLETED_CAMPAIGNS_FILE,
-      JSON.stringify(exampleCompletedCampaigns, null, 2),
-      'utf8'
-    );
-    fs.writeFileSync(CATEGORIES_FILE, JSON.stringify(exampleCategories, null, 2), 'utf8');
+    await saveJsonToBlob(exampleActiveCampaigns, ACTIVE_CAMPAIGNS_KEY);
+    await saveJsonToBlob(exampleCompletedCampaigns, COMPLETED_CAMPAIGNS_KEY);
+    await saveJsonToBlob(exampleCategories, CATEGORIES_KEY);
 
-    console.log('Example campaign data initialized');
+    console.log('Example campaign data initialized in Vercel Blob storage');
   } catch (error) {
     console.error('Error initializing example data:', error);
   }

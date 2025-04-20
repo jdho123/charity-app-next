@@ -1,6 +1,12 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { saveImageFromFormData } from '@/services/imageUploadService';
 
+export const config = {
+  api: {
+    bodyParser: false, // Disable body parsing, required for Vercel Blob
+  },
+};
+
 export async function POST(request: NextRequest) {
   try {
     // Parse form data
