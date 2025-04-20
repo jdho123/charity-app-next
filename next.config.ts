@@ -1,8 +1,19 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   output: 'standalone',
+  env: {
+    BLOB_READ_WRITE_TOKEN: process.env.BLOB_READ_WRITE_TOKEN,
+  },
   images: {
-    domains: ['your-domain.com'], // Add your image domains here
+    domains: ['0la1uvc3qcxl8npj.public.blob.vercel-storage.com'],
+    remotePatterns: [
+      {
+        protocol: 'https',
+        hostname: '**.public.blob.vercel-storage.com',
+        port: '',
+        pathname: '/**',
+      },
+    ], // Add your image domains here
     deviceSizes: [640, 750, 828, 1080, 1200, 1920, 2048, 3840],
   },
   async rewrites() {
