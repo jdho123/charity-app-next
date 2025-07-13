@@ -17,19 +17,19 @@ export default function Prakash() {
             {/* Left Column */}
             <div className="space-y-12">
               <p className="text-xl font-inter">
-                Prakash Bista was born in Kalikot, a remote village where residents still 
-                lack basic medical care. His parents, after a three-day walk to the nearest 
-                town, saw children in school uniforms and decided to send Prakash to a 
-                boarding school. Tragically, his education was interrupted by a civil war, 
-                and his parents passed away in an accident just as he was preparing for his 
-                final exams.
+                Prakash Bista was born in Kalikot, a remote village where residents didn't 
+                even have access to a hospital. His parents, after a three-day walk to the 
+                nearest town, saw children in school uniforms and decided to send Prakash to a 
+                boarding school. He faced several hurdles throughout his education journey,
+                with both his parents passing away just as he was preparing for his final
+                end-of-school exams.
               </p>
   
               <p className="text-xl font-inter">
                 Despite these immense challenges, Prakash founded Impact Schools, convincing 
                 neighbours to trust him with building the first school in his village. With 
-                scholarships, he studied in the US and at LSE, but unlike many peers who 
-                stayed abroad to climb the career ladder, Prakash returned home to expand 
+                scholarships, he studied in the US and at LSE, but choosing not to stay abroad
+                but to come back and give back to his community, Prakash returned home to expand 
                 Impact Schools. Today, these schools educate over 300 children and provide 
                 accommodations for more than 30 orphans.
               </p>
