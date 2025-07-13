@@ -38,12 +38,6 @@ export default function DiaryPage4() {
       handed over all seven oranges. His gesture wasn&apos;t out of
        abundance but a pure expression of gratitude for our presence and support.
       </p>
-      
-      <p className="text-sm text-[#7A3A12] mb-6 ml-4 pr-20 mt-4">
-      This single event influenced us more deeply than any book, speech, or memory. 
-      It showed us the boundless capacity for kindness that exists even 
-      in the face of profound loss and adversity.
-      </p>
 
       <p className="text-sm text-[#DB6B24] mb-6 ml-4 pr-20 mt-4">
       This single event influenced us more deeply than any book, speech, or memory. 
