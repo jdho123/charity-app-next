@@ -80,10 +80,10 @@ export default function Goals() {
             maxWidth: '90%'
           }}
         >
-          <div className="backdrop-blur-md bg-white/85 rounded-xl p-5 sm:p-7 shadow-lg inline-block max-w-full border border-white">
-            <h1 className="text-4xl sm:text-5xl md:text-6xl font-gloria mb-3 sm:mb-6 text-black">Our Goals</h1>
+          <div className="backdrop-blur-md rounded-xl p-5 sm:p-7 shadow-lg inline-block max-w-full">
+            <h1 className="text-4xl sm:text-5xl md:text-6xl font-gloria mb-3 sm:mb-6 text-white">Our Goals</h1>
             
-            <p className="text-base sm:text-lg text-black font-medium mb-4 sm:mb-8 max-w-lg leading-relaxed">
+            <p className="text-base sm:text-lg text-white font-medium mb-4 sm:mb-8 max-w-lg leading-relaxed">
               At LEDU, we believe that education has the power to transform lives and communities. 
               That&apos;s why our mission is twofold:
             </p>
