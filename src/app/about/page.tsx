@@ -67,7 +67,7 @@ export default function AboutPage() {
       </div>
 
       {/* Main Content */}
-      <main>
+      <main className="overflow-x-hidden">
         <WhoWeAre />
         <WhatWeDo onWatchVideo={() => setShowVideo(true)} />
         <OurPhilosophy />
