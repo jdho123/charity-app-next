@@ -1,5 +1,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Gloria+Hallelujah&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Architects+Daughter&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Urbanist:wght@100..900&display=swap');
 
 @tailwind base;
 @tailwind components;
@@ -8,6 +9,10 @@
 @layer components {
   .font-handwriting {
     font-family: 'Architects Daughter', cursive;
+  }
+
+  .font-urbanist {
+    font-family: 'Urbanist', sans-serif;
   }
 }
 /* 

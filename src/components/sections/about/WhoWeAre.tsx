@@ -9,14 +9,14 @@ export default function WhoWeAre() {
           <div className="space-y-6 pt-16">
             <h2 className="text-5xl font-bold font-gloria">Who We Are</h2>
             
-            <p className="text-lg">
+            <p className="text-lg font-urbanist">
               We are a generation driven by the fear that we might not pass on to our children 
               the world they deserve. The biggest challenge of this century will undoubtedly 
               be climate change. While we may not yet know how to solve it, we believe education 
               can empower more people to take part in tackling humanity&apos;s greatest challenges.
             </p>
             
-            <p className="text-lg">
+            <p className="text-lg font-urbanist">
               By sharing the education we&apos;ve been fortunate to receive in England with those 
               who lack access, we hope to create a better shot at addressing these global problems.
             </p>
@@ -41,7 +41,7 @@ export default function WhoWeAre() {
 
             {/* Additional text */}
             <div className="space-y-4">
-              <p className="text-lg">
+              <p className="text-lg font-urbanist">
                 Our work focuses on educating those who have done nothing wrong
                 but have found themselves in unimaginably difficult conditions
                 simply due to the &quot;birth roulette&quot;.
@@ -54,7 +54,7 @@ export default function WhoWeAre() {
               <div className="text-[#7AB9DE] text-[80px] font-serif absolute top-0 left-4">
                 &#8220;
               </div>
-              <blockquote className="text-2xl text-center px-6 py-4">
+              <blockquote className="text-2xl text-center px-6 py-4 font-urbanist">
                 Tough times create tough men.
                 Tough men create easy times. Easy
                 times create weak people. Weak
@@ -66,7 +66,7 @@ export default function WhoWeAre() {
             </div>
 
             {/* Final paragraph */}
-            <p className="text-lg mt-4">
+            <p className="text-lg mt-4 font-urbanist">
               Tough times have certainly begun. But we do not yet consider
               ourselves strong. Only by overcoming challenges together, by
               fighting for what the child in each of us knows to be right, 

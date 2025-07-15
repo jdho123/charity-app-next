@@ -44,7 +44,7 @@ export default function OurPhilosophy({ className = '' }: OurPhilosophyProps) {
                     height={48} 
                     className="mt-1 mr-5 flex-shrink-0" 
                   />
-                  <p className="text-xl font-verdana">
+                  <p className="text-xl font-urbanist">
                     We shed light on the other side of the world
                   </p>
                 </li>
@@ -56,7 +56,7 @@ export default function OurPhilosophy({ className = '' }: OurPhilosophyProps) {
                     height={48} 
                     className="mt-1 mr-5 flex-shrink-0" 
                   />
-                  <p className="text-xl font-verdana">
+                  <p className="text-xl font-urbanist">
                     We highlight that there are people in entirely different societies who care
                   </p>
                 </li>
@@ -68,7 +68,7 @@ export default function OurPhilosophy({ className = '' }: OurPhilosophyProps) {
                     height={48} 
                     className="mt-1 mr-5 flex-shrink-0" 
                   />
-                  <p className="text-xl font-verdana">
+                  <p className="text-xl font-urbanist">
                     We provide opportunities to explore talents and passions using more advanced resources
                   </p>
                 </li>
@@ -95,7 +95,7 @@ export default function OurPhilosophy({ className = '' }: OurPhilosophyProps) {
                     height={48} 
                     className="mt-1 mr-5 flex-shrink-0" 
                   />
-                  <p className="text-xl font-verdana">
+                  <p className="text-xl font-urbanist">
                     We shed light on the fact that giving allows us to gain so much more — the emotions received are beyond words
                   </p>
                 </li>
@@ -107,7 +107,7 @@ export default function OurPhilosophy({ className = '' }: OurPhilosophyProps) {
                     height={48} 
                     className="mt-1 mr-5 flex-shrink-0" 
                   />
-                  <p className="text-xl font-verdana">
+                  <p className="text-xl font-urbanist">
                     We offer valuable experience to those who are up-and-coming
                   </p>
                 </li>
@@ -119,7 +119,7 @@ export default function OurPhilosophy({ className = '' }: OurPhilosophyProps) {
                     height={48} 
                     className="mt-1 mr-5 flex-shrink-0" 
                   />
-                  <p className="text-xl font-verdana">
+                  <p className="text-xl font-urbanist">
                     We create opportunities for teachers to enjoy their craft even more by having a potentially greater impact
                   </p>
                 </li>
