@@ -29,7 +29,7 @@ export default function AboutPage() {
   return (
     <GuestLayout>
       {/* Hero Section */}
-      <div className="relative w-full h-[60vh] md:h-[70vh] lg:h-[120vh]">
+      <div className="relative w-full aspect-[1/1] md:aspect-[16/9]">
         <Image 
           src="/images/about-us-hero-adjusted.jpeg" 
           alt="About Us Hero"
