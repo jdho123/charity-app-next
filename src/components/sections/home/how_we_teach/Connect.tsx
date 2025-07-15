@@ -4,12 +4,18 @@ import { RoundedImage } from '../../../shared/RoundedImage';
 import BorderedText from '@/components/shared/BorderedText';
 import GloriaTitle from '@/components/shared/GloriaTitle';
 import Sprite from '@/components/animation/Sprite';
+import PageTitle from '@/components/shared/PageTitle';
 
 export function ConnectSection() {
   return (
     <>
       {/* Hero Connect Section - Fixed medium screen overlapping */}
       <div className="relative w-full max-w-[1138px] mb-12 px-4 sm:px-6">
+        <div className="lg:hidden">
+          <PageTitle className="text-black text-center whitespace-nowrap min-w-0 my-20">
+            How We Teach: <br /> Our Approach
+          </PageTitle>
+        </div>
         {/* Changed to stack vertically until lg breakpoint (1024px) */}
         <div className="flex flex-col lg:flex-row items-start gap-8">
           {/* Left column - Icon and titles */}

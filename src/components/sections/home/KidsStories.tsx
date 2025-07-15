@@ -10,7 +10,7 @@ import Link from 'next/link';
 
 const KidsStories: React.FC = () => {
   return (
-    <section className="relative overflow-hidden bg-white w-full">
+    <section className="relative overflow-hidden bg-white w-full max-lg:border max-lg:rounded-[4rem]">
       <div className="flex relative flex-col w-full">
         {/* Background Image */}
         <div className="absolute inset-0 h-full w-full">
