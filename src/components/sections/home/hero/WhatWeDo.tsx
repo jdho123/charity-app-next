@@ -9,13 +9,15 @@ export default function WhatWeDo() {
         <div className="md:w-2/3 mb-6 md:mb-0">
             <div className="flex items-center mb-4">
                 <h2 className="text-2xl md:text-3xl font-gloria text-white mr-4">What We Do</h2>
-                <Image 
-                  src="/images/rightArrow.png" 
-                  alt="Right arrow" 
-                  width={48} 
-                  height={24} 
-                  className="object-contain h-6 md:h-8 w-auto"
-                />
+                <Link href="/about#what-we-do">
+                  <Image 
+                    src="/images/rightArrow.png" 
+                    alt="Right arrow" 
+                    width={48} 
+                    height={24} 
+                    className="object-contain h-6 md:h-8 w-auto"
+                  />
+                </Link>
             </div>
             <BorderedText className="text-base md:text-xl text-black/80 font-verdana" lineColor='white'>
                 We provide education to children in humanitarian crisis areas through online lessons tailored to their needs, 
