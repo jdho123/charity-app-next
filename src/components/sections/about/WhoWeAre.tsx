@@ -37,31 +37,7 @@ export default function WhoWeAre() {
           </div>
 
           {/* Right Column - with reduced top padding */}
-          <div className="flex flex-col space-y-6">
-            {/* Colorful flower images as U shape */}
-            <div className="relative flex justify-between h-[200px] mx-auto w-full max-w-[500px]">
-              {/* Left part of U - purple/green lei */}
-              <div className="relative w-[150px]">
-                <Image 
-                  src="/images/flower2.png" 
-                  alt="Purple and green lei" 
-                  width={150}
-                  height={200}
-                  className="object-contain"
-                />
-              </div>
-              
-              {/* Right part of U - red/yellow lei */}
-              <div className="relative w-[190px]">
-                <Image 
-                  src="/images/flower1.png" 
-                  alt="Red and yellow lei" 
-                  width={190}
-                  height={250}
-                  className="object-contain"
-                />
-              </div>
-            </div>
+          <div className="flex flex-col space-y-6 lg:pt-32">
 
             {/* Additional text */}
             <div className="space-y-4">
