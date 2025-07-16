@@ -135,22 +135,22 @@ export default function Goals() {
           className="absolute top-[73%] left-[20%] -z-10"
           priority
         />
-         <Image
-            src="/images/star_3.png"
-            alt="Star"
-            width={100}
-            height={100}
-            className="absolute top-[95%] lg:top-[90%] left-[10%] lg:left-[55%] -z-10"
-            priority
-          />
-          <Image
-            src="/images/star_5.png"
-            alt="Star"
-            width={55}
-            height={55}
-            className="absolute lg:top-[5%] lg:left-[40%] top-[2%] left-[65%] -z-10"
-            priority
-          />
+        <Image
+          src="/images/star_3.png"
+          alt="Star"
+          width={100}
+          height={100}
+          className="absolute top-[95%] lg:top-[90%] left-[10%] lg:left-[55%] -z-10"
+          priority
+        />
+        <Image
+          src="/images/star_5.png"
+          alt="Star"
+          width={55}
+          height={55}
+          className="absolute lg:top-[5%] lg:left-[40%] top-[2%] left-[65%] -z-10"
+          priority
+        />
       </div>
 
       {/* Content boxes that come in from the side - repositioned for mobile */}
