@@ -49,7 +49,7 @@ export default function Goals() {
   const earthTransform = {
     scale: 1 + adjustedProgress * 1.5, // Start smaller on mobile
     translateX: `${adjustedProgress * (windowWidth < 768 ? 20 : 35)}%`, // Move less on mobile
-    translateY: `${adjustedProgress * (windowWidth < 768 ? 30 : 15)}%`,
+    translateY: `${adjustedProgress * (windowWidth < 1024 ? 30 : 15)}%`,
     opacity: 1,
   };
   
@@ -113,23 +113,23 @@ export default function Goals() {
         </div>
         <Image
           src="/images/star_7.png"
-          alt="World globe illustration"
-          width={50}
-          height={50}
-          className="absolute top-[20%] left-[2%] -z-10"
+          alt="Star"
+          width={80}
+          height={80}
+          className="absolute top-[40%] lg:top-[20%] left-[2%] -z-10"
           priority
         />
         <Image
           src="/images/star_2.png"
-          alt="World globe illustration"
-          width={50}
-          height={50}
+          alt="Star"
+          width={70}
+          height={70}
           className="absolute lg:top-[12%] lg:left-[60%] top-[10%] left-[85%] -z-10"
           priority
         />
         <Image
           src="/images/star_2.png"
-          alt="World globe illustration"
+          alt="Star"
           width={50}
           height={50}
           className="absolute top-[73%] left-[20%] -z-10"
@@ -137,18 +137,18 @@ export default function Goals() {
         />
          <Image
             src="/images/star_3.png"
-            alt="World globe illustration"
+            alt="Star"
             width={100}
             height={100}
-            className="absolute top-[90%] left-[55%]"
+            className="absolute top-[95%] lg:top-[90%] left-[10%] lg:left-[55%] -z-10"
             priority
           />
           <Image
             src="/images/star_5.png"
-            alt="World globe illustration"
+            alt="Star"
             width={55}
             height={55}
-            className="absolute lg:top-[5%] lg:left-[40%] top-[2%] left-[65%]"
+            className="absolute lg:top-[5%] lg:left-[40%] top-[2%] left-[65%] -z-10"
             priority
           />
       </div>
