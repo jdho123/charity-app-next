@@ -5,7 +5,7 @@ import PageTitle from "@/components/shared/PageTitle";
 export function HeroSection() {
   return (
     // Min height set to 200 due to image height
-    <header className="hidden relative lg:flex flex-col w-full px-6 pl-20 max-md:px-5 max-md:max-w-full min-h-[300px]">
+    <header className="hidden relative lg:flex flex-col w-full px-6 pl-20 max-md:px-5 max-md:max-w-full min-h-[400px]">
       <div className="absolute inset-0 w-full h-full">
         <Image
           src="/images/KidStoriesFooter-adjusted.png"
