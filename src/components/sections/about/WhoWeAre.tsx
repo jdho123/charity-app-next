@@ -7,7 +7,7 @@ export default function WhoWeAre() {
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 items-start">
           {/* Left Column - with added top padding */}
           <div className="space-y-6 pt-16">
-            <h2 className="text-5xl font-bold font-gloria">Who We Are</h2>
+            <h2 className="text-5xl text-[#DB6B24] font-bold font-gloria">Who We Are</h2>
             
             <p className="text-lg font-urbanist">
               We are a generation driven by the fear that we might not pass on to our children 
