@@ -49,11 +49,13 @@ export default function Goals() {
   const earthTransform = {
     scale: 1 + adjustedProgress * 1.5, // Start smaller on mobile
     translateX: `${adjustedProgress * (windowWidth < 768 ? 20 : 35)}%`, // Move less on mobile
+    translateY: `${adjustedProgress * (windowWidth < 768 ? 30 : 15)}%`,
     opacity: 1,
   };
   
   const titleTransform = {
     translateX: `${Math.max(Math.min(adjustedProgress * -10, -10), -10)}%`,
+    translateY: `${adjustedProgress * 60}%`, // Move less on mobile
     opacity: 1 - adjustedProgress * 0.2,
   };
   
@@ -70,7 +72,7 @@ export default function Goals() {
     >
       {/* Background Earth Image */}
       <div 
-        className="sticky top-0 h-screen w-full pt-8 sm:pt-16 overflow-hidden"
+        className="sticky top-0 h-screen w-full pt-8 sm:pt-16"
       >
         {/* Title with background */}
         <div 
@@ -94,14 +96,14 @@ export default function Goals() {
         <div 
           className="absolute inset-0 flex items-center justify-center transition-all duration-300 ease-out overflow-visible"
           style={{
-            transform: `translateX(${earthTransform.translateX}) scale(${earthTransform.scale})`,
+            transform: `translateX(${earthTransform.translateX}) translateY(${earthTransform.translateY}) scale(${earthTransform.scale})`,
             opacity: earthTransform.opacity
           }}
         >
           
           <div className="relative h-[60vh] w-[60vh] sm:h-[70vh] sm:w-[70vh] md:h-[80vh] md:w-[80vh]">
             <Image
-              src="/images/bigWorldFull.png"
+              src="/images/bigWorldFull-new.png"
               alt="World globe illustration"
               fill
               className="object-contain"
@@ -109,11 +111,51 @@ export default function Goals() {
             />
           </div>
         </div>
+        <Image
+          src="/images/star_7.png"
+          alt="World globe illustration"
+          width={50}
+          height={50}
+          className="absolute top-[20%] left-[2%] -z-10"
+          priority
+        />
+        <Image
+          src="/images/star_2.png"
+          alt="World globe illustration"
+          width={50}
+          height={50}
+          className="absolute lg:top-[12%] lg:left-[60%] top-[10%] left-[85%] -z-10"
+          priority
+        />
+        <Image
+          src="/images/star_2.png"
+          alt="World globe illustration"
+          width={50}
+          height={50}
+          className="absolute top-[73%] left-[20%] -z-10"
+          priority
+        />
+         <Image
+            src="/images/star_3.png"
+            alt="World globe illustration"
+            width={100}
+            height={100}
+            className="absolute top-[90%] left-[55%]"
+            priority
+          />
+          <Image
+            src="/images/star_5.png"
+            alt="World globe illustration"
+            width={55}
+            height={55}
+            className="absolute lg:top-[5%] lg:left-[40%] top-[2%] left-[65%]"
+            priority
+          />
       </div>
 
       {/* Content boxes that come in from the side - repositioned for mobile */}
       <div 
-        className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 absolute top-[60%] sm:top-[55%] md:top-1/3 z-30 transition-all duration-500 ease-out pointer-events-auto w-full"
+        className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 absolute top-[60%] sm:top-[55%] md:top-[30%] z-30 transition-all duration-500 ease-out pointer-events-auto w-full"
         style={infoCardsTransform}
       >
         <div className="grid gap-5 sm:gap-8 md:gap-12 max-w-full sm:max-w-3xl">
