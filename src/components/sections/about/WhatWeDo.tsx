@@ -11,8 +11,8 @@ export default function WhatWeDo({ onWatchVideo }: WhatWeDoProps) {
         <div className="container mx-auto px-4">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
             <div className="space-y-8">
-              <h2 className="text-5xl font-gloria">What We Do</h2>
-              <p className="text-xl font-verdana max-w-lg">
+              <h2 className="text-5xl text-[#31848C] font-gloria">What We Do</h2>
+              <p className="text-xl font-urbanist max-w-lg">
                 We provide education to children who are missing out on its fruits. Through partnerships with schools 
                 in areas affected by humanitarian crises, we deliver online lessons tailored to their needs. 
                 These lessons have covered subjects like English, music, geography, and applied mathematics, 

@@ -15,7 +15,7 @@ export default function Beginnings() {
 
             <h3 className="text-4xl font-gloria text-[#DB6B24] mt-10 mb-6">The Beginning</h3>
 
-            <p className="text-lg font-inter mb-8">
+            <p className="text-lg font-urbanist mb-8">
               Some of us on the team have experienced suffering in our own lives. We feel fortunate
               to enjoy freedoms that many others do not possess, and this sense of gratitude compels
               us to give back. Realizing that the problems in our regions were too vast for us to
@@ -49,7 +49,7 @@ export default function Beginnings() {
           {/* Right Side Nepal Content (positioned below temple) */}
           <div className="lg:absolute lg:bottom-10 lg:right-0 lg:max-w-md mt-20 lg:mt-0">
             <h3 className="text-4xl font-gloria text-[#3E6F1B] mb-6">Nepal</h3>
-            <p className="text-lg font-verdana">
+            <p className="text-lg font-urbanist">
               Inspired by stories of transformation and awe-inspiring beauty in Nepal, we decided it
               would be the perfect place to begin our mission. It was there that we met Prakash
               Bista, a man whose story exemplifies the power of education and community.
