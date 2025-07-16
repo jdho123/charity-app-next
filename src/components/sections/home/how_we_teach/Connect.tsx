@@ -73,7 +73,7 @@ export function ConnectSection() {
                 height={60}
                 className="absolute -top-6 -left-4 sm:-top-10 sm:-left-10 opacity-30 w-16 h-12 sm:w-20 sm:h-16"
               />
-              <div className="pl-4 border-l-4 border-[#3E6F1B]">
+              <div className="pl-4 border-l-4 border-[#3E6F1B] font-urbanist">
                 <p className="text-base sm:text-lg md:text-xl text-black mb-4 sm:mb-6">
                   We show children that someone outside their community truly cares about them.
                 </p>

@@ -83,10 +83,10 @@ export default function Newsletter() {
             <h2 className="text-7xl font-gloria text-white mb-4 leading-tight">Our Journey</h2>
             <h3 className="text-4xl font-gloria text-yellow-200 mb-6">One Story at a Time</h3>
           </div>
-          <p className="text-white text-lg leading-relaxed max-w-xl mt-16">
-            Stay updated with the latest news, inspiring stories, and behind-the-scenes moments
-            from our mission. From impactful lessons to heartwarming success stories, discover
-            how we&apos;re making a difference every day.
+          <p className="text-white text-lg leading-relaxed max-w-xl mt-16 font-urbanist">
+            Stay updated with the latest news, inspiring stories, and behind-the-scenes moments from
+            our mission. From impactful lessons to heartwarming success stories, discover how
+            we&apos;re making a difference every day.
           </p>
         </div>
         <div className="flex flex-col lg:flex-row gap-8">

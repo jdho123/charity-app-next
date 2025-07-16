@@ -53,7 +53,7 @@ export function TransformSection() {
               How do we help children grow beyond their circumstances?
             </h3>
 
-            <div className="pl-4 sm:pl-6 border-l-4 border-[#3E6F1B] text-base sm:text-lg lg:text-xl">
+            <div className="pl-4 sm:pl-6 border-l-4 border-[#3E6F1B] text-base sm:text-lg lg:text-xl font-urbanist">
               <p className="mb-4 sm:mb-6">
                 Through fundraisers, we provide essential resources like Wi-Fi, books, and sports
                 equipment that make learning possible.
