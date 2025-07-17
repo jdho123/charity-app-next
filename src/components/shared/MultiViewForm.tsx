@@ -260,7 +260,7 @@ export default function MultiViewForm({
           <div key={field.id} className="relative">
             <BorderedText
               as="h2"
-              className="mb-4 md:mb-6"
+              className="mb-4 md:mb-6 text-xl"
               lineWidth="6px"
               lineColor={labelColor}
               padding="1rem"
