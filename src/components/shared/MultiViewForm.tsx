@@ -92,11 +92,36 @@ export default function MultiViewForm({
     setFormData((prev) => ({ ...prev, [id]: val }));
   };
 
+  const validateAllFields = (): boolean => {
+    const newErrors: Record<string, string> = {};
+    let isValid = true;
+
+    allViews.forEach((view) => {
+      view.fields.forEach((field) => {
+        if (field.required) {
+          const value = formData[field.id];
+          if (
+            value === undefined ||
+            value === null ||
+            (typeof value === 'string' && value.trim() === '') ||
+            (field.type === 'checkbox' && !value)
+          ) {
+            newErrors[field.id] = `${field.label.split('?')[0].trim()} is required`;
+            isValid = false;
+          }
+        }
+      });
+    });
+
+    setErrors(newErrors);
+    return isValid;
+  };
+
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
 
-    // Validate current view before submitting
-    if (!validateCurrentView()) {
+    // Validate all fields before submitting
+    if (!validateAllFields()) {
       return; // Don't submit if validation fails
     }
 
@@ -145,39 +170,7 @@ export default function MultiViewForm({
     }
   };
 
-  const validateCurrentView = (): boolean => {
-    const currentFields = allViews[currentView - 1].fields;
-    const newErrors: Record<string, string> = {};
-    let isValid = true;
-
-    // Check each required field in the current view
-    currentFields.forEach((field) => {
-      if (field.required) {
-        const value = formData[field.id];
-
-        // Check if field is empty or only whitespace
-        if (
-          value === undefined ||
-          value === null ||
-          (typeof value === 'string' && value.trim() === '') ||
-          (field.type === 'checkbox' && !value)
-        ) {
-          newErrors[field.id] = `${field.label.split('?')[0].trim()} is required`;
-          isValid = false;
-        }
-      }
-    });
-
-    setErrors(newErrors);
-    return isValid;
-  };
-
   const nextView = () => {
-    // Validate current view before proceeding
-    if (!validateCurrentView()) {
-      return; // Don't proceed if validation fails
-    }
-
     if (currentView < allViews.length) {
       setCurrentView(currentView + 1);
     } else {
@@ -260,7 +253,7 @@ export default function MultiViewForm({
           <div key={field.id} className="relative">
             <BorderedText
               as="h2"
-              className="mb-4 md:mb-6"
+              className="mb-4 md:mb-6 text-xl"
               lineWidth="6px"
               lineColor={labelColor}
               padding="1rem"
