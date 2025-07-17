@@ -14,14 +14,14 @@ export default function GeneralFund() {
             </h1>
 
             <div className="space-y-4">
-              <p className="font-verdana text-base">
+              <p className="font-urbanist text-base">
                 Your contribution directly impacts the lives of children by providing essential
                 resources like Wi-Fi, books, and educational tools in underserved communities.
                 Together, we can empower the next generation by opening doors to education,
                 fostering hope, and inspiring change.
               </p>
 
-              <p className="font-verdana text-base font-bold">
+              <p className="font-urbanist text-base font-bold">
                 Every dollar counts. Join us in making a tangible difference—one child, one teacher,
                 one lesson at a time.
               </p>
