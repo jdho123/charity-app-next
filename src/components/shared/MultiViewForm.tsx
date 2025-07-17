@@ -219,7 +219,7 @@ export default function MultiViewForm({
               } checked:bg-blue-500 appearance-none cursor-pointer`}
             />
             <div>
-              <label htmlFor="terms" className={`text-base font-verdana text-${labelColor}`}>
+              <label htmlFor="terms" className={`text-base font-urbanist text-${labelColor}`}>
                 {currentFields[0].label}
               </label>
               {errors.terms && <p className="mt-1 text-red-300 text-sm">{errors.terms}</p>}
@@ -273,7 +273,7 @@ export default function MultiViewForm({
                   rows={6}
                   className={`w-full bg-white/90 border-2 ${
                     errors[field.id] ? 'border-red-500' : 'border-black'
-                  } rounded-3xl px-6 py-4 text-lg font-verdana
+                  } rounded-3xl px-6 py-4 text-lg font-urbanist
                            placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-blue-500 resize-y min-h-[120px] md:min-h-[150px]`}
                 />
                 {errors[field.id] && (
@@ -293,7 +293,7 @@ export default function MultiViewForm({
                       errors[field.id] ? 'border-red-500' : 'border-black'
                     } checked:bg-blue-500 appearance-none cursor-pointer`}
                   />
-                  <label htmlFor={field.id} className="ml-2 text-lg font-verdana text-white">
+                  <label htmlFor={field.id} className="ml-2 text-lg font-urbanist text-white">
                     {field.label}
                   </label>
                 </div>
@@ -312,7 +312,7 @@ export default function MultiViewForm({
                   required={field.required}
                   className={`w-full bg-white/90 border-2 ${
                     errors[field.id] ? 'border-red-500' : 'border-black'
-                  } rounded-full px-6 py-4 text-lg font-verdana
+                  } rounded-full px-6 py-4 text-lg font-urbanist
                            placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-blue-500`}
                 />
                 {errors[field.id] && (
