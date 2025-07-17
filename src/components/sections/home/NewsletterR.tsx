@@ -59,38 +59,39 @@ export default function Newsletter() {
   }
 
   return (
-    <section className="bg-[#2F4F4F] py-16 min-h-screen relative overflow-hidden pt-[200px]">
+    <section className="bg-[#2F4F4F] py-16 min-h-screen relative overflow-hidden pt-12">
       {/* Star decoration */}
-      <div className="absolute top-20 right-32">
+      <div className="absolute w-full top-20 left-[30%]">
         <Image
           src="/images/shootingStar.png"
           alt=""
-          width={180}
-          height={100}
+          width={450}
+          height={300}
           className="opacity-70"
         />
       </div>
 
       {/* Lightbulb decoration */}
-      <div className="absolute bottom-8 right-8">
+      <div className="absolute bottom-0 right-0">
         <Image src="/images/lightbulb.png" alt="" width={120} height={120} className="opacity-40" />
       </div>
 
       <div className="container mx-auto px-4">
+        {/* Header Content */}
+        <div className="flex max-lg:flex-col lg:justify-evenly lg:gap-72 mb-12">
+          <div className="">
+            <h2 className="text-7xl font-gloria text-white mb-4 leading-tight">Our Journey</h2>
+            <h3 className="text-4xl font-gloria text-yellow-200 mb-6">One Story at a Time</h3>
+          </div>
+          <p className="text-white text-lg leading-relaxed max-w-xl mt-16 font-urbanist">
+            Stay updated with the latest news, inspiring stories, and behind-the-scenes moments from
+            our mission. From impactful lessons to heartwarming success stories, discover how
+            we&apos;re making a difference every day.
+          </p>
+        </div>
         <div className="flex flex-col lg:flex-row gap-8">
           {/* Left Column - Header and Featured Article */}
           <div className="lg:w-1/2">
-            {/* Header Content */}
-            <div className="mb-12">
-              <h2 className="text-7xl font-gloria text-white mb-4 leading-tight">Our Journey</h2>
-              <h3 className="text-4xl font-gloria text-yellow-200 mb-6">One Story at a Time</h3>
-              <p className="text-white text-lg leading-relaxed max-w-xl">
-                Stay updated with the latest news, inspiring stories, and behind-the-scenes moments
-                from our mission. From impactful lessons to heartwarming success stories, discover
-                how we&apos;re making a difference every day.
-              </p>
-            </div>
-
             {/* Featured Article */}
             {stories[0] && (
               <div className="bg-white rounded-3xl overflow-hidden shadow-lg">

@@ -13,13 +13,13 @@ export default function LearnMoreCard() {
           sizes="(max-width: 768px) 100vw, 50vw"
         />
       </div>
-      <div className="flex relative flex-col max-w-full w-full md:w-[423px] z-10">
+      <div className="flex relative flex-col max-w-full w-full md:w-[423px] z-10 mx-auto">
         <Link href="/about#our-philosophy" className="inline-block">
           <div className="mt-12 md:mt-24">
             <div className="mt-auto">
               <div className="flex gap-2 items-center">
                 <div className="w-[66%]">
-                  <h2 className="self-stretch my-auto text-3xl sm:text-4xl md:text-5xl font-gloria text-white border-b-2 border-white">
+                  <h2 className="self-stretch my-auto text-3xl sm:text-4xl md:text-5xl font-gloria underline decoration-2 underline-offset-8 text-right text-white">
                     Learn More
                   </h2>
                 </div>

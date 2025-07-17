@@ -4,12 +4,18 @@ import { RoundedImage } from '../../../shared/RoundedImage';
 import BorderedText from '@/components/shared/BorderedText';
 import GloriaTitle from '@/components/shared/GloriaTitle';
 import Sprite from '@/components/animation/Sprite';
+import PageTitle from '@/components/shared/PageTitle';
 
 export function ConnectSection() {
   return (
     <>
       {/* Hero Connect Section - Fixed medium screen overlapping */}
       <div className="relative w-full max-w-[1138px] mb-12 px-4 sm:px-6">
+        <div className="lg:hidden">
+          <PageTitle className="text-black text-center whitespace-nowrap min-w-0 my-20">
+            How We Teach: <br /> Our Approach
+          </PageTitle>
+        </div>
         {/* Changed to stack vertically until lg breakpoint (1024px) */}
         <div className="flex flex-col lg:flex-row items-start gap-8">
           {/* Left column - Icon and titles */}
@@ -67,7 +73,7 @@ export function ConnectSection() {
                 height={60}
                 className="absolute -top-6 -left-4 sm:-top-10 sm:-left-10 opacity-30 w-16 h-12 sm:w-20 sm:h-16"
               />
-              <div className="pl-4 border-l-4 border-[#3E6F1B]">
+              <div className="pl-4 border-l-4 border-[#3E6F1B] font-urbanist">
                 <p className="text-base sm:text-lg md:text-xl text-black mb-4 sm:mb-6">
                   We show children that someone outside their community truly cares about them.
                 </p>
