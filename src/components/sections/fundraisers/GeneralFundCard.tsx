@@ -1,13 +1,13 @@
-'use client'
-import { useMemo } from 'react'
-import Image from 'next/image'
+'use client';
+import { useMemo } from 'react';
+import Image from 'next/image';
 
 interface GeneralFundCardProps {
-  goal: number
-  raised: number
-  imageUrl: string
-  description: string
-  additionalInfo?: string
+  goal: number;
+  raised: number;
+  imageUrl: string;
+  description: string;
+  additionalInfo?: string;
 }
 
 export default function GeneralFundCard({
@@ -15,11 +15,9 @@ export default function GeneralFundCard({
   raised,
   imageUrl,
   description,
-  additionalInfo
+  additionalInfo,
 }: GeneralFundCardProps) {
-  const progress = useMemo(() => 
-    Math.round((raised / goal) * 100)
-  , [raised, goal])
+  const progress = useMemo(() => Math.round((raised / goal) * 100), [raised, goal]);
 
   return (
     <div className="w-full h-full bg-[#CFE9FF] border border-black rounded-[32px] overflow-hidden flex flex-col">
@@ -34,12 +32,7 @@ export default function GeneralFundCard({
       {/* Image */}
       <div className="px-6 py-2">
         <div className="relative w-full h-[200px] rounded-lg overflow-hidden">
-          <Image 
-            src={imageUrl} 
-            alt="General Fund"
-            fill
-            className="object-cover"
-          />
+          <Image src={imageUrl} alt="General Fund" fill className="object-cover" />
         </div>
       </div>
 
@@ -47,14 +40,8 @@ export default function GeneralFundCard({
       <div className="p-6 flex-1 flex flex-col space-y-6">
         <div>
           <h4 className="text-xl font-gloria mb-2">Why It Matters</h4>
-          <p className="text-sm">
-            {description}
-          </p>
-          {additionalInfo && (
-            <p className="text-sm mt-4">
-              {additionalInfo}
-            </p>
-          )}
+          <p className="text-sm font-urbanist">{description}</p>
+          {additionalInfo && <p className="text-sm mt-4 font-urbanist">{additionalInfo}</p>}
         </div>
 
         {/* Progress Section */}
@@ -63,16 +50,15 @@ export default function GeneralFundCard({
             <span className="text-sm font-bold">Progress: {progress}%</span>
           </div>
           <div className="h-4 bg-gray-200 rounded-full overflow-hidden">
-            <div 
-              className="h-full bg-green-500 rounded-full"
-              style={{ width: `${progress}%` }}
-            />
+            <div className="h-full bg-green-500 rounded-full" style={{ width: `${progress}%` }} />
           </div>
           <div className="text-sm">
-            <span>${raised.toLocaleString()} raised out of ${goal.toLocaleString()}</span>
+            <span>
+              ${raised.toLocaleString()} raised out of ${goal.toLocaleString()}
+            </span>
           </div>
         </div>
       </div>
     </div>
-  )
+  );
 }
