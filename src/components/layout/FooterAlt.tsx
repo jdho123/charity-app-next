@@ -61,7 +61,7 @@ export default function Footer() {
         <BlurryBox
           position="custom"
           customPosition="relative mx-auto"
-          width="w-full max-w-6xl"
+          width="w-full"
           padding="px-6 py-6 sm:py-10"
           borderRadius="rounded-[32px]"
           bgOpacity="bg-white/30"
