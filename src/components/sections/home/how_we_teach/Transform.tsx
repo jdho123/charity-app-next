@@ -14,7 +14,7 @@ export function TransformSection() {
               frameWidth={385}
               frameHeight={385}
               scale={1}
-              className="self-end w-[80%] max-w-full"
+              className="self-center w-[80%] object-contain"
               imagePath="/animated/arrow2smooth.png"
             />
             <div className="mt-10 lg:mt-20 w-full overflow-hidden rounded-[30px]">
