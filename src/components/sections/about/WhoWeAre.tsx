@@ -22,7 +22,7 @@ export default function WhoWeAre() {
             </p>
 
             {/* Image of people with flower necklaces in polaroid-like frame */}
-            <div className="mt-8 bg-gray-100 p-3 shadow-md rotate-[-2deg] w-fit max-w-[400px] md:max-w-[80%] lg:max-w-[450px] xl:max-w-[500px]">
+            <div className="mt-8 bg-gray-100 p-3 shadow-md rotate-[-2deg]">
               <div className="w-full relative">
                 <Image
                   src="/images/whoWeAreWearingFlowerNecklaces.jpeg"
