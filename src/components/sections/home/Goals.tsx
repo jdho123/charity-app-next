@@ -84,7 +84,7 @@ export default function Goals() {
               Our Goals
             </h1>
 
-            <p className="text-base sm:text-lg text-white font-urbanist mb-4 sm:mb-8 max-w-lg leading-relaxed">
+            <p className="text-lg sm:text-xl text-white font-urbanist mb-4 sm:mb-8 max-w-lg leading-relaxed">
               At LEDU, we believe that education has the power to transform lives and communities.
               That&apos;s why our mission is twofold:
             </p>
@@ -153,7 +153,7 @@ export default function Goals() {
 
       {/* Content boxes that come in from the side - repositioned for mobile */}
       <div
-        className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 absolute top-[60%] sm:top-[55%] md:top-[30%] z-30 transition-all duration-500 ease-out pointer-events-auto w-full"
+        className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 absolute top-[60%] sm:top-[50%] md:top-[40%] z-30 transition-all duration-500 ease-out pointer-events-auto w-full"
         style={infoCardsTransform}
       >
         <div className="grid gap-5 sm:gap-8 md:gap-12 max-w-full sm:max-w-3xl">
