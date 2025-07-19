@@ -12,7 +12,7 @@ export function ConnectSection() {
       {/* Hero Connect Section - Fixed medium screen overlapping */}
       <div className="relative w-full max-w-[1138px] mb-12 px-4 sm:px-6">
         <div className="lg:hidden">
-          <PageTitle className="text-black text-center whitespace-nowrap min-w-0 my-20">
+          <PageTitle className="max-lg:text-4xl text-black text-center whitespace-nowrap min-w-0 my-20">
             How We Teach: <br /> Our Approach
           </PageTitle>
         </div>
