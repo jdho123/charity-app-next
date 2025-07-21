@@ -67,7 +67,7 @@ export default function Goals() {
   return (
     <section
       ref={sectionRef}
-      className="relative min-h-[150vh] sm:min-h-[140vh] md:min-h-[120vh] pb-20 sm:pb-32 overflow-hidden  bg-black"
+      className="relative min-h-[160vh] sm:min-h-[150vh] md:min-h-[140vh] pb-20 sm:pb-32 overflow-hidden bg-black"
     >
       {/* Background Earth Image */}
       <div className="sticky top-0 h-screen w-full pt-8 sm:pt-16">
@@ -153,7 +153,7 @@ export default function Goals() {
 
       {/* Content boxes that come in from the side - repositioned for mobile */}
       <div
-        className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 absolute top-[60%] sm:top-[50%] md:top-[40%] z-30 transition-all duration-500 ease-out pointer-events-auto w-full"
+        className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 absolute bottom-[10%] z-30 transition-all duration-500 ease-out pointer-events-auto w-full"
         style={infoCardsTransform}
       >
         <div className="grid gap-5 sm:gap-8 md:gap-12 max-w-full sm:max-w-3xl">
