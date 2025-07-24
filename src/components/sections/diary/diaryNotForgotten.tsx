@@ -1,0 +1,151 @@
+export default function DiaryNotForgotten({ className = '' }) {
+  return (
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      width="800"
+      height="600"
+      viewBox="0 0 1300 924"
+      className={`${className}`}
+    >
+      <defs>
+        <style type="text/css">{`
+      @font-face {
+        font-family: 'Indie Flower';
+        font-style: normal;
+        font-weight: 400;
+        font-display: swap;
+        src: url(https://fonts.gstatic.com/s/indieflower/v23/m8JVjfNVeKWVnh3QMuKkFcZVaUuH.woff2) format('woff2');
+        unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+      }
+
+      @font-face {
+        font-family: 'Gloria Hallelujah';
+        font-style: normal;
+        font-weight: 400;
+        font-display: swap;
+        src: url(https://fonts.gstatic.com/s/gloriahallelujah/v23/LYjYdHv3kUk9BMV96EIswT9DIbW-MIS11zM.woff2) format('woff2');
+        unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+      }
+
+      .handwritten {
+        font-family: 'Indie Flower', sans-serif;
+      }
+
+      .gloria {
+        font-family: 'Gloria Hallelujah';
+      }
+    `}</style>
+      </defs>
+
+      <image href="/images/diaryNotForgotten.png" x="0" y="0" width="1300" height="924" />
+
+      <text
+        x="170"
+        y="150"
+        fontFamily="Arial, sans-serif"
+        fontSize="36"
+        fill="#83094E"
+        textAnchor="start"
+        className="gloria"
+      >
+        Alone But Not Forgotten
+      </text>
+
+      <text
+        x="140"
+        y="270"
+        fontFamily="Arial, sans-serif"
+        fontSize="20"
+        fill="#83094E"
+        textAnchor="start"
+        className="handwritten"
+      >
+        <tspan x="140" dy="0">
+          Another child's father
+        </tspan>
+        <tspan x="140" dy="1.2em">
+          moved to India to earn
+        </tspan>
+        <tspan x="140" dy="1.2em">
+          money that he could{' '}
+        </tspan>
+        <tspan x="140" dy="1.2em">
+          regularly send back to
+        </tspan>
+        <tspan x="140" dy="1.2em">
+          sustain his family. Whilst{' '}
+        </tspan>
+        <tspan x="140" dy="1.2em">
+          away, he tragically
+        </tspan>
+        <tspan x="140" dy="1.2em">
+          passed away before
+        </tspan>
+        <tspan x="140" dy="1.2em">
+          being able to see how
+        </tspan>
+        <tspan x="140" dy="1.2em">
+          the hard-earned
+        </tspan>
+        <tspan x="140" dy="1.2em">
+          remittances improved
+        </tspan>
+        <tspan x="140" dy="1.2em">
+          his family's life.
+        </tspan>
+      </text>
+
+      <text
+        x="140"
+        y="600"
+        fontFamily="Arial, sans-serif"
+        fontSize="20"
+        fill="#83094E"
+        textAnchor="start"
+        className="handwritten"
+      >
+        <tspan x="140" dy="0">
+          His wife quickly remarried and shut the child off from her{' '}
+        </tspan>
+        <tspan x="140" dy="1.2em">
+          life. The little girl is not allowed to come to her mother's{' '}
+        </tspan>
+        <tspan x="140" dy="1.2em">
+          house. The mother is living a different life with a different
+        </tspan>
+        <tspan x="140" dy="1.2em">
+          family and has not once come to visit the girl who's been
+        </tspan>
+        <tspan x="140" dy="1.2em">
+          left alone, all by herself in this world.
+        </tspan>
+      </text>
+
+      <text
+        x="680"
+        y="300"
+        fontFamily="Arial, sans-serif"
+        fontSize="20"
+        fill="#83094E"
+        textAnchor="start"
+        className="handwritten"
+      >
+        <tspan x="680" dy="0">
+          Impact Schools stepped in to provide her with
+        </tspan>
+        <tspan x="680" dy="1.2em">
+          a community that cares, offering her a sense of
+        </tspan>
+        <tspan x="680" dy="1.2em">
+          belonging and the tools to dream of a better future. Her
+        </tspan>
+        <tspan x="680" dy="1.2em">
+          Her story is a testament to the resilience of the human
+        </tspan>
+        <tspan x="680" dy="1.2em">
+          spirit and the power of collective action.
+        </tspan>
+      </text>
+    </svg>
+  );
+}
