@@ -1,6 +1,6 @@
-'use client'
-import SlideMenu from "./SlideMenu"
-import LeduLogo from "./LeduLogo"
+'use client';
+import SlideMenu from './SlideMenu';
+import LeduLogo from './LeduLogo';
 
 interface FullHeightLayoutProps {
   children: React.ReactNode;
@@ -15,5 +15,5 @@ export default function FullHeightLayout({ children }: FullHeightLayoutProps) {
       <SlideMenu />
       <main className="flex-1">{children}</main>
     </div>
-  )
+  );
 }

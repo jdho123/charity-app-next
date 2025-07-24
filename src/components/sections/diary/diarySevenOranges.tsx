@@ -1,0 +1,168 @@
+export default function DiarySevenOranges({ className = '' }) {
+  return (
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      width="800"
+      height="600"
+      viewBox="0 0 1300 924"
+      className={`${className}`}
+    >
+      <defs>
+        <style type="text/css">{`
+      @font-face {
+        font-family: 'Indie Flower';
+        font-style: normal;
+        font-weight: 400;
+        font-display: swap;
+        src: url(https://fonts.gstatic.com/s/indieflower/v23/m8JVjfNVeKWVnh3QMuKkFcZVaUuH.woff2) format('woff2');
+        unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+      }
+
+      @font-face {
+        font-family: 'Gloria Hallelujah';
+        font-style: normal;
+        font-weight: 400;
+        font-display: swap;
+        src: url(https://fonts.gstatic.com/s/gloriahallelujah/v23/LYjYdHv3kUk9BMV96EIswT9DIbW-MIS11zM.woff2) format('woff2');
+        unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+      }
+
+      .handwritten {
+        font-family: 'Indie Flower', sans-serif;
+      }
+
+      .gloria {
+        font-family: 'Gloria Hallelujah';
+      }
+    `}</style>
+      </defs>
+
+      <image href="/images/diarySevenOranges.png" x="0" y="0" width="1300" height="924" />
+
+      <text
+        x="410"
+        y="190"
+        fontFamily="Arial, sans-serif"
+        fontSize="36"
+        fill="#FDAB39"
+        textAnchor="start"
+        className="gloria"
+      >
+        <tspan x="410" dy="0">
+          The Gift of
+        </tspan>
+        <tspan x="410" dy="1.2em">
+          Seven
+        </tspan>
+        <tspan x="410" dy="1.2em">
+          Oranges
+        </tspan>
+      </text>
+
+      <text
+        x="155"
+        y="410"
+        fontFamily="Arial, sans-serif"
+        fontSize="20"
+        fill="#7A3A12"
+        textAnchor="start"
+        className="handwritten"
+      >
+        <tspan x="155" dy="0">
+          During one of our visits to Impact Schools, we met a
+        </tspan>
+        <tspan x="155" dy="1.2em">
+          little boy who had just become a part of the orphanage.
+        </tspan>
+        <tspan x="155" dy="1.2em">
+          He had suffered unbearable pain in the very long five
+        </tspan>
+        <tspan x="155" dy="1.2em">
+          years of his life. First, he lost his father, who was
+        </tspan>
+        <tspan x="155" dy="1.2em">
+          imprisoned, and then his mother, who tragically passed
+        </tspan>
+        <tspan x="155" dy="1.2em">
+          away from a heart attack while carrying a heavy load on
+        </tspan>
+        <tspan x="155" dy="1.2em">
+          the road back home. With no one else to look after him,
+        </tspan>
+        <tspan x="155" dy="1.2em">
+          his older sister became his sole caregiver.
+        </tspan>
+      </text>
+
+      <text
+        x="210"
+        y="620"
+        fontFamily="Arial, sans-serif"
+        fontSize="20"
+        fill="#7A3A12"
+        textAnchor="start"
+        className="handwritten"
+      >
+        <tspan x="210" dy="0">
+          During her visit to the orphanage, she brought him
+        </tspan>
+        <tspan x="210" dy="1.2em">
+          seven oranges—a rare and precious gift for a child{' '}
+        </tspan>
+        <tspan x="255" dy="1.2em">
+          living in such challenging conditions. What
+        </tspan>
+        <tspan x="255" dy="1.2em">
+          happened next profoundly moved us.
+        </tspan>
+      </text>
+
+      <text
+        x="670"
+        y="220"
+        fontFamily="Arial, sans-serif"
+        fontSize="20"
+        fill="#7A3A12"
+        textAnchor="start"
+        className="handwritten"
+      >
+        <tspan x="670" dy="0">
+          The little boy walked up to one of us and, without
+        </tspan>
+        <tspan x="670" dy="1.2em">
+          hesitation, handed over all seven oranges. His gesture
+        </tspan>
+        <tspan x="670" dy="1.2em">
+          wasn't out of abundance but a pure expression of
+        </tspan>
+        <tspan x="670" dy="1.2em">
+          gratitude for our presence and support.
+        </tspan>
+        <tspan x="670" dy="3em">
+          This single event influenced us more deeply than any book,
+        </tspan>
+        <tspan x="670" dy="1.2em">
+          speech, or memory. It showed us the boundless capacity{' '}
+        </tspan>
+        <tspan x="670" dy="1.2em">
+          for kindness that exists even in the face of profound loss
+        </tspan>
+        <tspan x="670" dy="1.2em">
+          and adversity.
+        </tspan>
+        <tspan x="670" dy="3em" fill="#DB6B24">
+          This single event influenced us more deeply than any book,
+        </tspan>
+        <tspan x="670" dy="1.2em" fill="#DB6B24">
+          speech, or memory. It showed us the boundless capacity
+        </tspan>
+        <tspan x="670" dy="1.2em" fill="#DB6B24">
+          for kindness that exists even in the face of profound loss
+        </tspan>
+        <tspan x="670" dy="1.2em" fill="#DB6B24">
+          and adversity.
+        </tspan>
+      </text>
+    </svg>
+  );
+}
