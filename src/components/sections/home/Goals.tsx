@@ -9,29 +9,39 @@ import useClientOnly from '@/hooks/useClientOnly';
 export default function Goals() {
   const sectionRef = useRef<HTMLElement | null>(null);
   const [scrollProgress, setScrollProgress] = useState(0);
+  const [modelOpen, setModelOpen] = useState(false);
   const { isClient, windowWidth } = useClientOnly();
 
   useEffect(() => {
     if (!isClient) return;
 
+    // inside your useEffect, replace handleScroll with:
     const handleScroll = () => {
       if (!sectionRef.current) return;
 
-      const section = sectionRef.current;
-      const rect = section.getBoundingClientRect();
+      const { top, bottom, height } = sectionRef.current.getBoundingClientRect();
       const windowHeight = window.innerHeight;
 
-      // Calculate how far we've scrolled into the section
-      let progress = 0;
+      // 1) decide how much of the viewport we want to wait through before starting
+      //    e.g. 25% of the viewport height
+      const startOffset = windowHeight;
+      // 2) the total distance over which we want the animation to run
+      const totalDistance = windowHeight + height - startOffset;
 
-      if (rect.top <= windowHeight && rect.bottom >= 0) {
-        progress = (windowHeight - rect.top) / (windowHeight + rect.height);
-        progress = Math.min(Math.max(progress, 0), 1);
-      } else if (rect.top < 0) {
-        progress = 1;
+      let rawProgress = 0;
+
+      // only start counting once the section enters below the startOffset line
+      if (top <= windowHeight - startOffset && bottom >= 0) {
+        // distance traveled beyond the start line:
+        const dist = windowHeight - startOffset - top;
+        rawProgress = dist / totalDistance;
+      } else if (top < windowHeight - startOffset) {
+        rawProgress = 1;
       }
 
-      setScrollProgress(progress);
+      // clamp and update
+      rawProgress = Math.min(Math.max(rawProgress, 0), 1);
+      setScrollProgress(rawProgress);
     };
 
     window.addEventListener('scroll', handleScroll);
@@ -67,13 +77,13 @@ export default function Goals() {
   return (
     <section
       ref={sectionRef}
-      className="relative min-h-[160vh] sm:min-h-[150vh] md:min-h-[140vh] pb-20 sm:pb-32 overflow-hidden bg-black"
+      className="relative flex min-h-[160vh] sm:min-h-[150vh] md:min-h-[200vh] pb-20 sm:pb-32 overflow-hidden bg-black"
     >
       {/* Background Earth Image */}
       <div className="sticky top-0 h-screen w-full pt-8 sm:pt-16">
         {/* Title with background */}
         <div
-          className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 transition-all duration-300 ease-out"
+          className="flex justify-center max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 transition-all duration-300 ease-out"
           style={{
             opacity: titleTransform.opacity,
             maxWidth: '90%',
@@ -93,7 +103,7 @@ export default function Goals() {
 
         {/* Earth image that moves right and gets bigger */}
         <div
-          className="absolute inset-0 flex items-center justify-center transition-all duration-300 ease-out overflow-visible"
+          className="absolute inset-0 flex items-center justify-center transition-all duration-300 ease-out overflow-visible pt-[25%]"
           style={{
             transform: `translateX(${earthTransform.translateX}) translateY(${earthTransform.translateY}) scale(${earthTransform.scale})`,
             opacity: earthTransform.opacity,
@@ -107,6 +117,13 @@ export default function Goals() {
               className="object-contain"
               priority
             />
+            <div
+              className={`absolute w-[15%] h-[15%] top-[30%] left-[45%] transition-opacity duration-700 ease-out ${adjustedProgress >= 0.8 ? 'opacity-100' : 'opacity-0'}`}
+            >
+              <button onClick={() => setModelOpen(true)}>
+                <Image src="/images/pin.png" alt="Location pin" fill className="object-contain" />
+              </button>
+            </div>
           </div>
         </div>
         <Image
@@ -149,93 +166,187 @@ export default function Goals() {
           className="absolute lg:top-[5%] lg:left-[40%] top-[2%] left-[65%] -z-10"
           priority
         />
+        <Image
+          src="/images/star_5.png"
+          alt="Star"
+          width={55}
+          height={55}
+          className="absolute top-[120%] left-[80%] -z-10"
+          priority
+        />
+        <Image
+          src="/images/star_7.png"
+          alt="Star"
+          width={80}
+          height={80}
+          className="absolute left-[30%] top-[110%] -z-10"
+          priority
+        />
+        <Image
+          src="/images/star_5.png"
+          alt="Star"
+          width={110}
+          height={110}
+          className="absolute top-[140%] left-[1%] -z-10"
+          priority
+        />
+        <Image
+          src="/images/star_2.png"
+          alt="Star"
+          width={60}
+          height={60}
+          className="absolute top-[160%] left-[48%] -z-10"
+          priority
+        />
+        <Image
+          src="/images/star_1.png"
+          alt="Star"
+          width={60}
+          height={60}
+          className="absolute top-[100%] left-[5%] -z-10"
+          priority
+        />
+        <Image
+          src="/images/star_1.png"
+          alt="Star"
+          width={70}
+          height={70}
+          className="absolute top-[40%] left-[90%] -z-10"
+          priority
+        />
       </div>
 
       {/* Content boxes that come in from the side - repositioned for mobile */}
       <div
-        className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 absolute bottom-[10%] z-30 transition-all duration-500 ease-out pointer-events-auto w-full"
+        className="flex justify-center mx-auto px-4 sm:px-6 lg:px-8 absolute bottom-[2%] z-30 transition-all duration-500 ease-out pointer-events-auto w-full"
         style={infoCardsTransform}
       >
-        <div className="grid gap-5 sm:gap-8 md:gap-12 max-w-full sm:max-w-3xl">
+        <div className="flex flex-col md:flex-row justify-evenly w-full md:w-[90%] gap-5 sm:gap-8 md:gap-12">
           {/* Teachers Section */}
-          <div className="relative group backdrop-blur-md bg-white/70 rounded-2xl sm:rounded-3xl p-4 sm:p-6 md:p-8 shadow-xl border border-white/20">
-            <h2 className="text-2xl sm:text-3xl font-gloria text-[#1135F3] mb-2 sm:mb-4">
+          <div className="relative flex flex-col group backdrop-blur-md bg-white/70 rounded-2xl sm:rounded-3xl px-4 pt-4 sm:px-6 sm:pt-6 md:px-8 md:pt-8 max-md:pb-4 shadow-xl border border-white/20">
+            <h2 className="text-xl lg:text-3xl font-gloria text-[#1135F3] mb-2 sm:mb-4">
               Find Teachers
             </h2>
-            <p className="text-base sm:text-lg text-gray-800 max-w-xl mb-4 sm:mb-6 font-urbanist">
+            <p className="text-sm lg:text-lg text-gray-800 max-w-xl mb-4 sm:mb-6 font-urbanist">
               We are searching for passionate educators who are eager to share their knowledge and
               make a lasting impact by teaching English to children in need around the globe.
             </p>
-            <Link
-              href="/apply_to_teach"
-              className="inline-flex items-center gap-2 bg-white/90 rounded-full px-4 sm:px-6 py-2 sm:py-3 text-base sm:text-lg font-gloria text-gray-800 hover:bg-white transition-all group-hover:translate-x-1"
-            >
-              Apply to Teach
-              <svg
-                width="20"
-                height="20"
-                viewBox="0 0 24 24"
-                fill="none"
-                className="transition-transform group-hover:translate-x-1"
+            <div className="flex flex-col mt-auto">
+              <Link
+                href="/apply_to_teach"
+                className="inline-flex items-center mx-auto gap-2 bg-white/90 rounded-full px-4 sm:px-6 py-2 sm:py-3 text-base sm:text-lg font-gloria text-gray-800 hover:bg-white transition-all group-hover:translate-x-1"
               >
-                <path
-                  d="M12 4L20 12L12 20"
-                  stroke="currentColor"
-                  strokeWidth="2"
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
+                Apply to Teach
+                <svg
+                  width="20"
+                  height="20"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  className="transition-transform group-hover:translate-x-1"
+                >
+                  <path
+                    d="M12 4L20 12L12 20"
+                    stroke="currentColor"
+                    strokeWidth="2"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                  />
+                  <path
+                    d="M4 12H20"
+                    stroke="currentColor"
+                    strokeWidth="2"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                  />
+                </svg>
+              </Link>
+              <div className="relative w-[90%] h-40 mx-auto max-md:hidden">
+                <Image
+                  src="/images/teacherDrawing.png"
+                  alt="Teacher Drawing"
+                  fill
+                  className="object-contain"
                 />
-                <path
-                  d="M4 12H20"
-                  stroke="currentColor"
-                  strokeWidth="2"
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                />
-              </svg>
-            </Link>
+              </div>
+            </div>
           </div>
 
           {/* Schools Section */}
-          <div className="relative group backdrop-blur-md bg-white/70 rounded-2xl sm:rounded-3xl p-4 sm:p-6 md:p-8 shadow-xl border border-white/20">
-            <h2 className="text-2xl sm:text-3xl font-gloria text-[#53A21A] mb-2 sm:mb-4">
+          <div className="relative flex flex-col group backdrop-blur-md bg-white/70 rounded-2xl sm:rounded-3xl px-4 pt-4 sm:px-6 sm:pt-6 md:px-8 md:pt-8 max-md:pb-4 shadow-xl border border-white/20 ">
+            <h2 className="text-xl lg:text-3xl font-gloria text-[#53A21A] mb-2 sm:mb-4">
               Find Schools
             </h2>
-            <p className="text-base sm:text-lg text-gray-800 max-w-xl mb-4 sm:mb-6 font-urbanist">
+            <p className="text-sm lg:text-lg text-gray-800 max-w-xl mb-4 sm:mb-6 font-urbanist">
               We aim to connect with schools in underserved regions, providing them with access to
               resources, support, and transformative learning opportunities.
             </p>
-            <Link
-              href="/register_school"
-              className="inline-flex items-center gap-2 bg-white/90 rounded-full px-4 sm:px-6 py-2 sm:py-3 text-base sm:text-lg font-gloria text-gray-800 hover:bg-white transition-all group-hover:translate-x-1"
-            >
-              Register Your School
-              <svg
-                width="20"
-                height="20"
-                viewBox="0 0 24 24"
-                fill="none"
-                className="transition-transform group-hover:translate-x-1"
+            <div className="flex flex-col mt-auto">
+              <Link
+                href="/register_school"
+                className="inline-flex items-center mx-auto gap-2 bg-white/90 rounded-full px-4 sm:px-6 py-2 sm:py-3 text-base sm:text-lg font-gloria text-gray-800 hover:bg-white transition-all group-hover:translate-x-1"
               >
-                <path
-                  d="M12 4L20 12L12 20"
-                  stroke="currentColor"
-                  strokeWidth="2"
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
+                Register Your School
+                <svg
+                  width="20"
+                  height="20"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  className="transition-transform group-hover:translate-x-1"
+                >
+                  <path
+                    d="M12 4L20 12L12 20"
+                    stroke="currentColor"
+                    strokeWidth="2"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                  />
+                  <path
+                    d="M4 12H20"
+                    stroke="currentColor"
+                    strokeWidth="2"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                  />
+                </svg>
+              </Link>
+              <div className="relative w-[90%] h-40 mx-auto max-md:hidden">
+                <Image
+                  src="/images/schoolDrawing.png"
+                  alt="School Drawing"
+                  fill
+                  className="object-contain"
                 />
-                <path
-                  d="M4 12H20"
-                  stroke="currentColor"
-                  strokeWidth="2"
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                />
-              </svg>
-            </Link>
+              </div>
+            </div>
           </div>
         </div>
       </div>
+
+      {/* Modal */}
+      {modelOpen && (
+        <div
+          className="fixed inset-0 bg-black bg-opacity-50 backdrop-blur-md z-50 flex items-center justify-center overflow-auto p-4"
+          onClick={() => setModelOpen(false)} /* optional: click outside to close */
+        >
+          <div
+            className="relative bg-white/60 backdrop-blur-xl rounded-xl shadow-xl max-w-3xl w-full p-6"
+            onClick={(e) => e.stopPropagation()} /* prevent closing when clicking inside */
+          >
+            {/* your actual modal content goes here */}
+            <h2 className="text-2xl font-bold mb-4 font-gloria">Nepal</h2>
+            <p className="mb-6 font-urbanist">
+              A country full of adults who are incredibly profound in their thought and are so
+              welcoming, with children who are always radiating positivity and are eager to learn.
+            </p>
+            <button
+              className="mt-auto inline-block px-4 py-2 bg-blue-600 text-white rounded"
+              onClick={() => setModelOpen(false)}
+            >
+              Close
+            </button>
+          </div>
+        </div>
+      )}
     </section>
   );
 }
