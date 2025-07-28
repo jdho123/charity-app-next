@@ -13,7 +13,7 @@ export default function HomePage() {
   return (
     <GuestLayout>
       {/* Hero Section */}
-      <Hero backgroundImage="/images/heroBackgroundMain.png" />
+      <Hero />
 
       {/* Our Philosophy Section */}
       <Philosophy />

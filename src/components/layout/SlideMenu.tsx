@@ -70,12 +70,12 @@ export default function Menu() {
 
       {/* Slide-out Menu */}
       <div
-        className={`fixed top-0 right-0 w-full md:w-[500px] h-full bg-white shadow-lg transform transition-transform duration-300 ease-out z-40 ${
+        className={`fixed top-0 right-0 w-full md:w-[500px] h-full bg-white/50 backdrop-blur-md border rounded-[3rem] shadow-lg transform transition-transform duration-300 ease-out z-40 ${
           isOpen ? 'translate-x-0' : 'translate-x-full'
         }`}
       >
         {/* Close button */}
-        <div className="sticky top-0 flex justify-end p-4 bg-white z-10">
+        <div className="sticky top-0 flex justify-end p-4 z-10">
           <button onClick={closeMenu} className="text-black">
             <svg
               width="32"
