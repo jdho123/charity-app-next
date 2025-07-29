@@ -4,7 +4,7 @@ import BorderedText from '@/components/shared/BorderedText';
 
 export function TeachSection() {
   return (
-    <section className="self-end w-full max-w-[1174px] px-4 sm:px-6 lg:px-4">
+    <section className="self-end w-full max-w-[1174px] px-4 sm:px-6 lg:px-4 max-md:hidden">
       <div className="flex flex-col lg:flex-row gap-8 lg:gap-12">
         <div className="w-full lg:w-[45%]">
           <div className="pl-4 border-l-4 border-[#3E6F1B] font-urbanist">
