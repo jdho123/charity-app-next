@@ -21,25 +21,16 @@ export function TransformSection() {
               totalFrames={10}
               frameWidth={385}
               frameHeight={385}
-              scale={1}
+              scale={0.5}
               className="self-center w-[80%] object-contain md:hidden"
               imagePath="/animated/arrow5.png"
             />
-            <div className="mt-10 lg:mt-20 w-full overflow-hidden rounded-[30px] max-md:hidden">
-              <Image
-                src="/images/kidsWithHandUp.jpeg"
-                alt="Children transforming through education"
-                width={800}
-                height={480}
-                className="w-full h-auto object-cover"
-              />
-            </div>
           </div>
         </div>
 
         {/* Mobile order change: On mobile, this div comes first */}
-        <div className="w-full lg:w-[45%] order-1 lg:order-2">
-          <div className="flex flex-col text-black lg:-mt-12">
+        <div className="w-full lg:w-[45%] order-2">
+          <div className="flex flex-col text-black lg:-mt-12 relative">
             <div className="w-full relative mb-4">
               <Image
                 src="/images/greenTree.png"
@@ -61,19 +52,44 @@ export function TransformSection() {
               How do we help children grow beyond their circumstances?
             </h3>
 
-            <div className="pl-4 sm:pl-6 border-l-4 border-[#3E6F1B] text-base sm:text-lg lg:text-xl font-urbanist max-md:hidden">
-              <p className="mb-4 sm:mb-6">
-                Through fundraisers, we provide essential resources like Wi-Fi, books, and sports
-                equipment that make learning possible.
-              </p>
-              <p className="mb-4 sm:mb-6">
-                Our efforts extend beyond education; we aim to transform lives by helping children
-                dream bigger and giving them the tools to achieve those dreams.
-              </p>
-              <p className="mb-8 lg:mb-0">
-                For many, our lessons become a source of joy and hope, sparking a belief that their
-                circumstances can change for the better.
-              </p>
+            <div className="relative pl-4 sm:pl-6 border-l-4 border-[#3E6F1B] text-base sm:text-lg lg:text-xl font-urbanist max-lg:order-3">
+              <Image
+                src="/images/greenQuotes.png"
+                alt="Quote"
+                width={80}
+                height={60}
+                className="absolute -top-6 -left-4 sm:-top-10 sm:-left-10 opacity-30 w-16 h-12 sm:w-20 sm:h-16"
+              />
+              <Image
+                src="/images/quote-right.png"
+                alt="Quote"
+                width={80}
+                height={60}
+                className="absolute -bottom-6 -right-4 sm:-bottom-10 sm:-right-10 opacity-30 w-16 h-12 sm:w-20 sm:h-16"
+              />
+              <div>
+                <p className="mb-4 sm:mb-6">
+                  Through fundraisers, we provide essential resources like Wi-Fi, books, and sports
+                  equipment that make learning possible.
+                </p>
+                <p className="mb-4 sm:mb-6">
+                  Our efforts extend beyond education; we aim to transform lives by helping children
+                  dream bigger and giving them the tools to achieve those dreams.
+                </p>
+                <p className="mb-8 lg:mb-0">
+                  For many, our lessons become a source of joy and hope, sparking a belief that
+                  their circumstances can change for the better.
+                </p>
+              </div>
+            </div>
+            <div className="w-full overflow-hidden rounded-[30px] max-lg:order-2 max-lg:mb-10">
+              <Image
+                src="/images/kidsWithHandUp.jpeg"
+                alt="Children transforming through education"
+                width={800}
+                height={480}
+                className="w-full h-auto object-cover lg:absolute lg:-translate-x-[120%] lg:-translate-y-[120%]"
+              />
             </div>
           </div>
         </div>

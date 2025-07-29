@@ -56,7 +56,7 @@ export function ConnectSection() {
               <RoundedImage
                 src="/images/whatWeDoVideo.png"
                 alt="Children connecting with teachers"
-                className="w-full aspect-[1.65] mt-4 max-md:hidden"
+                className="w-full aspect-[1.65] mt-4"
                 width={550}
                 height={333}
               />
@@ -65,7 +65,7 @@ export function ConnectSection() {
 
           {/* Right column - Quote and description */}
           <div className="w-full lg:w-[45%] flex flex-col mt-8 lg:mt-10">
-            <div className="relative max-md:hidden">
+            <div className="relative">
               <Image
                 src="/images/greenQuotes.png"
                 alt="Quote"
@@ -73,7 +73,14 @@ export function ConnectSection() {
                 height={60}
                 className="absolute -top-6 -left-4 sm:-top-10 sm:-left-10 opacity-30 w-16 h-12 sm:w-20 sm:h-16"
               />
-              <div className="pl-4 border-l-4 border-[#3E6F1B] font-urbanist max-md:hidden">
+              <Image
+                src="/images/quote-right.png"
+                alt="Quote"
+                width={80}
+                height={60}
+                className="absolute -bottom-6 -right-4 sm:-bottom-10 sm:-right-10 opacity-30 w-16 h-12 sm:w-20 sm:h-16"
+              />
+              <div className="pl-4 border-l-4 border-[#3E6F1B] font-urbanist">
                 <p className="text-base sm:text-lg md:text-xl text-black mb-4 sm:mb-6">
                   We show children that someone outside their community truly cares about them.
                 </p>
@@ -100,7 +107,7 @@ export function ConnectSection() {
               totalFrames={10}
               frameWidth={385}
               frameHeight={385}
-              scale={1}
+              scale={0.5}
               className="self-center w-[80%] object-contain md:hidden"
               imagePath="/animated/arrow5.png"
             />
