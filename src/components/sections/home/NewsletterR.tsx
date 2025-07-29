@@ -61,7 +61,7 @@ export default function Newsletter() {
   return (
     <section className="bg-[#2F4F4F] py-16 min-h-screen relative overflow-hidden pt-12">
       {/* Star decoration */}
-      <div className="absolute w-full top-20 left-[30%]">
+      <div className="absolute w-full top-4 md:top-20 left-[5%] md:left-[40%] lg:left-[30%]">
         <Image
           src="/images/shootingStar.png"
           alt=""
