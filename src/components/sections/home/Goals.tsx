@@ -118,7 +118,7 @@ export default function Goals() {
               priority
             />
             <div
-              className={`absolute w-[15%] h-[15%] top-[30%] left-[45%] transition-opacity duration-700 ease-out ${adjustedProgress >= 0.8 ? 'opacity-100' : 'opacity-0'}`}
+              className={`absolute w-[15%] h-[15%] top-[31%] left-[47%] transition-opacity duration-700 ease-out ${adjustedProgress >= 0.8 ? 'opacity-100' : 'opacity-0'}`}
             >
               <button onClick={() => setModelOpen(true)}>
                 <Image src="/images/pin.png" alt="Location pin" fill className="object-contain" />
