@@ -15,7 +15,7 @@ export default function Beginnings() {
 
             <h3 className="text-4xl font-gloria text-[#DB6B24] mt-10 mb-6">The Beginning</h3>
 
-            <p className="text-lg font-urbanist mb-8">
+            <p className="text-lg font-urbanist mb-4">
               Some of us on the team have experienced suffering in our own lives. We feel fortunate
               to enjoy freedoms that many others do not possess, and this sense of gratitude compels
               us to give back. Realizing that the problems in our regions were too vast for us to
@@ -24,7 +24,7 @@ export default function Beginnings() {
             </p>
 
             {/* Teaching Image (Polaroid-style) */}
-            <div className="relative w-full bg-white p-3 shadow-md mt-8">
+            <div className="relative w-full bg-white p-3 shadow-md mt-4">
               <Image
                 src="/images/teachingToClass.jpeg"
                 alt="Teaching to a class"
