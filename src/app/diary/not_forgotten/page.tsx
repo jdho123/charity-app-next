@@ -49,7 +49,9 @@ export default function DiaryPage2() {
         prevHref="/diary/sister_love"
         nextHref="/diary/transformation"
         prevLabel="Prev Page"
+        prevLabel2_mobile="Prev Page"
         nextLabel="Next Page"
+        nextLabel2_mobile="Next Page"
         backgroundImage="/images/diaryNotForgotten.png"
       />
     </div>

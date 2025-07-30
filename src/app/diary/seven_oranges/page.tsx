@@ -54,7 +54,9 @@ export default function DiaryPage4() {
         prevHref="/diary/transformation"
         nextHref="/diary/light_of_christmas"
         prevLabel="Prev Page"
+        prevLabel2_mobile="Prev Page"
         nextLabel="Next Page"
+        nextLabel2_mobile="Next Page"
         backgroundImage="/images/diarySevenOranges.png"
       />
     </div>

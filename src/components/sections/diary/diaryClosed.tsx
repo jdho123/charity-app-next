@@ -37,7 +37,7 @@ export default function DiaryClosed({ className = '' }) {
     `}</style>
       </defs>
 
-      <image href="images/diaryClosed.png" x="0" y="0" width="1300" height="924" />
+      <image href="/images/diaryClosed.png" x="0" y="0" width="1300" height="924" />
 
       <text
         x="550"

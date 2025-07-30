@@ -53,7 +53,9 @@ export default function DiaryPage5() {
         prevHref="/diary/seven_oranges"
         nextHref="/diary"
         prevLabel="Prev Page"
-        nextLabel="Close Diary"
+        prevLabel2_mobile="Prev Page"
+        nextLabel="Next Page"
+        nextLabel2_mobile="Close Diary"
         backgroundImage="/images/diaryChristmas.png"
       />
     </div>

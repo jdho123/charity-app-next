@@ -12,7 +12,9 @@ interface OpenDiaryLayoutProps {
   prevHref: string;
   nextHref?: string;
   prevLabel?: string;
+  prevLabel2_mobile?: string;
   nextLabel?: string;
+  nextLabel2_mobile?: string;
   backgroundImage: string;
 }
 
@@ -21,7 +23,9 @@ export default function OpenDiaryLayout({
   prevHref,
   nextHref,
   prevLabel = 'Previous Page',
+  prevLabel2_mobile = 'Previous Page',
   nextLabel = 'Next Page',
+  nextLabel2_mobile = 'Next Page',
 }: OpenDiaryLayoutProps) {
   const router = useRouter();
   const { isMobile, isClient } = useClientOnly(1000);
@@ -166,7 +170,7 @@ export default function OpenDiaryLayout({
               }}
               className="px-4 py-2 mb-8 bg-amber-800 text-white rounded hover:bg-amber-700"
             >
-              {prevLabel}
+              {mobileViewStep === 0 ? prevLabel : prevLabel2_mobile}
             </button>
 
             {nextHref && (
@@ -183,7 +187,7 @@ export default function OpenDiaryLayout({
                 }}
                 className="px-4 py-2 mb-8 bg-amber-800 text-white rounded hover:bg-amber-700"
               >
-                {nextLabel}
+                {mobileViewStep === 0 ? nextLabel : nextLabel2_mobile}
               </button>
             )}
           </div>

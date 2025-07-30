@@ -23,7 +23,12 @@ export default function DiaryPage() {
             <DiaryClosed className="w-full h-full" />
           </div>
           <div className="absolute bottom-4 w-full text-center">
-            <p className="text-white text-lg bg-black/50 px-4 py-1 inline-block">Click to open</p>
+            <p className="text-white text-lg bg-black/50 px-4 py-1 inline-block max-lg:hidden">
+              Click to open
+            </p>
+            <p className="text-white text-lg bg-black/50 px-4 py-1 inline-block lg:hidden">
+              Tap to open
+            </p>
           </div>
         </div>
       </div>
