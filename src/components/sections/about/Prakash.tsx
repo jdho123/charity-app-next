@@ -2,7 +2,7 @@ import Image from 'next/image';
 
 export default function Prakash() {
   return (
-    <section className="bg-white py-16">
+    <section className="bg-white pt-8 pb-16">
       <div className="container mx-auto px-4">
         {/* Title Section */}
         <div className="max-w-3xl mb-16">
