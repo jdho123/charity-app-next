@@ -4,7 +4,7 @@ export default function Beginnings() {
   return (
     <section className="bg-white py-20" id="beginnings">
       <div className="container mx-auto px-4">
-        <div className="flex justify-between relative min-h-[800px]">
+        <div className="flex flex-col lg:flex-row justify-between relative min-h-[800px]">
           {/* Left Side Content */}
           <div className="max-w-lg">
             <h2 className="text-6xl font-gloria text-black mb-4">
@@ -37,7 +37,7 @@ export default function Beginnings() {
 
           <div className="flex flex-col items-center">
             {/* Center/Right Temple Illustration */}
-            <div className="top-0 right-0 w-full h-[500px] hidden lg:block">
+            <div className="top-0 right-0 w-full lg:h-[500px] max-lg:order-2 max-lg:pt-10">
               <Image
                 src="/images/journeySoFar.png"
                 alt="Temple illustration"
@@ -47,7 +47,7 @@ export default function Beginnings() {
               />
             </div>
             {/* Right Side Nepal Content (positioned below temple) */}
-            <div className="lg:bottom-10 lg:right-0 lg:max-w-md mt-20 lg:mt-0">
+            <div className="lg:bottom-10 lg:right-0 lg:max-w-md mt-20 lg:mt-0 max-lg:order-1">
               <h3 className="text-4xl font-gloria text-[#3E6F1B] mb-6">Nepal</h3>
               <p className="text-lg font-urbanist">
                 Inspired by stories of transformation and awe-inspiring beauty in Nepal, we decided
