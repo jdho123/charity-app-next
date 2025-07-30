@@ -103,7 +103,19 @@ export default function OpenDiaryLayout({
               } ${isMobile ? 'w-[200vw]' : 'w-full'}`}
             >
               {/* 📚 Book background (stretch full size) */}
-              <div className="absolute inset-0 z-0 w-full h-full">
+              <div
+                className="absolute inset-0 z-0 w-full h-full"
+                onClick={() => {
+                  if (isAnimating) return;
+                  if (isMobile) {
+                    if (mobileViewStep === 0) {
+                      setMobileViewStep(1); // show right page
+                      return;
+                    }
+                  }
+                  if (nextHref) animateAndNavigate(nextHref);
+                }}
+              >
                 {!isAnimating ? (
                   pageImage
                 ) : (
