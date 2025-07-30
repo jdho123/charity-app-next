@@ -49,7 +49,15 @@ export default function ActiveCampaigns({ campaigns, categories }: ActiveCampaig
           alt="Hero Background"
           fill
           priority
-          className="object-cover object-top"
+          className="object-cover object-top max-lg:hidden"
+          sizes="100vw"
+        />
+        <Image
+          src="/images/activeCampaignsMobileBackground.jpg"
+          alt="Hero Background"
+          fill
+          priority
+          className="object-cover object-top filter grayscale lg:hidden"
           sizes="100vw"
         />
       </div>
