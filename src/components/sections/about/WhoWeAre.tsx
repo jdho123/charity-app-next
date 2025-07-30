@@ -2,7 +2,7 @@ import Image from 'next/image';
 
 export default function WhoWeAre() {
   return (
-    <section className="bg-white" id="who-we-are">
+    <section className="bg-white max-lg:mt-10" id="who-we-are">
       <div className="container mx-auto px-4">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 items-start">
           {/* Left Column - with added top padding */}
