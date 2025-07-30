@@ -4,7 +4,7 @@ export default function Beginnings() {
   return (
     <section className="bg-white py-20" id="beginnings">
       <div className="container mx-auto px-4">
-        <div className="flex flex-col lg:flex-row justify-between relative min-h-[800px]">
+        <div className="flex flex-col lg:flex-row justify-center relative min-h-[800px]">
           {/* Left Side Content */}
           <div className="max-w-lg">
             <h2 className="text-6xl font-gloria text-black mb-4">
@@ -24,7 +24,7 @@ export default function Beginnings() {
             </p>
 
             {/* Teaching Image (Polaroid-style) */}
-            <div className="relative w-[80%] bg-white p-3 shadow-md mt-8">
+            <div className="relative w-full bg-white p-3 shadow-md mt-8">
               <Image
                 src="/images/teachingToClass.jpeg"
                 alt="Teaching to a class"
@@ -37,13 +37,13 @@ export default function Beginnings() {
 
           <div className="flex flex-col items-center">
             {/* Center/Right Temple Illustration */}
-            <div className="top-0 right-0 w-full lg:h-[500px] max-lg:order-2 max-lg:pt-10">
+            <div className="top-0 right-0 w-full lg:h-[500px] max-lg:order-2 max-lg:pt-10 overflow-visible">
               <Image
                 src="/images/journeySoFar.png"
                 alt="Temple illustration"
                 width={700}
                 height={600}
-                className="object-cover object-right-top"
+                className="object-cover object-right-top lg:scale-125"
               />
             </div>
             {/* Right Side Nepal Content (positioned below temple) */}

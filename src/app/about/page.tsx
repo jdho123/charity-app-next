@@ -44,7 +44,7 @@ export default function AboutPage() {
         </div>
 
         {/* Left part of U - purple/green lei */}
-        <div className="absolute w-[100px] lg:w-[150px] top-[94%] lg:top-[89%] xl:top-[88%] left-[12%] lg:left-[55%]">
+        <div className="absolute w-[100px] lg:w-[150px] top-[94%] lg:top-[88%] xl:top-[88%] left-[12%] lg:left-[55%]">
           <Image
             src="/images/flower2.png"
             alt="Purple and green lei"
@@ -55,7 +55,7 @@ export default function AboutPage() {
         </div>
 
         {/* Right part of U - red/yellow lei */}
-        <div className="absolute w-[130px] lg:w-[190px] top-[90%] md:top-[88%] xl:top-[86%] left-[65%] lg:left-[72%]">
+        <div className="absolute w-[130px] lg:w-[190px] top-[91%] md:top-[88%] lg:top-[87%] xl:top-[86%] left-[65%] lg:left-[72%]">
           <Image
             src="/images/flower1.png"
             alt="Red and yellow lei"
