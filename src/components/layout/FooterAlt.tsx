@@ -78,7 +78,7 @@ export default function Footer() {
                   alt="LEDU Logo"
                   width={70}
                   height={70}
-                  className="object-contain"
+                  className="object-contain scale-[180%]"
                 />
               </div>
               <h2 className="text-2xl font-handwriting text-[#9797EE] mt-2">
