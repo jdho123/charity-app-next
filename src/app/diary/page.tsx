@@ -20,7 +20,7 @@ export default function DiaryPage() {
       <div className="flex flex-col items-center justify-center h-screen w-full bg-[#D8B29A] relative overflow-hidden">
         <div className="w-full h-screen relative cursor-pointer" onClick={handleDiaryClick}>
           <div className="relative w-full h-full">
-            <DiaryClosed className="w-full h-full -translate-x-10" />
+            <DiaryClosed className="w-full h-full -translate-x-5 lg:-translate-x-10" />
           </div>
           <div className="absolute bottom-4 w-full text-center">
             <p className="text-white text-lg bg-black/50 px-4 py-1 inline-block max-lg:hidden">
