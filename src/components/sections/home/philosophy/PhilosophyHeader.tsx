@@ -8,9 +8,9 @@ export default function PhilosophyHeader() {
         Our Philosophy
       </h1>
       <BorderedText className="flex flex-wrap gap-4 mt-2.5 text-2xl font-urbanist">
-        For pupils, we bring light to the other side of the world. For teachers, we highlight that
-        by giving, we gain so much more.{' '}
-        <strong>Together, we create opportunities for growth and impact.</strong>
+        For pupils, we offer a chance of an enriched education which opens the door for and shines a
+        light on future opportunities. For teachers, we highlight that by giving, we gain so much
+        more. <strong>Together, we foster growth, impact, and lasting change. </strong>
       </BorderedText>
       {/* <div className="self-end mt-8 mr-32 max-md:mr-2.5">
           <Image 

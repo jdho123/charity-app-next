@@ -96,7 +96,7 @@ export default function Goals() {
 
             <p className="text-lg sm:text-xl text-white font-urbanist mb-4 sm:mb-8 max-w-lg leading-relaxed">
               At LEDU, we believe that education has the power to transform lives and communities.
-              That&apos;s why our mission is twofold:
+              That's why our mission is twofold:
             </p>
           </div>
         </div>
@@ -229,7 +229,7 @@ export default function Goals() {
             </h2>
             <p className="text-sm lg:text-lg text-gray-800 max-w-xl mb-4 sm:mb-6 font-urbanist">
               We are searching for passionate educators who are eager to share their knowledge and
-              make a lasting impact by teaching English to children in need around the globe.
+              make a lasting impact by teaching children in need around the globe.
             </p>
             <div className="flex flex-col mt-auto">
               <Link
@@ -277,7 +277,7 @@ export default function Goals() {
               Find Schools
             </h2>
             <p className="text-sm lg:text-lg text-gray-800 max-w-xl mb-4 sm:mb-6 font-urbanist">
-              We aim to connect with schools in underserved regions, providing them with access to
+              We aim to connect with schools in emerging regions, providing them with access to
               resources, support, and transformative learning opportunities.
             </p>
             <div className="flex flex-col mt-auto">

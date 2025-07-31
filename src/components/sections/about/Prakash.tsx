@@ -17,20 +17,20 @@ export default function Prakash() {
           {/* Left Column */}
           <div className="space-y-12">
             <p className="text-xl font-urbanist">
-              Prakash Bista was born in Kalikot, a remote village where residents didn't even have
-              access to a hospital. His parents, after a three-day walk to the nearest town, saw
-              children in school uniforms and decided to send Prakash to a boarding school. He faced
-              several hurdles throughout his education journey, with both his parents passing away
-              just as he was preparing for his final end-of-school exams.
+              Prakash Bista was born in Kalikot, a remote rural village where residents didn't even
+              have access to a hospital. His parents, after a three-day walk to the nearest town,
+              saw children in school uniforms and decided to send Prakash to a boarding school. He
+              faced several hurdles throughout his educational journey, with both his parents
+              unfortunately passing away as he was preparing for his final school exams.
             </p>
 
             <p className="text-xl font-urbanist">
               Despite these immense challenges, Prakash founded Impact Schools, convincing
               neighbours to trust him with building the first school in his village. With
-              scholarships, he studied in the US and at LSE, but choosing not to stay abroad but to
-              come back and give back to his community, Prakash returned home to expand Impact
-              Schools. Today, these schools educate over 300 children and provide accommodations for
-              more than 30 orphans.
+              scholarships, he studied in the USA and at the London School of Economics, but chose
+              to return and to give back to his community; establishing and expanding Impact
+              Schools. Today, these schools educate over 300 children and provide essential
+              accommodation for more than 30 orphans.
             </p>
           </div>
 
@@ -63,8 +63,8 @@ export default function Prakash() {
               />
 
               <p className="text-3xl font-urbanist text-center">
-                Prakash&apos;s story reminds us that one individual&apos;s determination can ignite
-                change for entire communities.
+                Prakash's story reminds us that one individual's determination can ignite change for
+                entire communities.
               </p>
             </div>
           </div>

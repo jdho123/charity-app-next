@@ -7,7 +7,7 @@ interface GeneralFundCardProps {
   raised: number;
   imageUrl: string;
   description: string;
-  additionalInfo?: string;
+  additionalInfo?: React.ReactElement;
 }
 
 export default function GeneralFundCard({

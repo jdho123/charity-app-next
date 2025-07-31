@@ -13,11 +13,12 @@ export default function WhatWeDo({ onWatchVideo }: WhatWeDoProps) {
           <div className="space-y-8">
             <h2 className="text-5xl text-[#31848C] font-gloria">What We Do</h2>
             <p className="text-xl font-urbanist max-w-lg">
-              We provide education to children who are missing out on its fruits. Through
+              At Ledu, we believe education and knowledge are power. We believe every child, no
+              matter their geographical location is deserving of this empowerment. Through
               partnerships with schools in areas affected by humanitarian crises, we deliver online
               lessons tailored to their needs. These lessons have covered subjects like English,
-              music, geography, and applied mathematics, and we aim to expand this variety based on
-              what the children need most.
+              Music, Geography, Applied Mathematics, and we aim to expand this variety based on what
+              children need most.
             </p>
 
             <div className="pt-4">

@@ -17,9 +17,8 @@ export default function MissionSection() {
         </div>
       </header>
       <BorderedText className="flex flex-wrap gap-3 sm:gap-4 self-center mt-4 max-w-full text-base sm:text-xl md:text-2xl font-urbanist text-black w-full md:w-[583px]">
-        Through our lessons and present deliveries we hope to empower pupils to be more
-        well-rounded, educated, joyous, English speaking children and position them to seize any
-        opportunity that might come up in their life.
+        Through our education we hope to empower pupils to be well-rounded, curious, joyous,
+        multilingual and position them to seize opportunities with both hands.
       </BorderedText>
     </article>
   );

@@ -16,7 +16,7 @@ export default function GeneralFund() {
             <div className="space-y-4">
               <p className="font-urbanist text-base">
                 Your contribution directly impacts the lives of children by providing essential
-                resources like Wi-Fi, books, and educational tools in underserved communities.
+                resources such as Wi-Fi, books, and educational tools in growing communities.
                 Together, we can empower the next generation by opening doors to education,
                 fostering hope, and inspiring change.
               </p>
@@ -45,8 +45,18 @@ export default function GeneralFund() {
             goal={5000}
             raised={3000}
             imageUrl="/images/generalFund.png"
-            description="The General Fund supports all aspects of our mission. Your contributions help us provide critical resources such as Wi-Fi access for online lessons, new books to foster a love of learning, and classroom supplies like stationery and teaching tools."
-            additionalInfo="By donating, you ensure that we can respond swiftly to urgent needs—whether it's setting up new online classes in remote areas, equipping schools with essential materials, or funding special projects that inspire and empower children to dream bigger."
+            description="The General Fund supports all aspects of our mission in fostering a love for learning."
+            additionalInfo={
+              <div>
+                By donating, you ensure that we can respond swiftly to urgent needs—whether it's
+                setting up new online classes in remote areas, equipping schools with essential
+                materials, or funding special projects that inspire and empower children to dream
+                bigger.
+                <br />
+                <br />
+                Each time you support Ledu’s mission, a child’s life changes.
+              </div>
+            }
           />
         </div>
       </div>

@@ -18,7 +18,7 @@ export default function ReadTheDiary({ className = '' }: ReadTheDiaryProps) {
       <div className="container mx-auto px-4">
         <div className="max-w-3xl mx-auto text-center">
           <p className="text-3xl md:text-4xl font-gloria mb-16 leading-relaxed">
-            Prakash&apos;s story is just one of many.
+            His story is just one of many.
             <br />
             Discover how small acts of kindness
             <br />

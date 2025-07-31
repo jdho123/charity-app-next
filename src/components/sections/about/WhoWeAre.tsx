@@ -10,15 +10,18 @@ export default function WhoWeAre() {
             <h2 className="text-5xl text-[#DB6B24] font-bold font-gloria">Who We Are</h2>
 
             <p className="text-lg font-urbanist">
-              We are a generation driven by the fear that we might not pass on to our children the
-              world they deserve. The biggest challenge of this century will undoubtedly be climate
-              change. While we may not yet know how to solve it, we believe education can empower
-              more people to take part in tackling humanity&apos;s greatest challenges.
+              We are a generation driven by the fear that we might not pass onto our children the
+              world they deserve. There are several history-defining challenges that the future
+              working generations will have to face this century: climate change, unceasingly
+              increasing inequality and much more. While we may not yet know how to solve all these,
+              we believe education can empower more people to take part in tackling humanity's
+              greatest obstacles.
             </p>
 
             <p className="text-lg font-urbanist">
-              By sharing the education we&apos;ve been fortunate to receive in England with those
-              who lack access, we hope to create a better shot at addressing these global problems.
+              By sharing the education we've been fortunate to receive in England, we hope to
+              increase our chances of generating and implementing the right solutions to address
+              these global problems.
             </p>
 
             {/* Image of people with flower necklaces in polaroid-like frame */}
@@ -42,8 +45,7 @@ export default function WhoWeAre() {
             <div className="space-y-4">
               <p className="text-lg font-urbanist">
                 Our work focuses on educating those who have done nothing wrong but have found
-                themselves in unimaginably difficult conditions simply due to the &quot;birth
-                roulette&quot;.
+                themselves in unimaginably difficult conditions simply due to the "birth roulette".
               </p>
               <p className="font-bold text-lg">As one of our guiding quotes states:</p>
             </div>
@@ -75,7 +77,7 @@ export default function WhoWeAre() {
               Tough times have certainly begun. But we do not yet consider ourselves strong. Only by
               overcoming challenges together, by fighting for what the child in each of us knows to
               be right,
-              <strong> will we become truly resilient.</strong>
+              <strong> will we become truly tough.</strong>
             </p>
           </div>
         </div>

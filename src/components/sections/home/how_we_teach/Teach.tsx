@@ -24,17 +24,17 @@ export function TeachSection() {
           />
           <div className="pl-4 border-l-4 border-[#3E6F1B] font-urbanist">
             <p className="text-base sm:text-lg lg:text-xl text-black mb-4 sm:mb-6">
-              Our lessons are interactive and tailored to the children&apos;s needs. We use creative
+              Our lessons are interactive and tailored to the children's needs. We use creative
               methods like role-playing, singing, storytelling, and collaborative activities to make
-              learning fun and engaging.
+              learning both engaging and fulfilling.
             </p>
             <p className="text-base sm:text-lg lg:text-xl text-black mb-4 sm:mb-6">
-              Topics are aligned with the local curriculum, ensuring that lessons are both relevant
-              and inspiring.
+              Topics are aligned with the local curriculum, ensuring that lessons are relevant and
+              inspiring.
             </p>
             <p className="text-base sm:text-lg lg:text-xl text-black">
-              Beyond just teaching English, we help children build confidence, teamwork skills, and
-              the ability to imagine a brighter future.
+              Beyond teaching English, we help children build confidence, teamwork skills, and the
+              ability to imagine a brighter future.
             </p>
           </div>
         </div>
