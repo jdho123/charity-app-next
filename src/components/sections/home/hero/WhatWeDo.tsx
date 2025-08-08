@@ -6,8 +6,8 @@ import BorderedText from '@/components/shared/BorderedText';
 export default function WhatWeDo() {
   return (
     <section className="flex flex-col md:flex-row items-center lg:items-start">
-      <div className="md:w-2/3 mb-4 md:mb-0">
-        <div className="flex items-center mb-4">
+      <div className="md:w-2/3 mb-2 md:mb-0">
+        <div className="flex items-center mb-2 sm:mb-4">
           <h2 className="text-2xl md:text-3xl font-gloria text-white mr-4">What We Do</h2>
           <Link href="/about#what-we-do">
             <Image
@@ -23,9 +23,9 @@ export default function WhatWeDo() {
           className="text-[2vmax] md:text-xl text-black/80 font-urbanist font-semibold"
           lineColor="white"
         >
-          We provide education to children in humanitarian crisis areas through online lessons
-          tailored to their needs, while also supporting their communities with resources like WiFi,
-          books, and other.
+          The cornerstone of our work is providing education to children in developing areas through
+          online lessons tailored to their needs, while also furnishing resources such as internet
+          connectivity and books to encourage lifelong learning.
         </BorderedText>
       </div>
       <div className="md:w-1/3 md:pl-6 flex justify-center">
