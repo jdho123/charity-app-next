@@ -145,7 +145,13 @@ export default function Menu() {
 
             {/* The Diary Section */}
             <div className="mb-6">
-              <h2 className="text-3xl font-gloria text-[#54B435] mb-2">the Diary</h2>
+              <Link
+                href="/diary"
+                className="text-lg text-black font-gloria hover:underline"
+                onClick={closeMenu}
+              >
+                <h2 className="text-3xl font-gloria text-[#54B435] mb-2">the Diary</h2>
+              </Link>
               <ul className="space-y-2">
                 <li>
                   <Link
@@ -161,7 +167,13 @@ export default function Menu() {
 
             {/* Our News Section */}
             <div className="mb-6">
-              <h2 className="text-3xl font-gloria text-[#19A7CE] mb-2">Our News</h2>
+              <Link
+                href="/diary"
+                className="text-lg text-black font-gloria hover:underline"
+                onClick={closeMenu}
+              >
+                <h2 className="text-3xl font-gloria text-[#19A7CE] mb-2">Our News</h2>
+              </Link>
               <ul className="space-y-2">
                 {newsLinks.map((link) => (
                   <li key={link.href}>
