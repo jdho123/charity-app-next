@@ -39,7 +39,7 @@ export default function AboutPage() {
         />
         {/* <div className="absolute inset-0 bg-gradient-to-b from-transparent to-white/40" /> */}
 
-        <div className="relative z-10 container mx-auto top-1/4">
+        <div className="relative z-10 container mx-auto top-[6rem]">
           <PageTitle className="text-center text-white max-lg:text-[2rem]">About Us</PageTitle>
         </div>
 
