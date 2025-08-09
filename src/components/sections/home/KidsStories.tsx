@@ -38,7 +38,7 @@ const KidsStories: React.FC = () => {
           </header>
 
           {/* Mountain Drawings - Full Width */}
-          <div className="relative w-full mt-24 md:mt-32 lg:mt-48">
+          <div className="relative w-full">
             <Image
               src="/images/mountainDrawings.png"
               alt="Mountain drawing"
