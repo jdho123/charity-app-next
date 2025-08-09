@@ -4,7 +4,7 @@ export default function Beginnings() {
   return (
     <section className="bg-white pt-20" id="beginnings">
       <div className="container mx-auto px-4">
-        <div className="flex flex-col lg:flex-row justify-center relative min-h-[800px]">
+        <div className="flex flex-col lg:flex-row justify-start relative min-h-[800px]">
           {/* Left Side Content */}
           <div className="max-w-lg">
             <h2 className="text-6xl font-gloria text-black mb-4">
