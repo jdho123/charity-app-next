@@ -45,8 +45,6 @@ export default function Menu() {
     { href: '/fundraisers#completed-campaigns', text: 'Completed Campaigns' },
   ];
 
-  const newsLinks = [{ href: '/newsletter', text: 'Latest News' }];
-
   const socialLinks = [
     { href: 'https://facebook.com', component: Facebook, label: 'Facebook' },
     { href: 'https://linkedin.com', component: Linkedin, label: 'LinkedIn' },
@@ -152,41 +150,17 @@ export default function Menu() {
               >
                 <h2 className="text-3xl font-gloria text-[#54B435] mb-2">the Diary</h2>
               </Link>
-              <ul className="space-y-2">
-                <li>
-                  <Link
-                    href="/diary"
-                    className="text-lg text-black font-gloria hover:underline"
-                    onClick={closeMenu}
-                  >
-                    the Diary
-                  </Link>
-                </li>
-              </ul>
             </div>
 
             {/* Our News Section */}
             <div className="mb-6">
               <Link
-                href="/diary"
+                href="/newsletter"
                 className="text-lg text-black font-gloria hover:underline"
                 onClick={closeMenu}
               >
                 <h2 className="text-3xl font-gloria text-[#19A7CE] mb-2">Our News</h2>
               </Link>
-              <ul className="space-y-2">
-                {newsLinks.map((link) => (
-                  <li key={link.href}>
-                    <Link
-                      href={link.href}
-                      className="text-lg text-black font-gloria hover:underline"
-                      onClick={closeMenu}
-                    >
-                      {link.text}
-                    </Link>
-                  </li>
-                ))}
-              </ul>
             </div>
 
             {/* Contact Us Section */}
