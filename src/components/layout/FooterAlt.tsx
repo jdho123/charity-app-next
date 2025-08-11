@@ -81,7 +81,7 @@ export default function Footer() {
                   className="object-contain scale-[180%]"
                 />
               </div>
-              <h2 className="text-2xl font-handwriting text-[#9797EE] mt-2">
+              <h2 className="text-2xl font-gloria text-[#9797EE] mt-2">
                 By Giving We Receive Much More
               </h2>
             </div>
@@ -91,23 +91,23 @@ export default function Footer() {
               {/* Left column - Navigation */}
               <div className="flex-1 space-y-4">
                 <Link href="/about" className="hover:underline block">
-                  <span className="text-xl font-handwriting">About Us</span>
+                  <span className="text-xl font-gloria">About Us</span>
                 </Link>
 
                 <Link href="/fundraisers" className="hover:underline block">
-                  <span className="text-xl font-handwriting">Fundraisers</span>
+                  <span className="text-xl font-gloria">Fundraisers</span>
                 </Link>
 
                 <Link href="/latest-news" className="hover:underline block">
-                  <span className="text-xl font-handwriting">Our News</span>
+                  <span className="text-xl font-gloria">Our News</span>
                 </Link>
 
                 <Link href="/diary" className="hover:underline block">
-                  <span className="text-xl font-handwriting">The Diary</span>
+                  <span className="text-xl font-gloria">The Diary</span>
                 </Link>
 
                 <Link href="/contact" className="hover:underline block">
-                  <span className="text-xl font-handwriting">Contact Us</span>
+                  <span className="text-xl font-gloria">Contact Us</span>
                 </Link>
 
                 {/* Social Media Icons */}
@@ -131,7 +131,7 @@ export default function Footer() {
               <div className="flex-1 flex flex-col space-y-4">
                 <Link
                   href="/fundraisers"
-                  className="inline-flex items-center justify-between bg-white rounded-full px-4 py-2 text-base font-handwriting text-black hover:shadow-lg transition-shadow"
+                  className="inline-flex items-center justify-between bg-white rounded-full px-4 py-2 text-base font-gloria text-black hover:shadow-lg transition-shadow"
                 >
                   <span>Support the Cause</span>
                   <svg
@@ -161,7 +161,7 @@ export default function Footer() {
 
                 <Link
                   href="/apply_to_teach"
-                  className="inline-flex items-center justify-between bg-[#D8E6F9] rounded-full px-4 py-2 text-base font-handwriting text-black hover:shadow-lg transition-shadow"
+                  className="inline-flex items-center justify-between bg-[#D8E6F9] rounded-full px-4 py-2 text-base font-gloria text-black hover:shadow-lg transition-shadow"
                 >
                   <span>Join As Teacher</span>
                   <svg
@@ -191,7 +191,7 @@ export default function Footer() {
 
                 <Link
                   href="/register_school"
-                  className="inline-flex items-center justify-between bg-[#D8D8F9] rounded-full px-4 py-2 text-base font-handwriting text-black hover:shadow-lg transition-shadow"
+                  className="inline-flex items-center justify-between bg-[#D8D8F9] rounded-full px-4 py-2 text-base font-gloria text-black hover:shadow-lg transition-shadow"
                 >
                   <span>Join As School</span>
                   <svg
@@ -235,7 +235,7 @@ export default function Footer() {
                   className="object-contain"
                 />
               </div>
-              <h2 className="text-3xl lg:text-4xl font-handwriting text-[#9797EE]">
+              <h2 className="text-3xl lg:text-4xl font-gloria text-[#9797EE]">
                 By Giving We Receive Much More
               </h2>
             </div>
@@ -247,14 +247,14 @@ export default function Footer() {
                 {/* About Us Column */}
                 <div className="space-y-3">
                   <Link href="/about" className="hover:underline">
-                    <h3 className="text-xl lg:text-2xl font-handwriting">About Us</h3>
+                    <h3 className="text-xl lg:text-2xl font-gloria">About Us</h3>
                   </Link>
                   <nav className="space-y-2">
                     {aboutLinks.map((link) => (
                       <Link
                         key={link.href}
                         href={link.href}
-                        className="block text-base lg:text-lg font-handwriting hover:underline"
+                        className="block text-base lg:text-lg font-gloria hover:underline"
                       >
                         {link.text}
                       </Link>
@@ -267,14 +267,14 @@ export default function Footer() {
                   {/* Fundraisers */}
                   <div className="space-y-3">
                     <Link href="/fundraisers" className="hover:underline">
-                      <h3 className="text-xl lg:text-2xl font-handwriting">Fundraisers</h3>
+                      <h3 className="text-xl lg:text-2xl font-gloria">Fundraisers</h3>
                     </Link>
                     <nav className="space-y-2">
                       {fundraiserLinks.map((link) => (
                         <Link
                           key={link.href}
                           href={link.href}
-                          className="block text-base lg:text-lg font-handwriting hover:underline"
+                          className="block text-base lg:text-lg font-gloria hover:underline"
                         >
                           {link.text}
                         </Link>
@@ -285,14 +285,14 @@ export default function Footer() {
                   {/* Diary */}
                   <div className="space-y-3">
                     <Link href="/diary" className="hover:underline">
-                      <h3 className="text-xl lg:text-2xl font-handwriting">The Diary</h3>
+                      <h3 className="text-xl lg:text-2xl font-gloria">The Diary</h3>
                     </Link>
                     <nav className="space-y-2">
                       {diaryLinks.map((link) => (
                         <Link
                           key={link.href}
                           href={link.href}
-                          className="block text-base lg:text-lg font-handwriting hover:underline"
+                          className="block text-base lg:text-lg font-gloria hover:underline"
                         >
                           {link.text}
                         </Link>
@@ -304,14 +304,14 @@ export default function Footer() {
                 {/* News Column */}
                 <div className="space-y-3">
                   <Link href="/latest-news" className="hover:underline">
-                    <h3 className="text-xl lg:text-2xl font-handwriting">Our News</h3>
+                    <h3 className="text-xl lg:text-2xl font-gloria">Our News</h3>
                   </Link>
                   <nav className="space-y-2">
                     {newsLinks.map((link) => (
                       <Link
                         key={link.href}
                         href={link.href}
-                        className="block text-base lg:text-lg font-handwriting hover:underline"
+                        className="block text-base lg:text-lg font-gloria hover:underline"
                       >
                         {link.text}
                       </Link>
@@ -324,7 +324,7 @@ export default function Footer() {
               <div className="col-span-2 flex flex-col justify-between">
                 {/* Contact and Social Media */}
                 <div className="mb-6">
-                  <h3 className="text-xl lg:text-2xl font-handwriting mb-4">Contact Us</h3>
+                  <h3 className="text-xl lg:text-2xl font-gloria mb-4">Contact Us</h3>
                   <div className="flex gap-4">
                     {socialLinks.map((link) => (
                       <a
@@ -345,7 +345,7 @@ export default function Footer() {
                 <div className="space-y-4">
                   <Link
                     href="/fundraisers"
-                    className="inline-flex items-center justify-between bg-white rounded-full px-6 py-3 text-lg font-handwriting text-black hover:shadow-lg transition-shadow w-full"
+                    className="inline-flex items-center justify-between bg-white rounded-full px-6 py-3 text-lg font-gloria text-black hover:shadow-lg transition-shadow w-full"
                   >
                     <span>Support the Cause</span>
                     <svg
@@ -375,7 +375,7 @@ export default function Footer() {
 
                   <Link
                     href="/apply_to_teach"
-                    className="inline-flex items-center justify-between bg-[#D8E6F9] rounded-full px-6 py-3 text-lg font-handwriting text-black hover:shadow-lg transition-shadow w-full"
+                    className="inline-flex items-center justify-between bg-[#D8E6F9] rounded-full px-6 py-3 text-lg font-gloria text-black hover:shadow-lg transition-shadow w-full"
                   >
                     <span>Join As Teacher</span>
                     <svg
@@ -405,7 +405,7 @@ export default function Footer() {
 
                   <Link
                     href="/register_school"
-                    className="inline-flex items-center justify-between bg-[#D8D8F9] rounded-full px-6 py-3 text-lg font-handwriting text-black hover:shadow-lg transition-shadow w-full"
+                    className="inline-flex items-center justify-between bg-[#D8D8F9] rounded-full px-6 py-3 text-lg font-gloria text-black hover:shadow-lg transition-shadow w-full"
                   >
                     <span>Join As School</span>
                     <svg
