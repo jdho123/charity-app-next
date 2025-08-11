@@ -4,7 +4,7 @@ export default function Beginnings() {
   return (
     <section className="bg-white pt-20" id="beginnings">
       <div className="container mx-auto px-4">
-        <div className="flex flex-col lg:flex-row justify-start relative min-h-[800px]">
+        <div className="grid grid-cols-1 lg:grid-cols-2 min-h-[800px] lg:gap-0">
           {/* Left Side Content */}
           <div className="max-w-lg">
             <h2 className="text-6xl font-gloria text-black mb-4">
@@ -27,7 +27,7 @@ export default function Beginnings() {
             </p>
 
             {/* Teaching Image (Polaroid-style) */}
-            <div className="relative w-full bg-white p-3 shadow-md mt-4">
+            <div className="relative w-full bg-white p-3 shadow-md mt-4 xl:ml-10">
               <Image
                 src="/images/teachingToClass.jpeg"
                 alt="Teaching to a class"
@@ -38,15 +38,15 @@ export default function Beginnings() {
             </div>
           </div>
 
-          <div className="flex flex-col items-center">
+          <div className="flex flex-col items-center pt-20">
             {/* Center/Right Temple Illustration */}
-            <div className="top-0 right-0 w-full lg:h-[500px] max-lg:order-2 max-lg:pt-10 overflow-visible">
+            <div className="top-0 right-0 w-full lg:h-[500px] max-lg:order-2 max-lg:pt-10 overflow-visible lg:transform lg:translate-y-32 xl:translate-y-16 lg:translate-x-10 xl:-translate-x-20">
               <Image
                 src="/images/journeySoFar.png"
                 alt="Temple illustration"
                 width={700}
                 height={600}
-                className="object-cover object-right-top lg:scale-125"
+                className="object-cover object-right-top lg:scale-150"
               />
             </div>
             {/* Right Side Nepal Content (positioned below temple) */}
