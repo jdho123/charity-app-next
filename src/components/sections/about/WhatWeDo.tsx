@@ -12,7 +12,7 @@ export default function WhatWeDo({ onWatchVideo }: WhatWeDoProps) {
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
           <div className="space-y-8">
             <h2 className="text-5xl text-[#31848C] font-gloria">What We Do</h2>
-            <p className="text-xl font-urbanist max-w-lg">
+            <p className="text-lg font-urbanist max-w-lg">
               At Ledu, we believe education and knowledge are power. We believe every child, no
               matter their geographical location is deserving of this empowerment. Through
               partnerships with schools in areas affected by humanitarian crises, we deliver online

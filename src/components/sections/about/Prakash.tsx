@@ -16,7 +16,7 @@ export default function Prakash() {
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-4 lg:gap-16">
           {/* Left Column */}
           <div className="space-y-12">
-            <p className="text-xl font-urbanist">
+            <p className="text-lg font-urbanist">
               Prakash Bista was born in Kalikot, a remote rural village where residents didn't even
               have access to a hospital. His parents, after a three-day walk to the nearest town,
               saw children in school uniforms and decided to send Prakash to a boarding school. He
@@ -24,7 +24,7 @@ export default function Prakash() {
               unfortunately passing away as he was preparing for his final school exams.
             </p>
 
-            <p className="text-xl font-urbanist">
+            <p className="text-lg font-urbanist">
               Despite these immense challenges, Prakash founded Impact Schools, convincing
               neighbours to trust him with building the first school in his village. With
               scholarships, he studied in the USA and at the London School of Economics, but chose
