@@ -28,7 +28,7 @@ export default function OurPhilosophy({ className = '' }: OurPhilosophyProps) {
           {/* For the Pupils */}
           <div className="flex flex-col items-center">
             <div className="inline-block relative mb-8">
-              <h3 className="text-3xl font-gloria text-white py-2 px-8">For the Pupils</h3>
+              <h3 className="text-5xl font-gloria text-white py-2 px-8">For the Pupils</h3>
               <div className="absolute -inset-2 border-2 border-white rounded-full"></div>
             </div>
 
@@ -79,7 +79,7 @@ export default function OurPhilosophy({ className = '' }: OurPhilosophyProps) {
           {/* For the Teachers */}
           <div className="flex flex-col items-center">
             <div className="inline-block relative mb-8">
-              <h3 className="text-3xl font-gloria text-white py-2 px-8">For the Teachers</h3>
+              <h3 className="text-5xl font-gloria text-white py-2 px-8">For the Teachers</h3>
               <div className="absolute -inset-2 border-2 border-white rounded-full"></div>
             </div>
 
