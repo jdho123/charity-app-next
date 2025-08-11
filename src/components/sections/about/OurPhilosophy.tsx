@@ -28,7 +28,7 @@ export default function OurPhilosophy({ className = '' }: OurPhilosophyProps) {
           {/* For the Pupils */}
           <div className="flex flex-col items-center">
             <div className="inline-block relative mb-8">
-              <h3 className="text-4xl font-gloria text-white py-2 px-8">For the Pupils</h3>
+              <h3 className="text-3xl font-gloria text-white py-2 px-8">For the Pupils</h3>
               <div className="absolute -inset-2 border-2 border-white rounded-full"></div>
             </div>
 
@@ -42,7 +42,7 @@ export default function OurPhilosophy({ className = '' }: OurPhilosophyProps) {
                     height={48}
                     className="mt-1 mr-5 flex-shrink-0"
                   />
-                  <p className="text-xl font-urbanist">
+                  <p className="text-3xl font-urbanist">
                     We shed light on parts of the world that some have not yet got to know
                   </p>
                 </li>
@@ -54,7 +54,7 @@ export default function OurPhilosophy({ className = '' }: OurPhilosophyProps) {
                     height={48}
                     className="mt-1 mr-5 flex-shrink-0"
                   />
-                  <p className="text-xl font-urbanist">
+                  <p className="text-3xl font-urbanist">
                     We highlight that to care, a person does not need to be directly involved or
                     engaged within the same community
                   </p>
@@ -67,7 +67,7 @@ export default function OurPhilosophy({ className = '' }: OurPhilosophyProps) {
                     height={48}
                     className="mt-1 mr-5 flex-shrink-0"
                   />
-                  <p className="text-xl font-urbanist">
+                  <p className="text-3xl font-urbanist">
                     We provide opportunities for children to explore talents and passions using more
                     advanced resources
                   </p>
@@ -79,7 +79,7 @@ export default function OurPhilosophy({ className = '' }: OurPhilosophyProps) {
           {/* For the Teachers */}
           <div className="flex flex-col items-center">
             <div className="inline-block relative mb-8">
-              <h3 className="text-4xl font-gloria text-white py-2 px-8">For the Teachers</h3>
+              <h3 className="text-3xl font-gloria text-white py-2 px-8">For the Teachers</h3>
               <div className="absolute -inset-2 border-2 border-white rounded-full"></div>
             </div>
 
@@ -93,7 +93,7 @@ export default function OurPhilosophy({ className = '' }: OurPhilosophyProps) {
                     height={48}
                     className="mt-1 mr-5 flex-shrink-0"
                   />
-                  <p className="text-xl font-urbanist">
+                  <p className="text-3xl font-urbanist">
                     When giving back, we gain so much more – this is a fundamental pillar of our
                     work: directly witnessing the joy and wonder of curious children is an
                     invaluable experience that is beyond words
@@ -107,7 +107,7 @@ export default function OurPhilosophy({ className = '' }: OurPhilosophyProps) {
                     height={48}
                     className="mt-1 mr-5 flex-shrink-0"
                   />
-                  <p className="text-xl font-urbanist">
+                  <p className="text-3xl font-urbanist">
                     We offer valuable experience to aspiring teachers, students, and philanthropists
                   </p>
                 </li>
@@ -119,7 +119,7 @@ export default function OurPhilosophy({ className = '' }: OurPhilosophyProps) {
                     height={48}
                     className="mt-1 mr-5 flex-shrink-0"
                   />
-                  <p className="text-xl font-urbanist">
+                  <p className="text-3xl font-urbanist">
                     We create opportunities for teachers to enjoy their craft even more by having a
                     greater impact
                   </p>
