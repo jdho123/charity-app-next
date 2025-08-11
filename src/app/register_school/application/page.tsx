@@ -108,10 +108,12 @@ export default function SchoolRegistrationPage() {
 
   return (
     <FullHeightLayout>
-      <div className="h-full flex flex-col">
+      <div className="h-full flex flex-col pt-20 bg-[#3D1809]">
         {/* Header */}
-        <div className="py-6 text-center bg-[#3D1809]">
-          <h1 className="text-5xl text-white font-gloria">Join as a School Partner</h1>
+        <div className="py-6 text-center bg-[#3D1809] flex justify-center">
+          <h1 className="text-5xl text-white font-gloria max-lg:max-w-sm">
+            Join as a School Partner
+          </h1>
         </div>
 
         {/* Form Component */}

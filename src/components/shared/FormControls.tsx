@@ -21,7 +21,7 @@ export default function FormControls({
   progress,
 }: MultiViewFormControlProps) {
   return (
-    <div className="max-w-3xl mx-auto flex justify-between items-center px-4 py-2 border-t border-white/20">
+    <div className="max-w-3xl mx-auto flex justify-between items-center px-2 lg:px-4 py-2 border-t border-white/20">
       {/* Fixed width back button */}
       <div className="w-28 sm:w-32 md:w-36 flex justify-start">
         <button

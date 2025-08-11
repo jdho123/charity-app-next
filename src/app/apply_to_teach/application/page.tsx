@@ -91,10 +91,10 @@ export default function TeacherApplicationPage() {
 
   return (
     <FullHeightLayout>
-      <div className="min-h-screen h-full flex flex-col">
+      <div className="min-h-screen h-full flex flex-col pt-20 bg-[#163E42]">
         {/* Header */}
-        <div className="bg-[#163E42] py-6 text-center">
-          <h1 className="text-5xl text-white font-gloria">Join as a Teacher</h1>
+        <div className="bg-[#163E42] py-6 text-center flex justify-center">
+          <h1 className="text-5xl text-white font-gloria max-lg:max-w-sm">Join as a Teacher</h1>
         </div>
 
         {/* Form Component */}

@@ -339,7 +339,7 @@ export default function MultiViewForm({
 
       {/* Fixed Navigation Buttons */}
       <div
-        className="fixed bottom-0 left-0 right-0 p-4"
+        className="fixed bottom-0 left-0 right-0 py-4"
         style={{ background: hundredPercentColour }}
       >
         <FormControls
